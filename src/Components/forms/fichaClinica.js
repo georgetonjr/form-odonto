@@ -2,8 +2,15 @@ import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import * as options from '../arrays';
 
-const FichaClinica = props => {
-  const [veiculo, setVeiculo] = useState("");
+const FichaClinica = form => {
+  const [form01, setForm01] = useState({
+    veiculo: "",
+    doencNaoPergutadas: "",
+    fumo: "",
+    drogailicitas: "",
+    usodealcool: "",
+
+  });
 
   return (
     <div>
@@ -214,12 +221,12 @@ const FichaClinica = props => {
     <label>Possui veiculo proprio</label><br/>
     <select 
       name="possui veiculo"
-      value={veiculo}
-      onChange={e=> setVeiculo(e.target.value)}>
+      value={form01.veiculo}
+      onChange={e=> setForm01({veiculo: e.target.value})}>
       <option value="Não">Não</option>
       <option value="Sim">Sim</option>
     </select>
-    {veiculo ==='Sim' ? 
+    {form01.veiculo ==='Sim' ? 
     <input 
       type="text" 
       name="quantosveiculos" 
@@ -476,6 +483,459 @@ const FichaClinica = props => {
           </td>
         </tr>
 
+        <tr>
+          <td>Tem ou teve hepatite? <input type="text" placeholder="Se sim qual? A, B ou C?"/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tomou vacina contra Hepatite B?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem algum problema renal?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem alteração hormonal? <input type="text" placeholder="Se sim qual? Tireóide, Suprarenal?"/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem algum problema hepático?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem problema estomacal? <input type="text" placeholder="Se sim qual? Gastrite, Úlcera?"/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem sífilis ou outra DST? </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem herpes ou aftas frequentes?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>É HIV positivo? </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem alguma síndrome ou comprometimento mental?<input type="text" placeholder="Se sim qual?"/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem eplepsia?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Fez ou faz tratamento psiquiátrico? </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Já se submeteu à cirurgia? <input type="text" placeholder="Se sim qual?"/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Já recebeu transfusão de sangue?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem dores de cabeça frequentes? </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem cicatrização lenta?</td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Está ou poderia estar grávida ou amamentado? <input type="text" placeholder="Período?"/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem ou teve doença cardiovascular?  <input type="text" placeholder="Se sim qual? Hipertensão arterial, Infarto." style={{width: 250}}/></td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+          <td>
+            <th><input type="checkbox" name="sim" id=""/></th>
+            <th><input type="checkbox" name="nao" id=""/></th>
+            <th><input type="checkbox" name="nsi" id=""/></th>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Pressão arterial</td>
+          <td><input type="text" placeholder="180" style={{width: 40}}/>mmHg</td>
+          <td><input type="text" placeholder="180" style={{width: 40}}/>mmHg</td>
+          <td><input type="text" placeholder="180" style={{width: 40}}/>mmHg</td>
+        </tr>
+
+        <tr>
+          <td>Informações relevantes sobre alguma condição de saúde: <textarea name="" id="" cols="30" rows="1"></textarea></td>
+        </tr>
+
+        <tr>
+          <td>Possui alguma doença que não foi perguntada?  
+            <select name="Doenças" value={form01.doencNaoPergutadas}  onChange={e=> setForm01({ doencNaoPergutadas: e.target.value })}>
+              <option value="Não">Não</option>
+              <option value="Sim">Sim</option>
+            </select>
+            {form01.doencNaoPergutadas ==='Sim' ? 
+              <input 
+                type="text" 
+                name="doecasNaoPergutadas" 
+                placeholder="Qual doença" 
+                readOnly
+              /> : <></>}
+          </td>
+        </tr>
+
+        <tr>
+          Faz uso de álcool?
+          <select name="Doenças" value={form01.usodealcool}  onChange={e=> setForm01({ usodealcool: e.target.value })}>
+            <option value="Não">Não</option>
+            <option value="diariamente">Diariamente</option>
+            <option value="3vezesporsemana">3 dias por semana</option>
+            <option value="socialmente">Socialmente</option>
+          </select>
+        </tr>
+
+        <tr>
+          Faz uso de fumo?
+          <select name="Doenças" value={form01.fumo}  onChange={e=> setForm01({ fumo: e.target.value })}>
+            <option value="nao">Não</option>
+            <option value="Sim">Sim</option>
+            <option value="socialmente">Socialmente</option>
+          </select>
+          {form01.fumo ==='Sim' || form01.fumo === 'socialmente' ? 
+            <> 
+            {form01.fumo ==='Sim' ?
+              <>
+                <input 
+                  type="text" 
+                  name="vezespdia" 
+                  placeholder="Quantos cigarros por dia?" 
+                  readOnly
+                />
+
+                <input 
+                  type="text" 
+                  name="fumo" 
+                  placeholder="Qual?" 
+                  readOnly
+                />
+              </>
+            :
+              <input 
+                type="text" 
+                name="fumo" 
+                placeholder="Qual?" 
+                readOnly
+              />
+            }
+              </> 
+            : 
+            <></>}
+        </tr>
+
+        <tr>
+          Faz uso de droga ilícitas?
+          <select name="Doenças" value={form01.drogailicitas}  onChange={e=> setForm01({ drogailicitas: e.target.value })}>
+            <option value="nao">Não</option>
+            <option value="Sim">Sim</option>
+            <option value="socialmente">Socialmente</option>
+          </select>
+          {form01.drogailicitas ==='Sim' || form01.drogailicitas === 'socialmente' ? 
+            <input 
+              type="text" 
+              name="fumo" 
+              placeholder="Qual?" 
+              readOnly
+            /> : <></>}
+        </tr>
+
+        <tr>
+          Outros habitos: <input type="text" placeholder="Quais?" style={{width: 400}}/>
+        </tr>
+
+        <tr>
+          Observações: <input type="text" placeholder="Observações?" style={{width: 400}}/>
+        </tr>
+
+        <tr>
+         <b>Declaro que as informações relatadas na anamnese são verdadeiras e me comprometo a informar ao responsável pelo meu atendimento qualquer alteração do estado de saúde que ocorra durante o meu tratamento.
+        Brasília,<input type="date"/>.<br/>	Paciente ou responsável legal: <input type="text" placeholder="Nome do responsavel" style={{width: 400}}/>.</b>
+        </tr>
+
+        <tr>
+        Nome do discente: <input type="text" placeholder="Nome do discente" style={{width: 400}}/>. <br/> 
+        CPD: <input type="text" placeholder="00000" style={{width: 200}}/>. 
+        Data: <input type="date" name="" id=""/>.
+        </tr>
+
+
       </tbody>
 
       <tfoot>
@@ -483,13 +943,6 @@ const FichaClinica = props => {
       </tfoot>
 
     </table>
-
-
-    
-
-    
-
-
 
     </div>
   );
