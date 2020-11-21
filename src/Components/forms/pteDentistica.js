@@ -187,7 +187,7 @@ const PteDentistica = props => {
           <td><text>48</text></td>
           <td><input type="text"/></td>
         </tr>
-    </table>
+    </table><br/>
 
     <table border="1">
         <tr>
@@ -247,15 +247,305 @@ const PteDentistica = props => {
         </tr>
 
         <tr>
-        <tr>
           <td><text>Bochecho fluoretado (0,05%)</text> </td>
 
           <td><input type="text"/></td>
         </tr>
 
+    </table><br/>
+
+    <table border="1">
+        <tr>
+          <td colSpan="5"><text><center><b>ALTERAÇÕES DO PLANO DO TRATAMENTO</b></center></text></td>
         </tr>
 
-
+        <tr>
+          <td><text><b>DATA</b></text></td>
+          <td><text><b>DENTE</b></text></td>
+          <td><text><b>DESCRIÇÃO DA ALTERAÇÃO (motivo e novo tratamento proposto)</b></text></td>
+          <td><text><b>DISCENTE</b></text></td>
+          <td><text><b>DOCENTE</b></text></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <tr>
+          <td><input type="date"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
     </table>
 
     </div>

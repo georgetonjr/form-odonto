@@ -6,11 +6,13 @@ import { withRouter, useHistory } from "react-router-dom";
 const HomeALuno = () =>{
   const history = useHistory();
   const Form = (form) => { history.push(`/${form}`)}
+  
   return(
     <div>
-      <h1>dsafs</h1>
+      <h1>Aluno</h1>
       <button onClick={()=>Form('form1')}>Ficha Clinica</button><br/>
       <button onClick={()=>Form('form2')}>Ficha PTE Dentística</button><br/>
+      <button onClick={()=>Form('form3')}>Ficha PTE Endodontia</button><br/>
     </div>
   );
 }
