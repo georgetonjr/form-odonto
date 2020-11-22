@@ -315,513 +315,675 @@ const FichaClinica = form => {
         <tr>
           <td>Está sob tratamento médico?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Está tomando algum medicamento? <input type="text" placeholder="Qual"/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem  história  de  alergia?  <input type="text" placeholder="Qual"/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem ou teve problemas respiratórios?   <input type="text" placeholder="Asma, Enfizema"/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem ou teve doença articular? <input type="text" placeholder="Arttrite, Febre reumática."/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem ou teve distúrbio sanguíneo? <input type="text" placeholder="Anemia, Hemorragia. "/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Já fez ou faz tratamento radioterápico de tumor?  <input type="text" placeholder="Qual? "/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Já fez ou faz tratamento quimioterápico de tumor?   <input type="text" placeholder="Qual? "/> </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem diabetes? </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem ou teve hepatite? <input type="text" placeholder="Se sim qual? A, B ou C?"/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tomou vacina contra Hepatite B?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem algum problema renal?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem alteração hormonal? <input type="text" placeholder="Se sim qual? Tireóide, Suprarenal?"/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem algum problema hepático?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem problema estomacal? <input type="text" placeholder="Se sim qual? Gastrite, Úlcera?"/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem sífilis ou outra DST? </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem herpes ou aftas frequentes?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>É HIV positivo? </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem alguma síndrome ou comprometimento mental?<input type="text" placeholder="Se sim qual?"/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem eplepsia?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Fez ou faz tratamento psiquiátrico? </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Já se submeteu à cirurgia? <input type="text" placeholder="Se sim qual?"/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Já recebeu transfusão de sangue?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem dores de cabeça frequentes? </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem cicatrização lenta?</td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Está ou poderia estar grávida ou amamentado? <input type="text" placeholder="Período?"/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
         <tr>
           <td>Tem ou teve doença cardiovascular?  <input type="text" placeholder="Se sim qual? Hipertensão arterial, Infarto." style={{width: 250}}/></td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
           <td>
-            <th><input type="checkbox" name="sim" id=""/></th>
-            <th><input type="checkbox" name="nao" id=""/></th>
-            <th><input type="checkbox" name="nsi" id=""/></th>
+            <select name="tratamentomedico" >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
           </td>
         </tr>
 
