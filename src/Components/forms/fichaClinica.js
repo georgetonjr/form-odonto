@@ -1598,10 +1598,6 @@ const FichaClinica = props => {
 
       </tbody>
 
-      <tfoot>
-        <tr><td colspan="4">Questionario clinico</td></tr>
-      </tfoot>
-
     </table>
 
     </div>
