@@ -4,7 +4,8 @@ import * as options from '../arrays';
 
 const FichaClinica = props => {
   document.title = 'Ficha Clinica';
-  
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     veiculo: "",
     doencNaoPergutadas: "",
@@ -12,8 +13,29 @@ const FichaClinica = props => {
     drogailicitas: "",
     usodealcool: "",
     nomePaciente: "",
+    odontograma: ""
 
   });
+
+  const upload = async e =>{
+    setLoading(true);
+    const files = e.target.files;
+    const data = new FormData()
+    data.append('file', files[0]);
+    data.append('upload_preset', 'z2aj0lf6');
+    
+    await fetch('https://api.cloudinary.com/v1_1/dtycv9fro/image/upload' ,{
+        method: 'POST',
+        body: data
+      }).then(resp => {
+        resp.json().then(r => {
+        setForm({ odontograma: r.secure_url })
+        setLoading(false)
+        })
+        
+      } )
+    console.log(form.odontograma)
+  }
 
   return (
     <div>
@@ -362,7 +384,7 @@ const FichaClinica = props => {
       placeholder="Número de banheiros"
       value={form.numeroDeBanheiros}
       onChange={e => setForm({ numeroDeBanheiros: e.target.value })}
-    />
+    /><br/>
 
     <label>Tipo de transporte publico</label><br/>
     <select 
@@ -1597,9 +1619,119 @@ const FichaClinica = props => {
         Data: <input type="date" value={form.dData} onChange={e => setForm({ dData: e.target.value })}/>.
         </tr>
 
+        <tr>
+          1. Autorizo o início do exame físico do paciente, inclusive procedimentos invasivos, como sondagem periodontal.
+          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={form.docenteNome1} onChange={e => setForm({ docenteNome1: e.target.value })}/>. <br/>
+          Data: <input type="date" value={form.docenteData1} onChange={e => setForm({ docenteData1: e.target.value })}/>.
+        </tr>
+
+        <tr>
+          2.	Não autorizo o início do exame físico do paciente, orientei o discente a preencher o Pedido de Avaliação Médica.
+          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={form.docenteNome2} onChange={e => setForm({ docenteNome2: e.target.value })}/>. <br/>
+          Data: <input type="date" value={form.docenteData2} onChange={e => setForm({ docenteData2: e.target.value })}/>.
+        </tr>
+
+        <tr>
+          3.	Após avaliação do Pedido de Avaliação Médica, autorizo o início do exame físico do paciente.
+          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={form.docenteNome3} onChange={e => setForm({ docenteNome3: e.target.value })}/>. <br/>
+          Data: <input type="date" value={form.docenteData3} onChange={e => setForm({ docenteData3: e.target.value })}/>.
+        </tr>
+      </tbody>
+    </table>
+    
+    <h3>História Odontologia</h3>
+
+    <table border="1">
+      <tbody>
+        <tr>
+          <th>
+            Realizou tratamento odontológico anteriormente?
+            <select 
+              value={form.realizouTratOdontoAnterior}
+              onChange={e => setForm({ realizouTratOdontoAnterior: e.target.value})}
+              >
+                <option value="NAO">Não</option>
+                <option value="SIM">Sim</option>
+              </select>
+          </th>
+
+          <th>
+            Há quanto tempo foi o último tratamento odontológico?
+            <input type="text" 
+              value={form.tempoUtimoTrata}
+              onChange={e => setForm({ tempoUtimoTrata: e.target.value})}
+            />
+          </th>
+
+        </tr>
+
+        <tr>
+          Relata alguma experiência desagradável durante tratamento odontológico anterior?
+          <select 
+            value={form.expDesagradavelDuranteTratamento}
+            onChange={e => setForm({ expDesagradavelDuranteTratamento: e.target.value})}
+          >
+            <option value="NAO">Não</option>
+            <option value="SIM">Sim</option>
+          </select>
+          {form.expDesagradavelDuranteTratamento === 'SIM' ?
+            <input 
+              type="text" 
+              value={form.expDesagradavelDuranteTratamentQual} 
+              onChange={e=> setForm({ expDesagradavelDuranteTratamentQual: e.target.value})} 
+              placeholder="Qual?"  
+            /> 
+            : <></>}
+        </tr>
+
+        <tr>
+          <th>
+            Já recebeu anestesia odontologia?
+            <select 
+              value={form.recebeuAnestesia}
+              onChange={e => setForm({ recebeuAnestesia: e.target.value})}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+            </select>
+          </th>
+
+          <th>
+            Já teve alguma reação ao uso de anestésico?
+            <select 
+              value={form.alergiaAnestesia}
+              onChange={e => setForm({ alergiaAnestesia: e.target.value})}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+            </select>
+            {form.alergiaAnestesia === 'SIM' ?
+            <input 
+              type="text" 
+              value={form.alergiaAnestesiaQual} 
+              onChange={e=> setForm({ alergiaAnestesiaQual: e.target.value})} 
+              placeholder="Qual?"  
+            /> 
+            : <></>}
+          </th>
+        </tr>
 
       </tbody>
     </table>
+
+
+
+    {form.odontograma === '' ?
+        <input type="file" name="" id="" onChange={upload}/>
+      :
+        <></>
+    }
+    {loading ? 
+      <h3> Carregando...</h3>
+    :
+    // eslint-disable-next-line jsx-a11y/alt-text
+    <img src={form.odontograma} style={{width: '300px'}} />
+    }
 
     </div>
   );

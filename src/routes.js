@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import { isAuthenticated, getToken } from "./Services/auth";
+import { isAuthenticated } from "./Services/auth";
 
 import Login from './Pages/Login/index';
 import CadastroAluno from './Pages/Registro/RegistroAluno';
@@ -13,9 +13,6 @@ import Form1 from './Components/forms/fichaClinica';
 import Form2 from './Components/forms/pteDentistica';
 import Form3 from './Components/forms/pteEndodontia';
 
-
-
-console.log(getToken())
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}

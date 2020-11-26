@@ -17,7 +17,8 @@ const Login = () =>{
         CPD,
         Senha,
       }).then(res => {
-        setToken(res.data.token, res.data, {"Aluno": true});
+        console.log(res.data)
+        setToken(res.data.token, res.data.CPD, {"Aluno": true});
         history.push('/homea');
         })
         .catch(() => alert('Usuario não encontrado'));
@@ -27,7 +28,7 @@ const Login = () =>{
         CPD,
         Senha,
       }).then(res => {
-        setToken(res.data.token, res.data, {"Professor": true})
+        setToken(res.data.token, res.data.CPD, {"Professor": true})
         history.push('/homep');
       }).catch(() => alert('Usuario não encontrado'));
     }
