@@ -207,7 +207,7 @@ const FichaClinica = props => {
       onChange={e => setForm({ nomePai: e.target.value })}
     /><br/>
 
-    <label>Nivel de escolaridade</label><br/>
+    <label>Estado Civil</label><br/>
     <select 
       name="EstadoCivil"
       value={form.estadoCivil}
@@ -265,8 +265,8 @@ const FichaClinica = props => {
       value={form.auxilioGoverno}
       onChange={e => setForm({ auxilioGoverno: e.target.value })}  
     >
-      <option value="Sim">Sim</option>
       <option value="Não">Não</option>
+      <option value="Sim">Sim</option>
     </select>
     {form.auxilioGoverno === 'Sim' ?
         <input 
@@ -286,8 +286,8 @@ const FichaClinica = props => {
       value={form.outroMembroFamiliaTrabalha}
       onChange={e => setForm({ outroMembroFamiliaTrabalha: e.target.value })}
     >
-      <option value="Sim">Sim</option>
       <option value="Não">Não</option>
+      <option value="Sim">Sim</option>
     </select>
 
     {form.outroMembroFamiliaTrabalha === 'Sim' ? 
@@ -1597,7 +1597,6 @@ const FichaClinica = props => {
 
 
       </tbody>
-
     </table>
 
     </div>
