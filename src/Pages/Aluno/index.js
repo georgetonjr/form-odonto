@@ -4,6 +4,7 @@ import { withRouter, useHistory } from "react-router-dom";
 //import auth from '../../Services/auth';
 
 const HomeALuno = () =>{
+  document.title = 'Home' 
   const history = useHistory();
   const Form = (form) => { history.push(`/${form}`)}
   

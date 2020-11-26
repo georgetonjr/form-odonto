@@ -3,6 +3,8 @@ import {withRouter} from 'react-router-dom';
 import * as options from '../arrays';
 
 const FichaClinica = props => {
+  document.title = 'Ficha Clinica';
+  
   const [form, setForm] = useState({
     veiculo: "",
     doencNaoPergutadas: "",
