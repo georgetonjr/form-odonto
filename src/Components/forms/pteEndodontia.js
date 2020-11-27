@@ -382,7 +382,7 @@ const PteEndodontia = props => {
                 <option value="">Tardio</option>
             </select>
             </th>
-            <th colSpan="2"><text>Palpação</text></th>
+            <th colSpan="4"><text>PALPAÇÃO</text></th>
 
           </tr>
 
@@ -404,8 +404,8 @@ const PteEndodontia = props => {
                 <option value="">Severa</option>
             </select>
             </th>
-            <th colSpan="2"><text>Vertical</text></th>
-            <th colSpan="2"><text>Horizontal</text></th>
+            <th colSpan="2"><text>Apical</text></th>
+            <th colSpan="2"><text>Lateral</text></th>
 
           </tr>
       </table>

@@ -4,14 +4,15 @@ import api from '../../Services/api';
 
 const FichaClinicaProfessor = props => {
   const history = useHistory();
-  const [status, setStatus]
+  const [status, setStatus] = useState(false);
   const [form, setForm] = useState(null);
+  const [obs, setObs] = useState('');
   const formId = props.history.location.state;
   const back = () => history.goBack()
 
-  const changeStatus = s => api.post('/form/status', { id: formId, status: s }).then(() => {
+  const changeStatus = s => api.post('/form/status', { id: formId, status: s, obs: obs }).then(() => {
     setStatus(true);
-    alert('Aluno aprovado');
+    alert('Formulario alterado com sucesso!');
   }).catch(e => console.log(e));
 
   useEffect(()=>{
@@ -2153,6 +2154,8 @@ const FichaClinicaProfessor = props => {
         <th>Data <input readOnly     type="date"   value={form.PTDate} /></th>
       </tr>
     </table>
+    <label>Observações</label>
+    <textarea value={obs} onChange={e => setObs(e.target.value)} cols="70" rows="10"></textarea>
 
     <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(true)}>Aprovar</button>
     <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(false)}>Reprovar</button>
