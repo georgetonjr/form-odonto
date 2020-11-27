@@ -13,6 +13,11 @@ const HomeALuno = () =>{
     setUser(aluno)
   }
 
+  const sair = () => {
+    sessionStorage.clear();
+    history.push('/')
+  }
+
   const openForm = ( i,f) => {
     let loc;
     switch (f) {
@@ -83,6 +88,8 @@ const HomeALuno = () =>{
         </tbody>
       </table>
       :<> </>}
+
+      <button onClick={sair}>Sair</button>
     </div>
   );
 }

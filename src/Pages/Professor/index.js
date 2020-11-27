@@ -38,6 +38,11 @@ const HomeProfessor = () =>{
     history.push(`/professor/${loc}`, i)
   }
 
+  const sair = () => {
+    sessionStorage.clear();
+    history.push('/')
+  }
+
   
 
   useEffect(() =>{  
@@ -79,6 +84,8 @@ const HomeProfessor = () =>{
         </tbody>
       </table>
       :<> </>}
+
+      <button onClick={sair}>Sair</button>
       
    </div>
   );
