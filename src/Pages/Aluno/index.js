@@ -24,7 +24,8 @@ const HomeALuno = () =>{
       case 'Ficha Clinica':
         loc= 'form1';
         break;
-      case '':
+      case 'Planejamento diario':
+        loc= 'form0';
         break;
       default:
         history.push('/homep');
@@ -59,9 +60,11 @@ const HomeALuno = () =>{
   return(
     <div>
       <h1>Bem vindo {user?.Nome}</h1>
+      <button onClick={()=>Form('form0')}>Planejamento Diario</button><br/>
       <button onClick={()=>Form('form1')}>Ficha Clinica</button><br/>
       <button onClick={()=>Form('form2')}>Ficha PTE Dentística</button><br/>
       <button onClick={()=>Form('form3')}>Ficha PTE Endodontia</button><br/>
+      <button onClick={()=>Form('form4')}>Ficha PTE Periodontia</button><br/>
 
       {check ? 
         <table border='1'>

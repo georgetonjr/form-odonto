@@ -9,25 +9,27 @@ const Login = () =>{
   const [Senha, setSenha] = useState('')
   const [selectedValue, setSelectedValue] = useState('Aluno')
   const history = useHistory();
-
+  var perfil;
   const logar = async ()=>{
     if(selectedValue === 'Aluno'){
       api.post('/siginaluno',{
         CPD,
         Senha,
       }).then(res => {
+        perfil = 'aluno'
         console.log(res.data)
-        setToken(res.data.token, res.data.CPD, {"Aluno": true});
+        setToken(res.data.token, res.data.CPD, perfil);
         history.push('/homea');
         })
         .catch(() => alert('Usuario não encontrado'));
     }
     else if(selectedValue === 'Professor'){
+      perfil = 'professor'
       api.post('/siginprofessor',{
         CPD,
         Senha,
       }).then(res => {
-        setToken(res.data.token, res.data.CPD, {"Professor": true})
+        setToken(res.data.token, res.data.CPD, perfil)
         history.push('/homep');
       }).catch(() => alert('Usuario não encontrado'));
     }

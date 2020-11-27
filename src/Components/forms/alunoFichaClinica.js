@@ -2159,7 +2159,7 @@ const FichaClinicaProfessor = props => {
       </tr>
     </table>
     <label style={{alignSelf: 'center'}}>Observações</label> <br/>
-    <textarea value={obs} onChange={e => setObs(e.target.value)} disabled={status ? true : false} cols="70" rows="10"></textarea><br/>
+    <textarea value={obs}  disabled={status ? true : false} cols="70" rows="10"></textarea><br/>
     </div>
   );
   } else{
