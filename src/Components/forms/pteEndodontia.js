@@ -350,21 +350,64 @@ const PteEndodontia = props => {
           </tr>
 
           <tr>
-            <th><text>Frio</text></th>
-            <th><text>Calor</text></th>
+            <th colSpan="2"><text>Frio</text></th>
+            <th colSpan="2"><text>Calor</text></th>
             <th colSpan="2"><text>Vertical</text></th>
             <th colSpan="2"><text>Horizontal</text></th>
           </tr> 
 
           <tr>
-            <th><input type="checkbox" name="Negativo" id=""/><text>Negativo</text></th>
-            <th><input type="checkbox" name="Negativo" id=""/><text>Negativo</text></th>
+            <th colSpan="2"><input type="checkbox" name="Negativo" id=""/><text>Negativo</text></th>
+            <th colSpan="2"><input type="checkbox" name="Negativo" id=""/><text>Negativo</text></th>
             <th><input type="checkbox" name="-" id=""/><text> - </text></th>
             <th><input type="checkbox" name="+" id=""/><text> + </text></th>
             <th><input type="checkbox" name="-" id=""/><text> - </text></th>
             <th><input type="checkbox" name="+" id=""/><text> + </text></th>
-          </tr> 
+          </tr>
 
+          <tr>
+            <th rowSpan="3"><input type="checkbox" name="Positivo" id=""/><text>Positivo</text></th>
+            <th><text>Inicio</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Imediato</option>
+                <option value="">Tardio</option>
+            </select>
+            </th>
+            <th><input type="checkbox" name="Positivo" id=""/><text>Positivo</text></th>
+            <th><text>Inicio</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Imediato</option>
+                <option value="">Tardio</option>
+            </select>
+            </th>
+            <th colSpan="2"><text>Palpação</text></th>
+
+          </tr>
+
+          <tr>
+            <th><text>Intensidade</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Leve</option>
+                <option value="">Moderada</option>
+                <option value="">Severa</option>
+            </select>
+            </th>
+
+            <th><text>Intensidade</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Leve</option>
+                <option value="">Moderada</option>
+                <option value="">Severa</option>
+            </select>
+            </th>
+            <th colSpan="2"><text>Vertical</text></th>
+            <th colSpan="2"><text>Horizontal</text></th>
+
+          </tr>
       </table>
     
     </div>

@@ -4,15 +4,22 @@ import api from '../../Services/api';
 
 const FichaClinicaProfessor = props => {
   const history = useHistory();
+  const [status, setStatus]
   const [form, setForm] = useState(null);
   const formId = props.history.location.state;
   const back = () => history.goBack()
 
-  const changeStatus = s => api.post('/form/status', { id: formId, status: s }).then(resp => console.log(resp.data)).catch(e => console.log(e));
+  const changeStatus = s => api.post('/form/status', { id: formId, status: s }).then(() => {
+    setStatus(true);
+    alert('Aluno aprovado');
+  }).catch(e => console.log(e));
 
   useEffect(()=>{
     api.get('/form/getformbyid',{ headers: { id: formId} })
-      .then(resp => setForm(resp.data.form))
+      .then(resp => {
+        setForm(resp.data.form);
+        setStatus(resp.data.createdAt)
+      })
       .catch(error => console.log(error.message))
   },[formId])
 
@@ -2147,8 +2154,8 @@ const FichaClinicaProfessor = props => {
       </tr>
     </table>
 
-    <button style={{alignSelf: 'center'}} onClick={()=> changeStatus(true)}>Aprovar</button>
-    <button style={{alignSelf: 'center'}} onClick={()=> changeStatus(false)}>Reprovar</button>
+    <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(true)}>Aprovar</button>
+    <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(false)}>Reprovar</button>
     </div>
   );
   } else{
