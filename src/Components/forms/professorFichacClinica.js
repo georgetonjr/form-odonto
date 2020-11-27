@@ -2155,7 +2155,7 @@ const FichaClinicaProfessor = props => {
       </tr>
     </table>
     <label style={{alignSelf: 'center'}}>Observações</label> <br/>
-    <textarea value={obs} onChange={e => setObs(e.target.value)} cols="70" rows="10"></textarea>
+    <textarea value={obs} onChange={e => setObs(e.target.value)} cols="70" rows="10"></textarea><br/>
 
     <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(true)}>Aprovar</button>
     <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(false)}>Reprovar</button>

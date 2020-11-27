@@ -336,7 +336,7 @@ const PteEndodontia = props => {
             <th colSpan="4"><text>OBSERVAÇÕES:</text><input type="text"/></th>
           </tr>
 
-      </table>
+      </table><br/>
 
       <table border="1">
         <thead>
@@ -431,7 +431,19 @@ const PteEndodontia = props => {
 
           </tr>
 
+          <tr>
+            <th colSpan="4" rowSpan="2"><text>OBSERVAÇÕES:</text><input type="text"/></th>
+            <th colSpan="2"><text>Mobilidade</text></th>
+            <th colSpan="2"><text>Cavidade</text></th>
+          </tr>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+          <tr>
 
+
+          </tr>
       </table>
     
     </div>
