@@ -345,16 +345,26 @@ const PteEndodontia = props => {
           </tr>
         </thead>
           <tr>
-            <th colSpan="3"><text>SENSIBILIDADE PULPAR</text></th>
-            <th colSpan="3"><text>PERCUSSÃO</text></th>
+            <th colSpan="4"><text>SENSIBILIDADE PULPAR</text></th>
+            <th colSpan="4"><text>PERCUSSÃO</text></th>
           </tr>
 
           <tr>
             <th><text>Frio</text></th>
             <th><text>Calor</text></th>
-            <th><text>Vertical</text></th>
-            <th><text>Horizontal</text></th>
+            <th colSpan="2"><text>Vertical</text></th>
+            <th colSpan="2"><text>Horizontal</text></th>
           </tr> 
+
+          <tr>
+            <th><input type="checkbox" name="Negativo" id=""/><text>Negativo</text></th>
+            <th><input type="checkbox" name="Negativo" id=""/><text>Negativo</text></th>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+          </tr> 
+
       </table>
     
     </div>

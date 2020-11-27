@@ -2145,7 +2145,7 @@ const FichaClinicaProfessor = props => {
         <th>Pontuação <input readOnly  type="text"   value={form.PTPontuacao} /></th>
         <th>Data <input readOnly     type="date"   value={form.PTDate} /></th>
       </tr>
-    </table>\
+    </table>
 
     <button style={{alignSelf: 'center'}} onClick={()=> changeStatus(true)}>Aprovar</button>
     <button style={{alignSelf: 'center'}} onClick={()=> changeStatus(false)}>Reprovar</button>
