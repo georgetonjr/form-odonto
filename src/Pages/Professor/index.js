@@ -22,10 +22,21 @@ const HomeProfessor = () =>{
     }
   }
 
-  const openForm = ( i,f) =>{
-    history.push('/professor/form1', i)
-
-  } 
+  const openForm = ( i,f) => {
+    let loc;
+    switch (f) {
+      case 'Ficha Clinica':
+        loc= 'form1';
+        break;
+      case '':
+        break;
+      default:
+        history.push('/homep');
+        break;
+    }
+    
+    history.push(`/professor/${loc}`, i)
+  }
 
   
 

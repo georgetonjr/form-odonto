@@ -436,14 +436,49 @@ const PteEndodontia = props => {
             <th colSpan="2"><text>Mobilidade</text></th>
             <th colSpan="2"><text>Cavidade</text></th>
           </tr>
-            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
-            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
-            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
-            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+
           <tr>
-
-
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
           </tr>
+          
+          <tr><th colSpan="8"><text></text></th></tr>
+
+          <tr>
+            <th colSpan="4"><text>DIAGNÓSTICO</text></th>
+            <th colSpan="4"><text>PLANO DE TRATAMENTO</text></th>
+          </tr>
+          
+          <tr>
+          <th><text>Pulpar</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">NORMAL</option>
+                <option value="">PULPITE REVERSÍVEL</option>
+                <option value="">PULPITE IRREVERSÍVEL</option>
+                <option value="">NECROSE PULPAR</option>
+                <option value="">DENTES DESPOLPADO</option>
+            </select>
+            </th>
+
+            <th><text>Periapical</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">NORMAL</option>
+                <option value="">PERIODONTITE APICAL AGUDA</option>
+                <option value="">PERIODONTITE APICAL CRÔNICA</option>
+                <option value="">ABSCESSO PERIAPICAL AGUDO</option>
+                <option value="">ABSCESSO PERIAPICAL CRÔNICO</option>
+                <option value="">ABBSCESSO FÊNIX</option>
+            </select>
+            </th>
+            <th rowSpan="4"><input type="text"/><br/>
+            <input type="date"/>
+            </th>
+          </tr>
+
       </table>
     
     </div>
