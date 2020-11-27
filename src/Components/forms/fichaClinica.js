@@ -1,24 +1,342 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {withRouter} from 'react-router-dom';
 import * as options from '../arrays';
+import api from '../../Services/api';
+import {getUser} from '../../Services/auth';
 
 const FichaClinica = props => {
   document.title = 'Ficha Clinica';
+  const [user, setUser] = useState();
+  const nameform = 'Ficha Clinica';
   const [check, setCheck] = useState(true)
+  const [professores, setProfessores] = useState([]); 
+  const[veiculo, setVeiculo] = useState();
+  const[doencNaoPergutadas, setDoencNaoPergutadas] = useState();
+  const[fumo, setFumo] = useState();
+  const[drogailicitas, setDrogailicitas] = useState();
+  const[usodealcool, setUsodealcool] = useState();
+  const[nomePaciente, setNomePaciente] = useState(); 
+  const[odontograma, setOdontograma]= useState("https://res.cloudinary.com/dtycv9fro/image/upload/v1606433665/odonto_on2gac.png");
+  const[professor, setProfessor] = useState();
+  const[cpf, setCpf] = useState();
+  const[telefone, setTelefone] = useState();
+  const[rg, setRg] = useState();
+  const[dataexpedicaorg, setDataexpedicaorg] = useState();
+  const[orgaoexpeditor, setOrgaoexpeditor] = useState();
+  const[cep, setCep] = useState();
+  const[uf, setUf] = useState();
+  const[cidade, setCidade] = useState();
+  const[bairro, setBairro] = useState();
+  const[endereco, setEndereco] = useState();
+  const[numero, setNumero] = useState();
+  const[complemento, setComplemento] = useState();
+  const[nacionalidades, setNacionalidades] = useState();
+  const[profissao, setProfissao] = useState();
+  const[nomeMae, setNomeMae] = useState();
+  const[nomePai, setNomePai] = useState();
+  const[estadoCivil, setEstadoCivil] = useState();
+  const[nivelEscolaridade, setNivelEscolaridade] = useState();
+  const[atividadeRemunerada, setAtividadeRemunerada] = useState();
+  const[auxilioGoverno, setAuxilioGoverno] = useState();
+  const[auxilioValor, setAuxilioValor] = useState();
+  const[outroMembroFamiliaTrabalha, setOutroMembroFamiliaTrabalha] = useState();
+  const[outroMembroTrabalhaQuem, setOutroMembroTrabalhaQuem] = useState();
+  const[rendaFamiliar, setRendaFamiliar] = useState();
+  const[quantosVeiculos, setQuantosVeiculos] = useState();
+  const[residencia, setResidencia] = useState();
+  const[numeroDeComodos, setNumeroDeComodos] = useState();
+  const[numeroDeBanheiros, setNumeroDeBanheiros] = useState();
+  const[tranportePulico, setTranportePulico] = useState();
+  const[tranportePublicoOutro, setTranportePublicoOutro] = useState();
+  const[queixaPrincipal, setQueixaPrincipal] = useState();
+  const[historicoDeDoencaAtual, setHistoricoDeDoencaAtual] = useState();
+  const[antecedentesFamiliares, setAntecedentesFamiliares] = useState();
+  const[questionarioSaudeData01, setQuestionarioSaudeData01] = useState();
+  const[questionarioSaudeData02, setQuestionarioSaudeData02] = useState();
+  const[questionarioSaudeData03, setQuestionarioSaudeData03] = useState();
+  const[tratamentoMedico01, setTratamentoMedico01] = useState();
+  const[tratamentoMedico02, setTratamentoMedico02] = useState();
+  const[tratamentoMedico03, setTratamentoMedico03] = useState();
+  const [tomaAlgumaMedicacaoQual ,setTomaAlgumaMedicacaoQual] = useState();
+  const[tomaAlgumaMedicacao01, setTomaAlgumaMedicacao01] = useState();
+  const[tomaAlgumaMedicacao02, setTomaAlgumaMedicacao02] = useState();
+  const[tomaAlgumaMedicacao03, setTomaAlgumaMedicacao03] = useState();
+  const [historicoDeAlergiaQual ,setHistoricoDeAlergiaQual] = useState();
+  const[historicoDeAlergia01, setHistoricoDeAlergia01] = useState();
+  const[historicoDeAlergia02, setHistoricoDeAlergia02] = useState();
+  const[historicoDeAlergia03, setHistoricoDeAlergia03] = useState();
+  const[problemasRespiratorios01Qual, setProblemasRespiratorios01Qual] = useState();
+  const[problemasRespiratorios01, setProblemasRespiratorios01 ] = useState();
+  const[problemasRespiratorios02, setProblemasRespiratorios02 ] = useState();
+  const[problemasRespiratorios03, setProblemasRespiratorios03 ] = useState();
+  const[doencaArticular01Qual, setDoencaArticular01Qual ] = useState();
+  const[doencaArticular01, setDoencaArticular01 ] = useState();
+  const[doencaArticular02, setDoencaArticular02 ] = useState();
+  const[doencaArticular03, setDoencaArticular03 ] = useState();
+  const[disturbioSanguineo01Qual, setDisturbioSanguineo01Qual ] = useState();
+  const[disturbioSanguineo01, setDisturbioSanguineo01 ] = useState();
+  const[disturbioSanguineo02, setDisturbioSanguineo02 ] = useState();
+  const[disturbioSanguineo03, setDisturbioSanguineo03 ] = useState();
+  const[tratamentoRadioterapicoDeTumor01Qual, setTratamentoRadioterapicoDeTumor01Qual ] = useState();
+  const[tratamentoRadioterapicoDeTumor01, setTratamentoRadioterapicoDeTumor01 ] = useState();
+  const[tratamentoRadioterapicoDeTumor02, setTratamentoRadioterapicoDeTumor02 ] = useState();
+  const[tratamentoRadioterapicoDeTumor03, setTratamentoRadioterapicoDeTumor03 ] = useState();
+  const[tratamentoQuimioterapicoDeTumor01Qual, setTratamentoQuimioterapicoDeTumor01Qual ] = useState();
+  const[tratamentoQuimioterapicoDeTumor01, setTratamentoQuimioterapicoDeTumor01 ] = useState();
+  const[tratamentoQuimioterapicoDeTumor02, setTratamentoQuimioterapicoDeTumor02 ] = useState();
+  const[tratamentoQuimioterapicoDeTumor03, setTratamentoQuimioterapicoDeTumor03 ] = useState();
+  const[temDiabetes01, setTemDiabetes01 ] = useState();
+  const[temDiabetes02, setTemDiabetes02 ] = useState();
+  const[temDiabetes03, setTemDiabetes03 ] = useState();
+  const[temHepatite01Qual, setTemHepatite01Qual ] = useState();
+  const[temHepatite01, setTemHepatite01 ] = useState();
+  const[temHepatite02, setTemHepatite02 ] = useState();
+  const[temHepatite03, setTemHepatite03 ] = useState();
+  const[vacinaContraHepatite01, setVacinaContraHepatite01 ] = useState();
+  const[vacinaContraHepatite02, setVacinaContraHepatite02 ] = useState();
+  const[vacinaContraHepatite03, setVacinaContraHepatite03 ] = useState();
+  const[problemaRenal01, setProblemaRenal01 ] = useState();
+  const[problemaRenal02, setProblemaRenal02 ] = useState();
+  const[problemaRenal03, setProblemaRenal03 ] = useState();
+  const[alteracaoHormonal01Qual, setAlteracaoHormonal01Qual ] = useState();
+  const[alteracaoHormonal01, setAlteracaoHormonal01 ] = useState();
+  const[alteracaoHormonal02, setAlteracaoHormonal02 ] = useState();
+  const[alteracaoHormonal03, setAlteracaoHormonal03 ] = useState();
+  const[problemaHepatico01, setProblemaHepatico01 ] = useState();
+  const[problemaHepatico02, setProblemaHepatico02 ] = useState();
+  const[problemaHepatico03, setProblemaHepatico03 ] = useState();
+  const[problemaEstomacal01Qual, setProblemaEstomacal01Qual ] = useState();
+  const[problemaEstomacal01, setProblemaEstomacal01 ] = useState();
+  const[problemaEstomacal02, setProblemaEstomacal02 ] = useState();
+  const[problemaEstomacal03, setProblemaEstomacal03 ] = useState();
+  const[temSifilisOuOutraDST01, setTemSifilisOuOutraDST01 ] = useState();
+  const[temSifilisOuOutraDST02, setTemSifilisOuOutraDST02 ] = useState();
+  const[temSifilisOuOutraDST03, setTemSifilisOuOutraDST03 ] = useState();
+  const[herpesOuAftas01, setHerpesOuAftas01 ] = useState();
+  const[herpesOuAftas02, setHerpesOuAftas02 ] = useState();
+  const[herpesOuAftas03, setHerpesOuAftas03 ] = useState();
+  const[hivPositivo01, setHivPositivo01 ] = useState();
+  const[hivPositivo02, setHivPositivo02 ] = useState();
+  const[hivPositivo03, setHivPositivo03 ] = useState();
+  const[algumaSindromeOuComprometimentoMental01Qual, setAlgumaSindromeOuComprometimentoMental01Qual ] = useState();
+  const[algumaSindromeOuComprometimentoMental01, setAlgumaSindromeOuComprometimentoMental01 ] = useState();
+  const[algumaSindromeOuComprometimentoMental02, setAlgumaSindromeOuComprometimentoMental02 ] = useState();
+  const[algumaSindromeOuComprometimentoMental03, setAlgumaSindromeOuComprometimentoMental03 ] = useState();
+  const[temEplepsia01, setTemEplepsia01 ] = useState();
+  const[temEplepsia02, setTemEplepsia02 ] = useState();
+  const[temEplepsia03, setTemEplepsia03 ] = useState();
+  const[fazTratamentoPsiquiatrico01, setFazTratamentoPsiquiatrico01 ] = useState();
+  const[fazTratamentoPsiquiatrico02, setFazTratamentoPsiquiatrico02 ] = useState();
+  const[fazTratamentoPsiquiatrico03, setFazTratamentoPsiquiatrico03 ] = useState();
+  const[jaSeSubmeteuACirugia01Qual, setJaSeSubmeteuACirugia01Qual ] = useState();
+  const[jaSeSubmeteuACirugia01, setJaSeSubmeteuACirugia01 ] = useState();
+  const[jaSeSubmeteuACirugia02, setJaSeSubmeteuACirugia02 ] = useState();
+  const[jaSeSubmeteuACirugia03, setJaSeSubmeteuACirugia03 ] = useState();
+  const[transfusaoDeSangue01, setTransfusaoDeSangue01 ] = useState();
+  const[transfusaoDeSangue02, setTransfusaoDeSangue02 ] = useState();
+  const[transfusaoDeSangue03, setTransfusaoDeSangue03 ] = useState();
+  const[doresDeCabecaFrequentes01, setDoresDeCabecaFrequentes01 ] = useState();
+  const[doresDeCabecaFrequentes02, setDoresDeCabecaFrequentes02 ] = useState();
+  const[doresDeCabecaFrequentes03, setDoresDeCabecaFrequentes03 ] = useState();
+  const[cicatrizacaoLenta01, setCicatrizacaoLenta01 ] = useState();
+  const[cicatrizacaoLenta02, setCicatrizacaoLenta02 ] = useState();
+  const[cicatrizacaoLenta03, setCicatrizacaoLenta03 ] = useState();
+  const[gravidaOuAmamentando01Qual, setGravidaOuAmamentando01Qual ] = useState();
+  const[gravidaOuAmamentando01, setGravidaOuAmamentando01 ] = useState();
+  const[gravidaOuAmamentando02, setGravidaOuAmamentando02 ] = useState();
+  const[gravidaOuAmamentando03, setGravidaOuAmamentando03 ] = useState();
+  const[doencaCardiovascular01Qual, setDoencaCardiovascular01Qual ] = useState();
+  const[doencaCardiovascular01, setDoencaCardiovascular01 ] = useState();
+  const[doencaCardiovascular02, setDoencaCardiovascular02 ] = useState();
+  const[doencaCardiovascular03, setDoencaCardiovascular03 ] = useState();
+  const[pressaoArterial01, setPressaoArterial01 ] = useState();
+  const[pressaoArterial02, setPressaoArterial02 ] = useState();
+  const[pressaoArterial03, setPressaoArterial03 ] = useState();
+  const[condicoesDeSaude, setCondicoesDeSaude ] = useState();
+  const[doencasNaoPerguntadas, setDoencasNaoPerguntadas ] = useState();
+  const[cigarrosPorDia, setCigarrosPorDia ] = useState();
+  const[qualCigarro, setQualCigarro ] = useState();
+  const[qualDrogaIlicita, setQualDrogaIlicita ] = useState();
+  const[quaisHabitos, setQuaisHabitos ]  = useState();
+  const[QSObservacoes, setQSObservacoes ]  = useState();
+  const[anamneseData, setAnamneseData ]  = useState();
+  const[responsavelNome, setResponsavelNome ]  = useState();
+  const[dData, setDData ]  = useState();
+  const[CPD, setCPD ]  = useState();
+  const[discenteNome, setDiscenteNome ]  = useState();
+  const[docenteData1, setDocenteData1 ]  = useState();
+  const[docenteNome1, setDocenteNome1 ]  = useState();
+  const[docenteNome2, setDocenteNome2 ]  = useState();
+  const[docenteData2, setDocenteData2 ]  = useState();
+  const[docenteData3, setDocenteData3 ]  = useState();
+  const[docenteNome3, setDocenteNome3 ]  = useState();
+  const[realizouTratOdontoAnterior, setRealizouTratOdontoAnterior ]  = useState();
+  const[tempoUtimoTrata, setTempoUtimoTrata ]  = useState();
+  const[expDesagradavelDuranteTratamento, setExpDesagradavelDuranteTratamento ]  = useState();
+  const[expDesagradavelDuranteTratamentQual, setExpDesagradavelDuranteTratamentQual ]  = useState();
+  const[recebeuAnestesia, setRecebeuAnestesia ]  = useState();
+  const[alergiaAnestesia, setAlergiaAnestesia ]  = useState();
+  const[alergiaAnestesiaQual, setAlergiaAnestesiaQual ]  = useState();
+  const[usoProteseDentaria, setUsoProteseDentaria ]  = useState();
+  const[usoProteseDentariaQual, setUsoProteseDentariaQual ]  = useState();
+  const[sangramentoGengiva, setSangramentoGengiva ]  = useState();
+  const[sangramentoGengivaQuando, setSangramentoGengivaQuando ]  = useState();
+  const[escovaDentesSozinho, setEscovaDentesSozinho ]  = useState();
+  const[usoCremeDental, setUsoCremeDental ]  = useState();
+  const[enxaguatorioDental, setEnxaguatorioDental ]  = useState();
+  const[frequenciaEscovacao, setFrequenciaEscovacao ]  = useState();
+  const[frequenciaFioDental, setFrequenciaFioDental ]  = useState();
+  const[repiraNormalmentePeloNariz, setRepiraNormalmentePeloNariz ]  = useState();
+  const[temApneia, setTemApneia ]  = useState();
+  const[acordaComFaltaAr, setAcordaComFaltaAr ]  = useState();
+  const[impactoAlimentar, setImpactoAlimentar ]  = useState();
+  const[rangeOsDentes, setRangeOsDentes ]  = useState();
+  const[doresNaATM, setDoresNaATM ]  = useState();
+  const[estaloNaMandigula, setEstaloNaMandigula ]  = useState();
+  const[pressaoArterial, setPressaoArterial ]  = useState();
+  const[pulsoRadical, setPulsoRadical ]  = useState();
+  const[frequenciaRespiratoria, setFrequenciaRespiratoria ]  = useState();
+  const[temperatura, setTemperatura ]  = useState();
+  const[Altura, setAltura ]  = useState();
+  const [outraAtividade, setOutraAtividade] = useState();
+  const[peso, setPeso ]  = useState();
+  const[linfonodos , setLinfonodos ]  = useState();
+  const[ATM, setATM ]  = useState();
+  const[pele, setPele ]  = useState();
+  const[simetriaFacial, setSimetriaFacial ]  = useState();
+  const[labios, setLabios ]  = useState();
+  const[glandulas, setGlandulas ]  = useState();
+  const[mucosaLabial, setMucosaLabial ]  = useState();
+  const[mucosaJugal, setMucosaJugal ]  = useState();
+  const[regiaoRetromolar, setRegiaoRetromolar ]  = useState();
+  const[gengiva, setGengiva ]  = useState();
+  const[palato, setPalato ]  = useState();
+  const[lingua, setLingua ]  = useState();
+  const[assoalho, setAssoalho ]  = useState();
+  const[orofaringe, setOrofaringe ]  = useState();
+  const[descriLesao, setDescriLesao ]  = useState();
+  const[hipotDiagnosticas, setHipotDiagnosticas ]  = useState();
+  const[radiograficos, setRadiograficos ]  = useState();
+  const[anatomopatologicos, setAnatomopatologicos ]  = useState();
+  const[clinicoLaboratoriais, setClinicoLaboratoriais ]  = useState();
+  const[ACB1Data, setACB1Data ]  = useState();
+  const[ACB116V, setACB116V ]  = useState();
+  const[ACB146L, setACB146L ]  = useState();
+  const[ACB111V, setACB111V ]  = useState();
+  const[ACB131L, setACB131L ]  = useState();
+  const[ACB126V, setACB126V ]  = useState();
+  const[ACB136L, setACB136L ]  = useState();
+  const[ACB1IHOS, setACB1IHOS ]  = useState();
+  const[ACB2Data, setACB2Data ]  = useState();
+  const[ACB216V, setACB216V ]  = useState();
+  const[ACB243L, setACB243L ]  = useState();
+  const[ACB211V, setACB211V ]  = useState();
+  const[ACB231L, setACB231L ]  = useState();
+  const[ACB2IHOS, setACB2IHOS ]  = useState();
+  const[ACB3Data, setACB3Data ]  = useState();
+  const[ACB316V, setACB316V ]  = useState();
+  const[ACB343L, setACB343L ]  = useState();
+  const[ACB311V, setACB311V ]  = useState();
+  const[ACB331L, setACB331L ]  = useState();
+  const[ACB3IHOS, setACB3IHOS ]  = useState();
+  const[ACB4Data, setACB4Data ]  = useState();
+  const[ACB416V, setACB416V ]  = useState();
+  const[ACB443L, setACB443L ]  = useState();
+  const[ACB411V, setACB411V ]  = useState();
+  const[ACB431L, setACB431L ]  = useState();
+  const[ACB4IHOS, setACB4IHOS ]  = useState();
+  const[ACBObservacoes, setACBObservacoes ]  = useState();
+  const[ACBNome, setACBNome ]  = useState();
+  const[ACBCPD, setACBCPD ]  = useState();
+  const[vistDocente, setVistDocente ]  = useState();
+  const[ACBData, setACBData ]  = useState();
+  const[periodontiaCheckBox, setPeriodontiaCheckBox ]  = useState();
+  const[endodontiaCheckBox, setEndodontiaCheckBox ]  = useState();
+  const[dentisticaCheckBox, setDentisticaCheckBox ]  = useState();
+  const[cirurgiaCheckBox, setCirurgiaCheckBox ]  = useState();
+  const[proteseFixaCheckBox, setProteseFixaCheckBox ]  = useState();
+  const[proteseParcialRemovivelCheckBox, setProteseParcialRemovivelCheckBox ]  = useState();
+  const[proteseTotalRemovivelCheckBox, setProteseTotalRemovivelCheckBox ]  = useState();
+  const[NTNome, setNTNome ]  = useState();
+  const[NTCPD, setNTCPD ]  = useState();
+  const[NTVistDocente, setNTVistDocente ]  = useState();
+  const[NTData, setNTData ]  = useState();
+  const[NTObservacoes, setNTObservacoes ]  = useState();
+  const[PTDocente, setPTDocente ]  = useState();
+  const[PTPontuacao, setPTPontuacao ]  = useState();
+  const[PTDate, setPTDate ]  = useState();
+  const [form, setform] = useState();
 
-  const [form, setForm] = useState({
-    veiculo: "",
-    doencNaoPergutadas: "",
-    fumo: "",
-    drogailicitas: "",
-    usodealcool: "",
-    nomePaciente: "",
-    odontograma: "https://res.cloudinary.com/dtycv9fro/image/upload/v1606433665/odonto_on2gac.png"
-
-  });
-
+  const loadForm = ()=> {
+    setform({
+      veiculo, doencNaoPergutadas, fumo, drogailicitas, usodealcool, nomePaciente,
+      odontograma, professor, cpf, telefone, rg, dataexpedicaorg, orgaoexpeditor, 
+      cep, uf, cidade, bairro, endereco, numero, complemento, nacionalidades, 
+      profissao, nomeMae, nomePai, estadoCivil, nivelEscolaridade, atividadeRemunerada,
+      auxilioGoverno, auxilioValor, outroMembroFamiliaTrabalha, outroMembroTrabalhaQuem,
+      rendaFamiliar, quantosVeiculos, residencia, numeroDeComodos, numeroDeBanheiros,
+      tranportePulico, tranportePublicoOutro, queixaPrincipal, historicoDeDoencaAtual,
+      antecedentesFamiliares, questionarioSaudeData01, questionarioSaudeData02,
+      questionarioSaudeData03, tratamentoMedico01, tratamentoMedico02, tratamentoMedico03,
+      tomaAlgumaMedicacaoQual, tomaAlgumaMedicacao01, tomaAlgumaMedicacao02, tomaAlgumaMedicacao03,
+      historicoDeAlergiaQual, historicoDeAlergia01, historicoDeAlergia02,
+      historicoDeAlergia03, problemasRespiratorios01Qual, problemasRespiratorios01,
+      problemasRespiratorios02, problemasRespiratorios03, doencaArticular01Qual,
+      doencaArticular01, doencaArticular02, doencaArticular03, disturbioSanguineo01Qual,
+      disturbioSanguineo01, disturbioSanguineo02, disturbioSanguineo03, tratamentoRadioterapicoDeTumor01Qual,
+      tratamentoRadioterapicoDeTumor01, tratamentoRadioterapicoDeTumor02, tratamentoRadioterapicoDeTumor03,
+      tratamentoQuimioterapicoDeTumor01Qual, tratamentoQuimioterapicoDeTumor01, tratamentoQuimioterapicoDeTumor02, 
+      tratamentoQuimioterapicoDeTumor03, temDiabetes01, temDiabetes02, temDiabetes03, 
+      temHepatite01Qual, temHepatite01, temHepatite02, temHepatite03, vacinaContraHepatite01,
+      vacinaContraHepatite02, vacinaContraHepatite03, problemaRenal01, problemaRenal02,
+      problemaRenal03, alteracaoHormonal01Qual, alteracaoHormonal01, alteracaoHormonal02,
+      alteracaoHormonal03, problemaHepatico01, problemaHepatico02, problemaHepatico03,
+      problemaEstomacal01Qual, problemaEstomacal01, problemaEstomacal02, problemaEstomacal03,
+      temSifilisOuOutraDST01,  temSifilisOuOutraDST02, temSifilisOuOutraDST03,
+      herpesOuAftas01, herpesOuAftas02, herpesOuAftas03, hivPositivo01, hivPositivo02,
+      hivPositivo03, algumaSindromeOuComprometimentoMental01Qual, algumaSindromeOuComprometimentoMental01,
+      algumaSindromeOuComprometimentoMental02, algumaSindromeOuComprometimentoMental03,
+      temEplepsia01, temEplepsia02, temEplepsia03, fazTratamentoPsiquiatrico01, 
+      fazTratamentoPsiquiatrico02, fazTratamentoPsiquiatrico03, jaSeSubmeteuACirugia01Qual,
+      jaSeSubmeteuACirugia01, jaSeSubmeteuACirugia02, jaSeSubmeteuACirugia03,
+      transfusaoDeSangue01, transfusaoDeSangue02, transfusaoDeSangue03,
+      doresDeCabecaFrequentes01, doresDeCabecaFrequentes02, doresDeCabecaFrequentes03,
+      cicatrizacaoLenta01, cicatrizacaoLenta02, cicatrizacaoLenta03,
+      gravidaOuAmamentando01Qual, gravidaOuAmamentando01, gravidaOuAmamentando02,
+      gravidaOuAmamentando03, doencaCardiovascular01Qual, doencaCardiovascular01,
+      doencaCardiovascular02, doencaCardiovascular03, pressaoArterial01, pressaoArterial02,
+      pressaoArterial03, condicoesDeSaude, doencasNaoPerguntadas, cigarrosPorDia,
+      qualCigarro, qualDrogaIlicita, quaisHabitos, QSObservacoes, anamneseData,
+      responsavelNome, dData, CPD, discenteNome, docenteData1, docenteNome1,
+      docenteNome2, docenteData2, docenteData3, docenteNome3, realizouTratOdontoAnterior,
+      tempoUtimoTrata, expDesagradavelDuranteTratamento, expDesagradavelDuranteTratamentQual,  
+      recebeuAnestesia, alergiaAnestesia, alergiaAnestesiaQual, usoProteseDentaria,
+      usoProteseDentariaQual, sangramentoGengiva, sangramentoGengivaQuando,  
+      escovaDentesSozinho, usoCremeDental, enxaguatorioDental, frequenciaEscovacao,  
+      frequenciaFioDental, repiraNormalmentePeloNariz, temApneia, acordaComFaltaAr,
+      impactoAlimentar, rangeOsDentes, doresNaATM, estaloNaMandigula,
+      pressaoArterial, pulsoRadical, frequenciaRespiratoria, temperatura,
+      Altura, outraAtividade, peso, linfonodos, ATM, pele, simetriaFacial,
+      labios, glandulas, mucosaLabial, mucosaJugal, regiaoRetromolar,
+      gengiva, palato, lingua, assoalho, orofaringe, descriLesao, hipotDiagnosticas,
+      radiograficos, anatomopatologicos, clinicoLaboratoriais, ACB1Data,
+      ACB116V, ACB146L, ACB111V, ACB131L, ACB126V, ACB136L, ACB1IHOS, ACB2Data,
+      ACB216V, ACB243L, ACB211V, ACB231L, ACB2IHOS, ACB3Data, ACB316V, ACB343L,
+      ACB311V, ACB331L, ACB3IHOS, ACB4Data, ACB416V, ACB443L, ACB411V, ACB431L,
+      ACB4IHOS, ACBObservacoes, ACBNome, ACBCPD, vistDocente, ACBData, periodontiaCheckBox,
+      endodontiaCheckBox, dentisticaCheckBox, cirurgiaCheckBox, proteseFixaCheckBox,  
+      proteseParcialRemovivelCheckBox, proteseTotalRemovivelCheckBox, NTNome, 
+      NTCPD, NTVistDocente, NTData, NTObservacoes, PTDocente, PTPontuacao, PTDate,
+    });
+  }
   const enviar = async() => {
-    alert('Enviado com sucesso')
+    loadForm()
+    api.post('/form/create',{
+      form,
+      nameform,
+      aluno: user?._id,
+      professor: professor
+    }).then(resp => console.log(resp.data)).catch(error => console.log(error.message))
   }
 
   const upload = async e =>{
@@ -35,15 +353,28 @@ const FichaClinica = props => {
         body: data
       }).then(resp => {
         resp.json().then(r => {
-          setForm({ odontograma: r.secure_url })
+          setOdontograma(r.secure_url)
           setCheck(false)
         }) 
       })
     }
   }
 
+  useEffect(() => {
+    api.get('/getallprof')
+      .then(resp => setProfessores(resp.data))
+      .catch(error => console.error(error.message));  
+    getUser().then(r => setUser(r)); 
+  }, [])
+
   return (
     <div>
+      
+        <select value={professor} onChange={e => setProfessor( e.target.value)} >
+          <option value=''>Selecione o professor</option>
+          {professores.map(item => <option key={item?._id} value={item?._id}>{item?.Nome}</option> )}
+        </select>
+
       <h1>Ficha Clínica</h1>
 
       <h2>1. IDENTIFICAÇÃO DO PACIENTE</h2>
@@ -55,8 +386,8 @@ const FichaClinica = props => {
       title="Por favor, digite seu nome completo"
       placeholder="Seu nome completo"
       required
-      value={form.nomePaciente}
-      onChange={e => setForm({ nomePaciente: e.target.value })}
+      value={nomePaciente}
+      onChange={e => setNomePaciente( e.target.value )}
     /><br/>
 
     <input
@@ -67,8 +398,8 @@ const FichaClinica = props => {
       placeholder="CPF"
       required
       maxLength="11"
-      value={form.cpf}
-      onChange={e => setForm({ cpf: e.target.value })}
+      value={cpf}
+      onChange={e => setCpf( e.target.value)}
     /><br/>
 
     <input
@@ -79,8 +410,8 @@ const FichaClinica = props => {
       placeholder="Telefone"
       required
       maxLength="13"
-      value={form.telefone}
-      onChange={e => setForm({ telefone: e.target.value })}
+      value={telefone}
+      onChange={e => setTelefone(e.target.value )}
     /><br/>
 
     <input
@@ -90,8 +421,8 @@ const FichaClinica = props => {
       title="Por favor, digite um RG válido"
       placeholder="RG"
       required
-      value={form.rg}
-      onChange={e => setForm({ rg: e.target.value })}
+      value={rg}
+      onChange={e => setRg(e.target.value )}
     /><br/>
 
     <input
@@ -101,16 +432,16 @@ const FichaClinica = props => {
       placeholder="Data de expedição"
       required
       maxLength="10"
-      value={form.dataexpedicaorg}
-      onChange={e => setForm({ dataexpedicaorg: e.target.value })}
+      value={dataexpedicaorg}
+      onChange={e => setDataexpedicaorg( e.target.value)}
     /><br/>
 
     <select 
       name="Orgão expeditor"  
-      value={form.orgaoexpeditor}
-      onChange={e => setForm({ orgaoexpeditor: e.target.value })}
+      value={orgaoexpeditor}
+      onChange={e => setOrgaoexpeditor(e.target.value)}
     >
-    {options.ORGAOS_EXPEDIDORES.map((x,y)=> <option value={y}>{x}</option>)}
+      {options.ORGAOS_EXPEDIDORES.map((x,y)=> <option value={y}>{x}</option>)}
     </select>
     <br/>
 
@@ -122,8 +453,8 @@ const FichaClinica = props => {
       placeholder="CEP"
       required
       maxLength="8"
-      value={form.cep}
-      onChange={e => setForm({ cep: e.target.value })}
+      value={cep}
+      onChange={e => setCep(e.target.value )}
     /><br/>
 
     <input
@@ -133,9 +464,8 @@ const FichaClinica = props => {
       title="Seu o CEP digitado for válido, seu UF deve aparecer aqui"
       placeholder="UF"
       required
-      readOnly
-      value={form.uf}
-      onChange={e => setForm({ uf: e.target.value })}
+      value={uf}
+      onChange={e => setUf(e.target.value )}
     /><br/>
 
     <input
@@ -145,9 +475,8 @@ const FichaClinica = props => {
       title="Seu o CEP digitado for válido, sua cidade deve aparecer aqui"
       placeholder="Cidade"
       required
-      readOnly
-      value={form.cidade}
-      onChange={e => setForm({ cidade: e.target.value })}
+      value={cidade}
+      onChange={e => setCidade(e.target.value )}
     /><br/>
 
     <input
@@ -156,10 +485,9 @@ const FichaClinica = props => {
       label="Bairro"
       title="Seu o CEP digitado for válido, seu bairro deve aparecer aqui"
       placeholder="Bairro"
-      required
-      readOnly
-      value={form.bairro}
-      onChange={e => setForm({ bairro: e.target.value })}
+      require
+      value={bairro}
+      onChange={e => setBairro(e.target.value )}
     /><br/>
 
     <input
@@ -168,10 +496,9 @@ const FichaClinica = props => {
       label="Endereço"
       title="Seu o CEP digitado for válido, seu endereço deve aparecer aqui"
       placeholder="Endereço"
-      required
-      readOnly
-      value={form.endereco}
-      onChange={e => setForm({ endereco: e.target.value })}
+      require
+      value={endereco}
+      onChange={e => setEndereco(e.target.value )}
     /><br/>
 
     <input
@@ -181,8 +508,8 @@ const FichaClinica = props => {
       title="Por favor, digite o número de sua casa/apartamento"
       placeholder="Número"
       required
-      value={form.numero}
-      onChange={e => setForm({ numero: e.target.value })}
+      value={numero}
+      onChange={e => setNumero( e.target.value )}
     /><br/>
 
     <input
@@ -191,14 +518,14 @@ const FichaClinica = props => {
       label="Complemento"
       title="Por favor, digite o complemento de seu endereço, se houver"
       placeholder="Complemento"
-      value={form.complemento}
-      onChange={e => setForm({ complemento: e.target.value })}
+      value={complemento}
+      onChange={e => setComplemento(e.target.value )}
     /><br/>
 
     <select 
       name="Nacionalidades" 
-      value={form.nacionalidades}
-      onChange={e => setForm({ nacionalidades: e.target.value })}
+      value={nacionalidades}
+      onChange={e => setNacionalidades(e.target.value )}
     >
       {options.NACIONALIDADES.map((x,y)=> <option value={y}>{x}</option>)}
     </select>
@@ -211,8 +538,8 @@ const FichaClinica = props => {
       title="Digite sua profissão atual"
       placeholder="Sua profissão atual"
       required
-      value={form.profissao}
-      onChange={e => setForm({ profissao: e.target.value })}
+      value={profissao}
+      onChange={e => setProfissao( e.target.value )}
     /><br/>
 
     <input
@@ -222,8 +549,8 @@ const FichaClinica = props => {
       title="Por favor, digite o nome completo de sua mãe"
       placeholder="Nome completo de sua mãe"
       required
-      value={form.nomeMae}
-      onChange={e => setForm({ nomeMae: e.target.value })}
+      value={nomeMae}
+      onChange={e => setNomeMae(e.target.value )}
     /><br/>
 
     <input
@@ -232,15 +559,15 @@ const FichaClinica = props => {
       label="Pai"
       title="Por favor, digite o nome completo de seu pai"
       placeholder="Nome completo de seu pai"
-      value={form.nomePai}
-      onChange={e => setForm({ nomePai: e.target.value })}
+      value={nomePai}
+      onChange={e => setNomePai(e.target.value )}
     /><br/>
 
     <label>Estado Civil</label><br/>
     <select 
       name="EstadoCivil"
-      value={form.estadoCivil}
-      onChange={e => setForm({ estadoCivil: e.target.value })}
+      value={estadoCivil}
+      onChange={e => setEstadoCivil(e.target.value )}
     >
       <option value="solteiro">Solteiro</option>
       <option value="Casado">Casado</option>
@@ -254,8 +581,8 @@ const FichaClinica = props => {
     <label>Nivel de escolaridade</label><br/>
     <select 
       name="Escolaridade" 
-      value={form.nivelEscolaridade}
-      onChange={e => setForm({ nivelEscolaridade: e.target.value })}  
+      value={nivelEscolaridade}
+      onChange={e => setNivelEscolaridade( e.target.value )}  
     >
       {options.ESCOLARIDADE.map((x,y)=> <option value={y}>{x}</option>)}
     </select>
@@ -264,8 +591,8 @@ const FichaClinica = props => {
     <label>Atividade remunerada</label><br/>
     <select 
       name="atividade remunerada"
-      value={form.atividadeRemunerada}
-      onChange={e => setForm({ atividadeRemunerada: e.target.value })}  
+      value={atividadeRemunerada}
+      onChange={e => setAtividadeRemunerada(e.target.value )}  
     >
       <option value="Sim">Sim</option>
       <option value="autônomo">autônomo</option>
@@ -275,13 +602,13 @@ const FichaClinica = props => {
       <option value="Outra">Outra</option>
     </select>
 
-    {form.atividadeRemunerada ==='Outra' ? 
+    {atividadeRemunerada ==='Outra' ? 
       <input 
         type="text" 
         name="Outra" 
         placeholder="Outra"
-        value={form.outraAtividade}
-        onChange={e => setForm({ outraAtividade: e.target.value })} 
+        value={outraAtividade}
+        onChange={e => setOutraAtividade(e.target.value )} 
       /> 
       : 
       <></>
@@ -291,18 +618,18 @@ const FichaClinica = props => {
     <label>Auxilio do governo</label><br/>
     <select 
       name="auxilio do governo"
-      value={form.auxilioGoverno}
-      onChange={e => setForm({ auxilioGoverno: e.target.value })}  
+      value={auxilioGoverno}
+      onChange={e => setAuxilioGoverno( e.target.value )}  
     >
       <option value="Não">Não</option>
       <option value="Sim">Sim</option>
     </select>
-    {form.auxilioGoverno === 'Sim' ?
+    {auxilioGoverno === 'Sim' ?
         <input 
           type="text" 
           placeholder='Valor'
-          value={form.auxilioValor}
-          onChange={e => setForm({ auxilioValor: e.target.value })}   
+          value={auxilioValor}
+          onChange={e => setAuxilioValor(e.target.value )}   
         />
       :
         <> </>
@@ -312,19 +639,19 @@ const FichaClinica = props => {
     <label>Outro membro da familia trabalha</label><br/>
     <select 
       name="outro membro da familia trabalha" 
-      value={form.outroMembroFamiliaTrabalha}
-      onChange={e => setForm({ outroMembroFamiliaTrabalha: e.target.value })}
+      value={outroMembroFamiliaTrabalha}
+      onChange={e => setOutroMembroFamiliaTrabalha( e.target.value )}
     >
       <option value="Não">Não</option>
       <option value="Sim">Sim</option>
     </select>
 
-    {form.outroMembroFamiliaTrabalha === 'Sim' ? 
+    {outroMembroFamiliaTrabalha === 'Sim' ? 
       <input 
         type="text" 
         placeholder="Quem" 
-        value={form.outroMembroTrabalhaQuem}
-        onChange={e => setForm({ outroMembroTrabalhaQuem: e.target.value })} 
+        value={outroMembroTrabalhaQuem}
+        onChange={e => setOutroMembroTrabalhaQuem( e.target.value )} 
       />
     :
       <></>
@@ -336,27 +663,26 @@ const FichaClinica = props => {
       type="text" 
       name="rendafamilia" 
       placeholder="Renda familiar" 
-      value={form.rendaFamiliar}
-      onChange={e => setForm({ rendaFamiliar: e.target.value })} 
+      value={rendaFamiliar}
+      onChange={e => setRendaFamiliar( e.target.value )} 
     /><br/>
 
     <label>Possui veiculo proprio</label><br/>
     <select 
       name="possui veiculo"
-      value={form.veiculo}
-      onChange={e=> setForm({veiculo: e.target.value})}>
+      value={veiculo}
+      onChange={e=> setVeiculo( e.target.value)}>
       <option value="Não">Não</option>
       <option value="Sim">Sim</option>
     </select>
 
-    {form.veiculo ==='Sim' ? 
+    {veiculo ==='Sim' ? 
       <input 
         type="text" 
         name="quantosveiculos" 
         placeholder="Quantos veiculos" 
-        readOnly
-        value={form.quantosVeiculos}
-        onChange={e => setForm({ quantosVeiculos: e.target.value })} 
+        value={quantosVeiculos}
+        onChange={e => setQuantosVeiculos(e.target.value )} 
       /> 
       : 
       <></>
@@ -366,8 +692,8 @@ const FichaClinica = props => {
     <label>Residencia</label><br/>
     <select 
       name="residencia" 
-      value={form.residencia}
-      onChange={e => setForm({ residencia: e.target.value })} 
+      value={residencia}
+      onChange={e => setResidencia(e.target.value )} 
     >
       <option value="Propria">Sim</option>
       <option value="Alugada">Alugada</option>
@@ -378,8 +704,8 @@ const FichaClinica = props => {
     <input 
       type="text" 
       placeholder="Número de comodos"
-      value={form.numeroDeComodos}
-      onChange={e => setForm({ numeroDeComodos: e.target.value })} 
+      value={numeroDeComodos}
+      onChange={e => setNumeroDeComodos( e.target.value )} 
     />
     <br/>
 
@@ -387,26 +713,26 @@ const FichaClinica = props => {
     <input 
       type="text" 
       placeholder="Número de banheiros"
-      value={form.numeroDeBanheiros}
-      onChange={e => setForm({ numeroDeBanheiros: e.target.value })}
+      value={numeroDeBanheiros}
+      onChange={e => setNumeroDeBanheiros( e.target.value )}
     /><br/>
 
     <label>Tipo de transporte publico</label><br/>
     <select 
       name="Tipo de transporte publico" 
-      value={form.tranportePulico}
-      onChange={e => setForm({ tranportePulico: e.target.value })}
+      value={tranportePulico}
+      onChange={e => setTranportePulico( e.target.value )}
     >
       <option value="Onibus">Onibus</option>
       <option value="Metro">Metrô</option>
       <option value="Outro">Outro</option>
     </select>
-    {form.tranportePulico === 'Outro' ? 
+    {tranportePulico === 'Outro' ? 
       <input 
         type="text"
         placeholder="Qual transporte"
-        value={form.tranportePublicoOutro}
-        onChange={e => setForm({ tranportePublicoOutro: e.target.value })}     
+        value={tranportePublicoOutro}
+        onChange={e => setTranportePublicoOutro( e.target.value )}     
       />
     :
     <></>
@@ -421,8 +747,8 @@ const FichaClinica = props => {
       type="text" 
       name="queixa principal" 
       placeholder ="Queixa principal"
-      value={form.queixaPrincipal}
-      onChange={e => setForm({ queixaPrincipal: e.target.value })}
+      value={queixaPrincipal}
+      onChange={e => setQueixaPrincipal( e.target.value )}
     /><br/>
 
     <label>História da doença atual</label><br/>
@@ -430,8 +756,8 @@ const FichaClinica = props => {
       type="text" 
       name="historico da doença atual" 
       placeholder ="Historico da doença atual"
-      value={form.historicoDeDoencaAtual}
-      onChange={e => setForm({ historicoDeDoencaAtual: e.target.value })}
+      value={historicoDeDoencaAtual}
+      onChange={e => setHistoricoDeDoencaAtual( e.target.value )}
     /><br/>
 
     <label>Antecedentes familiares</label><br/>
@@ -439,8 +765,8 @@ const FichaClinica = props => {
       type="text" 
       name="antecedentes familiares" 
       placeholder ="Antecendentes familiares"
-      value={form.antecedentesFamiliares}
-      onChange={e => setForm({ antecedentesFamiliares: e.target.value })}
+      value={antecedentesFamiliares}
+      onChange={e => setAntecedentesFamiliares(e.target.value )}
     /><br/>
 
 
@@ -458,9 +784,9 @@ const FichaClinica = props => {
       <tbody>
         <tr>
           <td rowspan="2"> </td>
-          <td><input type="date" value={form.questionarioSaudeData01} onChange={e => setForm({ questionarioSaudeData01: e.target.value })}/></td>
-          <td><input type="date" value={form.questionarioSaudeData02} onChange={e => setForm({ questionarioSaudeData02: e.target.value })}/></td>
-          <td><input type="date" value={form.questionarioSaudeData03} onChange={e => setForm({ questionarioSaudeData03: e.target.value })}/></td>
+          <td><input type="date" value={questionarioSaudeData01} onChange={e => setQuestionarioSaudeData01(e.target.value )}/></td>
+          <td><input type="date" value={questionarioSaudeData02} onChange={e => setQuestionarioSaudeData02(e.target.value )}/></td>
+          <td><input type="date" value={questionarioSaudeData03} onChange={e => setQuestionarioSaudeData03(e.target.value )}/></td>
         </tr>
     
         <tr>
@@ -488,8 +814,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tratamentoMedico01}
-              onChange={e => setForm({ tratamentoMedico01: e.target.value })}
+              value={tratamentoMedico01}
+              onChange={e => setTratamentoMedico01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -500,8 +826,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tratamentoMedico02}
-              onChange={e => setForm({ tratamentoMedico02: e.target.value })}
+              value={tratamentoMedico02}
+              onChange={e => setTratamentoMedico02( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -512,8 +838,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tratamentoMedico03}
-              onChange={e => setForm({ tratamentoMedico03: e.target.value })}
+              value={tratamentoMedico03}
+              onChange={e => setTratamentoMedico03( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -523,12 +849,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Está tomando algum medicamento? <input type="text" placeholder="Qual"/> </td>
+          <td>Está tomando algum medicamento? <input type="text" placeholder="Qual" value={tomaAlgumaMedicacaoQual}
+              onChange={e => setTomaAlgumaMedicacaoQual( e.target.value )}/> </td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tomaAlgumaMedicacao01}
-              onChange={e => setForm({ tomaAlgumaMedicacao01: e.target.value })}
+              value={tomaAlgumaMedicacao01}
+              onChange={e => setTomaAlgumaMedicacao01( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -538,8 +865,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tomaAlgumaMedicacao02}
-              onChange={e => setForm({ tomaAlgumaMedicacao02: e.target.value })}
+              value={tomaAlgumaMedicacao02}
+              onChange={e => setTomaAlgumaMedicacao02( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -549,45 +876,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tomaAlgumaMedicacao03}
-              onChange={e => setForm({ tomaAlgumaMedicacao03: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Tem  história  de  alergia?  <input type="text" placeholder="Qual"/> </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.historicoDeAlergia01}
-              onChange={e => setForm({ historicoDeAlergia01: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.historicoDeAlergia02}
-              onChange={e => setForm({ historicoDeAlergia02: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.historicoDeAlergia03}
-              onChange={e => setForm({ historicoDeAlergia03: e.target.value })}
+              value={tomaAlgumaMedicacao03}
+              onChange={e => setTomaAlgumaMedicacao03( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -597,12 +887,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem ou teve problemas respiratórios?   <input type="text" placeholder="Asma, Enfizema"/> </td>
+          <td>Tem  história  de  alergia?  <input type="text" placeholder="Qual" value={historicoDeAlergiaQual}
+              onChange={e => setHistoricoDeAlergiaQual(e.target.value )}/> </td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemasRespiratorios01}
-              onChange={e => setForm({ problemasRespiratorios01: e.target.value })}
+              value={historicoDeAlergia01}
+              onChange={e => setHistoricoDeAlergia01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -612,8 +903,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemasRespiratorios02}
-              onChange={e => setForm({ problemasRespiratorios02: e.target.value })}
+              value={historicoDeAlergia02}
+              onChange={e => setHistoricoDeAlergia02( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -623,45 +914,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemasRespiratorios03}
-              onChange={e => setForm({ problemasRespiratorios03: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Tem ou teve doença articular? <input type="text" placeholder="Arttrite, Febre reumática."/> </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.doencaArticular01}
-              onChange={e => setForm({ doencaArticular01: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.doencaArticular02}
-              onChange={e => setForm({ doencaArticular02: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.doencaArticular03}
-              onChange={e => setForm({ doencaArticular03: e.target.value })}
+              value={historicoDeAlergia03}
+              onChange={e => setHistoricoDeAlergia03( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -671,12 +925,12 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem ou teve distúrbio sanguíneo? <input type="text" placeholder="Anemia, Hemorragia. "/> </td>
+          <td>Tem ou teve problemas respiratórios?   <input type="text" placeholder="Asma, Enfizema" value={problemasRespiratorios01Qual} onChange={e => setProblemasRespiratorios01Qual(e.target.value )}/> </td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.disturbioSanguineo01}
-              onChange={e => setForm({ disturbioSanguineo01: e.target.value })}
+              value={problemasRespiratorios01}
+              onChange={e => setProblemasRespiratorios01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -686,8 +940,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.disturbioSanguineo02}
-              onChange={e => setForm({ disturbioSanguineo02: e.target.value })}
+              value={problemasRespiratorios02}
+              onChange={e => setProblemasRespiratorios02( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -697,45 +951,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.disturbioSanguineo03}
-              onChange={e => setForm({ disturbioSanguineo03: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Já fez ou faz tratamento radioterápico de tumor?  <input type="text" placeholder="Qual? "/> </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.tratamentoRadioterapicoDeTumor01}
-              onChange={e => setForm({ tratamentoRadioterapicoDeTumor01: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.tratamentoRadioterapicoDeTumor02}
-              onChange={e => setForm({ tratamentoRadioterapicoDeTumor02: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.tratamentoRadioterapicoDeTumor03}
-              onChange={e => setForm({ tratamentoRadioterapicoDeTumor03: e.target.value })}
+              value={problemasRespiratorios03}
+              onChange={e => setProblemasRespiratorios03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -745,12 +962,12 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Já fez ou faz tratamento quimioterápico de tumor?   <input type="text" placeholder="Qual? "/> </td>
+          <td>Tem ou teve doença articular? <input type="text" placeholder="Arttrite, Febre reumática." value={doencaArticular01Qual} onChange={e => setDoencaArticular01Qual(e.target.value )}/> </td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tratamentoQuimioterapicoDeTumor01}
-              onChange={e => setForm({ tratamentoQuimioterapicoDeTumor01: e.target.value })}
+              value={doencaArticular01}
+              onChange={e => setDoencaArticular01( e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -760,8 +977,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tratamentoQuimioterapicoDeTumor02}
-              onChange={e => setForm({ tratamentoQuimioterapicoDeTumor02: e.target.value })}
+              value={doencaArticular02}
+              onChange={e => setDoencaArticular02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -771,8 +988,122 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.tratamentoQuimioterapicoDeTumor03}
-              onChange={e => setForm({ tratamentoQuimioterapicoDeTumor03: e.target.value })}
+              value={doencaArticular03}
+              onChange={e => setDoencaArticular03( e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem ou teve distúrbio sanguíneo? <input type="text" placeholder="Anemia, Hemorragia. " value={disturbioSanguineo01Qual}
+              onChange={e => setDisturbioSanguineo01Qual(e.target.value )}/> </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={disturbioSanguineo01}
+              onChange={e => setDisturbioSanguineo01(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={disturbioSanguineo02}
+              onChange={e => setDisturbioSanguineo02(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={disturbioSanguineo03}
+              onChange={e => setDisturbioSanguineo03(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Já fez ou faz tratamento radioterápico de tumor?  <input type="text" placeholder="Qual? " value={tratamentoRadioterapicoDeTumor01Qual}
+              onChange={e => setTratamentoRadioterapicoDeTumor01Qual(e.target.value )}/> </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={tratamentoRadioterapicoDeTumor01}
+              onChange={e => setTratamentoRadioterapicoDeTumor01(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={tratamentoRadioterapicoDeTumor02}
+              onChange={e => setTratamentoRadioterapicoDeTumor02(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={tratamentoRadioterapicoDeTumor03}
+              onChange={e => setTratamentoRadioterapicoDeTumor03(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Já fez ou faz tratamento quimioterápico de tumor?   <input type="text" placeholder="Qual? " value={tratamentoQuimioterapicoDeTumor01Qual}
+              onChange={e => setTratamentoQuimioterapicoDeTumor01Qual(e.target.value )}/> </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={tratamentoQuimioterapicoDeTumor01}
+              onChange={e => setTratamentoQuimioterapicoDeTumor01(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={tratamentoQuimioterapicoDeTumor02}
+              onChange={e => setTratamentoQuimioterapicoDeTumor02(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={tratamentoQuimioterapicoDeTumor03}
+              onChange={e => setTratamentoQuimioterapicoDeTumor03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -786,8 +1117,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temDiabetes01}
-              onChange={e => setForm({ temDiabetes01: e.target.value })}
+              value={temDiabetes01}
+              onChange={e => setTemDiabetes01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -797,8 +1128,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temDiabetes02}
-              onChange={e => setForm({ temDiabetes02: e.target.value })}
+              value={temDiabetes02}
+              onChange={e => setTemDiabetes02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -808,8 +1139,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temDiabetes03}
-              onChange={e => setForm({ temDiabetes03: e.target.value })}
+              value={temDiabetes03}
+              onChange={e => setTemDiabetes03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -819,12 +1150,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem ou teve hepatite? <input type="text" placeholder="Se sim qual? A, B ou C?"/></td>
+          <td>Tem ou teve hepatite? <input type="text" placeholder="Se sim qual? A, B ou C?" value={temHepatite01Qual}
+              onChange={e => setTemHepatite01Qual(e.target.value )}/></td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temHepatite01}
-              onChange={e => setForm({ temHepatite01: e.target.value })}
+              value={temHepatite01}
+              onChange={e => setTemHepatite01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -834,8 +1166,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temHepatite02}
-              onChange={e => setForm({ temHepatite02: e.target.value })}
+              value={temHepatite02}
+              onChange={e => setTemHepatite02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -845,8 +1177,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temHepatite03}
-              onChange={e => setForm({ temHepatite03: e.target.value })}
+              value={temHepatite03}
+              onChange={e => setTemHepatite03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -860,8 +1192,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.vacinaContraHepatite01}
-              onChange={e => setForm({ vacinaContraHepatite01: e.target.value })}
+              value={vacinaContraHepatite01}
+              onChange={e => setVacinaContraHepatite01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -871,8 +1203,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.vacinaContraHepatite02}
-              onChange={e => setForm({ vacinaContraHepatite02: e.target.value })}
+              value={vacinaContraHepatite02}
+              onChange={e => setVacinaContraHepatite02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -882,8 +1214,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.vacinaContraHepatite03}
-              onChange={e => setForm({ vacinaContraHepatite03: e.target.value })}
+              value={vacinaContraHepatite03}
+              onChange={e => setVacinaContraHepatite03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -897,8 +1229,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaRenal01}
-              onChange={e => setForm({ problemaRenal01: e.target.value })}
+              value={problemaRenal01}
+              onChange={e => setProblemaRenal01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -908,8 +1240,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaRenal02}
-              onChange={e => setForm({ problemaRenal02: e.target.value })}
+              value={problemaRenal02}
+              onChange={e => setProblemaRenal02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -919,8 +1251,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaRenal03}
-              onChange={e => setForm({ problemaRenal03: e.target.value })}
+              value={problemaRenal03}
+              onChange={e => setProblemaRenal03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -930,12 +1262,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem alteração hormonal? <input type="text" placeholder="Se sim qual? Tireóide, Suprarenal?"/></td>
+          <td>Tem alteração hormonal? <input type="text" placeholder="Se sim qual? Tireóide, Suprarenal?" value={alteracaoHormonal01Qual}
+              onChange={e => setAlteracaoHormonal01Qual(e.target.value )}/></td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.alteracaoHormonal01}
-              onChange={e => setForm({ alteracaoHormonal01: e.target.value })}
+              value={alteracaoHormonal01}
+              onChange={e => setAlteracaoHormonal01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -945,8 +1278,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.alteracaoHormonal02}
-              onChange={e => setForm({ alteracaoHormonal02: e.target.value })}
+              value={alteracaoHormonal02}
+              onChange={e => setAlteracaoHormonal02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -956,8 +1289,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.alteracaoHormonal03}
-              onChange={e => setForm({ alteracaoHormonal03: e.target.value })}
+              value={alteracaoHormonal03}
+              onChange={e => setAlteracaoHormonal03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -971,8 +1304,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaHepatico01}
-              onChange={e => setForm({ problemaHepatico01: e.target.value })}
+              value={problemaHepatico01}
+              onChange={e => setProblemaHepatico01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -982,8 +1315,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaHepatico02}
-              onChange={e => setForm({ problemaHepatico02: e.target.value })}
+              value={problemaHepatico02}
+              onChange={e => setProblemaHepatico02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -993,8 +1326,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaHepatico03}
-              onChange={e => setForm({ problemaHepatico03: e.target.value })}
+              value={problemaHepatico03}
+              onChange={e => setProblemaHepatico03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1004,12 +1337,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem problema estomacal? <input type="text" placeholder="Se sim qual? Gastrite, Úlcera?"/></td>
+          <td>Tem problema estomacal? <input type="text" placeholder="Se sim qual? Gastrite, Úlcera?" value={problemaEstomacal01Qual}
+              onChange={e => setProblemaEstomacal01Qual(e.target.value )} /></td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaEstomacal01}
-              onChange={e => setForm({ problemaEstomacal01: e.target.value })}
+              value={problemaEstomacal01}
+              onChange={e => setProblemaEstomacal01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1019,8 +1353,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaEstomacal02}
-              onChange={e => setForm({ problemaEstomacal02: e.target.value })}
+              value={problemaEstomacal02}
+              onChange={e => setProblemaEstomacal02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1030,8 +1364,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.problemaEstomacal03}
-              onChange={e => setForm({ problemaEstomacal03: e.target.value })}
+              value={problemaEstomacal03}
+              onChange={e => setProblemaEstomacal03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1045,8 +1379,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temSifilisOuOutraDST01}
-              onChange={e => setForm({ temSifilisOuOutraDST01: e.target.value })}
+              value={temSifilisOuOutraDST01}
+              onChange={e => setTemSifilisOuOutraDST01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1056,8 +1390,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temSifilisOuOutraDST02}
-              onChange={e => setForm({ temSifilisOuOutraDST02: e.target.value })}
+              value={temSifilisOuOutraDST02}
+              onChange={e => setTemSifilisOuOutraDST02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1067,8 +1401,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temSifilisOuOutraDST03}
-              onChange={e => setForm({ temSifilisOuOutraDST03: e.target.value })}
+              value={temSifilisOuOutraDST03}
+              onChange={e => setTemSifilisOuOutraDST03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1082,8 +1416,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.herpesOuAftas01}
-              onChange={e => setForm({ herpesOuAftas01: e.target.value })}
+              value={herpesOuAftas01}
+              onChange={e => setHerpesOuAftas01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1093,8 +1427,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.herpesOuAftas02}
-              onChange={e => setForm({ herpesOuAftas02: e.target.value })}
+              value={herpesOuAftas02}
+              onChange={e => setHerpesOuAftas02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1104,8 +1438,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.herpesOuAftas03}
-              onChange={e => setForm({ herpesOuAftas03: e.target.value })}
+              value={herpesOuAftas03}
+              onChange={e => setHerpesOuAftas03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1119,8 +1453,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.hivPositivo01}
-              onChange={e => setForm({ hivPositivo01: e.target.value })}
+              value={hivPositivo01}
+              onChange={e => setHivPositivo01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1130,8 +1464,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.hivPositivo02}
-              onChange={e => setForm({ hivPositivo02: e.target.value })}
+              value={hivPositivo02}
+              onChange={e => setHivPositivo02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1141,8 +1475,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.hivPositivo03}
-              onChange={e => setForm({ hivPositivo03: e.target.value })}
+              value={hivPositivo03}
+              onChange={e => setHivPositivo03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1152,12 +1486,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem alguma síndrome ou comprometimento mental?<input type="text" placeholder="Se sim qual?"/></td>
+          <td>Tem alguma síndrome ou comprometimento mental?<input type="text" placeholder="Se sim qual?" value={algumaSindromeOuComprometimentoMental01Qual}
+              onChange={e => setAlgumaSindromeOuComprometimentoMental01Qual(e.target.value )}/></td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.algumaSindromeOuComprometimentoMental01}
-              onChange={e => setForm({ algumaSindromeOuComprometimentoMental01: e.target.value })}
+              value={algumaSindromeOuComprometimentoMental01}
+              onChange={e => setAlgumaSindromeOuComprometimentoMental01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1167,8 +1502,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.algumaSindromeOuComprometimentoMental02}
-              onChange={e => setForm({ algumaSindromeOuComprometimentoMental02: e.target.value })}
+              value={algumaSindromeOuComprometimentoMental02}
+              onChange={e => setAlgumaSindromeOuComprometimentoMental02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1178,8 +1513,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.algumaSindromeOuComprometimentoMental03}
-              onChange={e => setForm({ algumaSindromeOuComprometimentoMental03: e.target.value })}
+              value={algumaSindromeOuComprometimentoMental03}
+              onChange={e => setAlgumaSindromeOuComprometimentoMental03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1193,8 +1528,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temEplepsia01}
-              onChange={e => setForm({ temEplepsia01: e.target.value })}
+              value={temEplepsia01}
+              onChange={e => setTemEplepsia01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1204,8 +1539,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temEplepsia02}
-              onChange={e => setForm({ temEplepsia02: e.target.value })}
+              value={temEplepsia02}
+              onChange={e => setTemEplepsia02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1215,8 +1550,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.temEplepsia03}
-              onChange={e => setForm({ temEplepsia03: e.target.value })}
+              value={temEplepsia03}
+              onChange={e => setTemEplepsia03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1230,8 +1565,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.fazTratamentoPsiquiatrico01}
-              onChange={e => setForm({ fazTratamentoPsiquiatrico01: e.target.value })}
+              value={fazTratamentoPsiquiatrico01}
+              onChange={e => setFazTratamentoPsiquiatrico01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1241,8 +1576,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.fazTratamentoPsiquiatrico02}
-              onChange={e => setForm({ fazTratamentoPsiquiatrico02: e.target.value })}
+              value={fazTratamentoPsiquiatrico02}
+              onChange={e => setFazTratamentoPsiquiatrico02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1252,8 +1587,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.fazTratamentoPsiquiatrico03}
-              onChange={e => setForm({ fazTratamentoPsiquiatrico03: e.target.value })}
+              value={fazTratamentoPsiquiatrico03}
+              onChange={e => setFazTratamentoPsiquiatrico03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1263,12 +1598,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Já se submeteu à cirurgia? <input type="text" placeholder="Se sim qual?"/></td>
+          <td>Já se submeteu à cirurgia? <input type="text" placeholder="Se sim qual?" value={jaSeSubmeteuACirugia01Qual}
+              onChange={e => setJaSeSubmeteuACirugia01Qual(e.target.value )}/></td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.jaSeSubmeteuACirugia01}
-              onChange={e => setForm({ jaSeSubmeteuACirugia01: e.target.value })}
+              value={jaSeSubmeteuACirugia01}
+              onChange={e => setJaSeSubmeteuACirugia01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1278,8 +1614,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.jaSeSubmeteuACirugia02}
-              onChange={e => setForm({ jaSeSubmeteuACirugia02: e.target.value })}
+              value={jaSeSubmeteuACirugia02}
+              onChange={e => setJaSeSubmeteuACirugia02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1289,8 +1625,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.jaSeSubmeteuACirugia03}
-              onChange={e => setForm({ jaSeSubmeteuACirugia03: e.target.value })}
+              value={jaSeSubmeteuACirugia03}
+              onChange={e => setJaSeSubmeteuACirugia03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1304,8 +1640,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.transfusaoDeSangue01}
-              onChange={e => setForm({ transfusaoDeSangue01: e.target.value })}
+              value={transfusaoDeSangue01}
+              onChange={e => setTransfusaoDeSangue01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1315,8 +1651,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.transfusaoDeSangue02}
-              onChange={e => setForm({ transfusaoDeSangue02: e.target.value })}
+              value={transfusaoDeSangue02}
+              onChange={e => setTransfusaoDeSangue02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1326,8 +1662,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.transfusaoDeSangue03}
-              onChange={e => setForm({ transfusaoDeSangue03: e.target.value })}
+              value={transfusaoDeSangue03}
+              onChange={e => setTransfusaoDeSangue03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1341,8 +1677,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.doresDeCabecaFrequentes01}
-              onChange={e => setForm({ doresDeCabecaFrequentes01: e.target.value })}
+              value={doresDeCabecaFrequentes01}
+              onChange={e => setDoresDeCabecaFrequentes01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1352,8 +1688,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.doresDeCabecaFrequentes02}
-              onChange={e => setForm({ doresDeCabecaFrequentes02: e.target.value })}
+              value={doresDeCabecaFrequentes02}
+              onChange={e => setDoresDeCabecaFrequentes02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1363,8 +1699,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.doresDeCabecaFrequentes03}
-              onChange={e => setForm({ doresDeCabecaFrequentes03: e.target.value })}
+              value={doresDeCabecaFrequentes03}
+              onChange={e => setDoresDeCabecaFrequentes03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1378,8 +1714,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.cicatrizacaoLenta01}
-              onChange={e => setForm({ cicatrizacaoLenta01: e.target.value })}
+              value={cicatrizacaoLenta01}
+              onChange={e => setCicatrizacaoLenta01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1389,8 +1725,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.cicatrizacaoLenta02}
-              onChange={e => setForm({ cicatrizacaoLenta02: e.target.value })}
+              value={cicatrizacaoLenta02}
+              onChange={e => setCicatrizacaoLenta02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1400,45 +1736,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.cicatrizacaoLenta03}
-              onChange={e => setForm({ cicatrizacaoLenta03: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Está ou poderia estar grávida ou amamentado? <input type="text" placeholder="Período?"/></td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.gravidaOuAmamentando01}
-              onChange={e => setForm({ gravidaOuAmamentando01: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.gravidaOuAmamentando02}
-              onChange={e => setForm({ gravidaOuAmamentando02: e.target.value })}
-            >
-              <option value="NAO">Não</option>
-              <option value="SIM">Sim</option>
-              <option value="NSI">Não sabe informar</option>
-            </select>
-          </td>
-          <td>
-            <select 
-              name="tratamentomedico" 
-              value={form.gravidaOuAmamentando03}
-              onChange={e => setForm({ gravidaOuAmamentando03: e.target.value })}
+              value={cicatrizacaoLenta03}
+              onChange={e => setCicatrizacaoLenta03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1448,12 +1747,13 @@ const FichaClinica = props => {
         </tr>
 
         <tr>
-          <td>Tem ou teve doença cardiovascular?  <input type="text" placeholder="Se sim qual? Hipertensão arterial, Infarto." style={{width: 250}}/></td>
+          <td>Está ou poderia estar grávida ou amamentado? <input type="text" placeholder="Período?" value={gravidaOuAmamentando01Qual}
+              onChange={e => setGravidaOuAmamentando01Qual(e.target.value )}/></td>
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.doencaCardiovascular01}
-              onChange={e => setForm({ doencaCardiovascular01: e.target.value })}
+              value={gravidaOuAmamentando01}
+              onChange={e => setGravidaOuAmamentando01(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1463,8 +1763,8 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.doencaCardiovascular02}
-              onChange={e => setForm({ doencaCardiovascular02: e.target.value })}
+              value={gravidaOuAmamentando02}
+              onChange={e => setGravidaOuAmamentando02(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1474,8 +1774,46 @@ const FichaClinica = props => {
           <td>
             <select 
               name="tratamentomedico" 
-              value={form.doencaCardiovascular03}
-              onChange={e => setForm({ doencaCardiovascular03: e.target.value })}
+              value={gravidaOuAmamentando03}
+              onChange={e => setGravidaOuAmamentando03(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tem ou teve doença cardiovascular?  <input type="text" placeholder="Se sim qual? Hipertensão arterial, Infarto." style={{width: 250}} value={doencaCardiovascular01Qual}
+              onChange={e => setDoencaCardiovascular01Qual(e.target.value )} /></td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={doencaCardiovascular01}
+              onChange={e => setDoencaCardiovascular01(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={doencaCardiovascular02}
+              onChange={e => setDoencaCardiovascular02(e.target.value )}
+            >
+              <option value="NAO">Não</option>
+              <option value="SIM">Sim</option>
+              <option value="NSI">Não sabe informar</option>
+            </select>
+          </td>
+          <td>
+            <select 
+              name="tratamentomedico" 
+              value={doencaCardiovascular03}
+              onChange={e => setDoencaCardiovascular03(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1491,55 +1829,55 @@ const FichaClinica = props => {
               type="text"   
               placeholder="180" 
               style={{width: 40}}
-              value={form.pressaoArterial01}
-              onChange={e => setForm({ pressaoArterial01: e.target.value })}
+              value={pressaoArterial01}
+              onChange={e => setPressaoArterial01(e.target.value )}
               />mmHg</td>
           <td>
             <input 
               type="text"   
               placeholder="180" 
               style={{width: 40}}
-              value={form.pressaoArterial02}
-              onChange={e => setForm({ pressaoArterial02: e.target.value })}
+              value={pressaoArterial02}
+              onChange={e => setPressaoArterial02(e.target.value )}
               />mmHg</td>
           <td>
             <input 
               type="text"   
               placeholder="180" 
               style={{width: 40}}
-              value={form.pressaoArterial03}
-              onChange={e => setForm({ pressaoArterial03: e.target.value })}
+              value={pressaoArterial03}
+              onChange={e => setPressaoArterial03(e.target.value )}
               />mmHg</td>
         </tr>
 
         <tr>
-          <td>Informações relevantes sobre alguma condição de saúde: <textarea value={form.condicoesDeSaude} onChange={e => setForm({ condicoesDeSaude: e.target.value })} name="" id="" cols="30" rows="1"></textarea></td>
+          <td>Informações relevantes sobre alguma condição de saúde: <textarea value={condicoesDeSaude} onChange={e => setCondicoesDeSaude(e.target.value )} name="" id="" cols="30" rows="1"></textarea></td>
         </tr>
 
         <tr>
           <td>Possui alguma doença que não foi perguntada?  
             <select 
               name="Doenças" 
-              value={form.doencNaoPergutadas}  
-              onChange={e=> setForm({ doencNaoPergutadas: e.target.value })}
+              value={doencNaoPergutadas}  
+              onChange={e=> setDoencNaoPergutadas(e.target.value )}
             >
               <option value="Não">Não</option>
               <option value="Sim">Sim</option>
             </select>
-            {form.doencNaoPergutadas ==='Sim' ? 
+            {doencNaoPergutadas ==='Sim' ? 
               <input 
                 type="text" 
                 name="doecasNaoPergutadas" 
                 placeholder="Qual doença" 
-                value={form.doencasNaoPerguntadas}
-                onChange={e => setForm({ doencNaoPergutadas: e.target.value })}
+                value={doencasNaoPerguntadas}
+                onChange={e => setDoencasNaoPerguntadas(e.target.value )}
               /> : <></>}
           </td>
         </tr>
 
         <tr>
           Faz uso de álcool?
-          <select name="Doenças" value={form.usodealcool}  onChange={e=> setForm({ usodealcool: e.target.value })}>
+          <select name="Doenças" value={usodealcool}  onChange={e=> setUsodealcool(e.target.value )}>
             <option value="Não">Não</option>
             <option value="diariamente">Diariamente</option>
             <option value="3vezesporsemana">3 dias por semana</option>
@@ -1549,29 +1887,29 @@ const FichaClinica = props => {
 
         <tr>
           Faz uso de fumo?
-          <select name="Doenças" value={form.fumo}  onChange={e=> setForm({ fumo: e.target.value })}>
+          <select name="Doenças" value={fumo}  onChange={e=> setFumo(e.target.value )}>
             <option value="nao">Não</option>
             <option value="Sim">Sim</option>
             <option value="socialmente">Socialmente</option>
           </select>
-          {form.fumo ==='Sim' || form.fumo === 'socialmente' ? 
+          {fumo ==='Sim' || fumo === 'socialmente' ? 
             <> 
-            {form.fumo ==='Sim' ?
+            {fumo ==='Sim' ?
               <>
                 <input 
                   type="text" 
                   name="vezespdia" 
                   placeholder="Quantos cigarros por dia?" 
-                  value={form.cigarrosPorDia}
-                  onChange={e => setForm({ cigarrosPorDia: e.target.value })}
+                  value={cigarrosPorDia}
+                  onChange={e => setCigarrosPorDia(e.target.value )}
                 />
 
                 <input 
                   type="text" 
                   name="fumo" 
                   placeholder="Qual?" 
-                  value={form.qualCigarro}
-                  onChange={e => setForm({ qualCigarro: e.target.value })}
+                  value={qualCigarro}
+                  onChange={e => setQualCigarro(e.target.value )}
                 />
               </>
             :
@@ -1579,8 +1917,8 @@ const FichaClinica = props => {
                 type="text" 
                 name="fumo" 
                 placeholder="Qual?" 
-                value={form.qualCigarro}
-                  onChange={e => setForm({ qualCigarro: e.target.value })}
+                value={qualCigarro}
+                  onChange={e => setQualCigarro(e.target.value )}
               />
             }
               </> 
@@ -1590,56 +1928,56 @@ const FichaClinica = props => {
 
         <tr>
           Faz uso de droga ilícitas?
-          <select name="Doenças" value={form.drogailicitas}  onChange={e=> setForm({ drogailicitas: e.target.value })}>
+          <select name="Doenças" value={drogailicitas}  onChange={e=> setDrogailicitas(e.target.value )}>
             <option value="nao">Não</option>
             <option value="Sim">Sim</option>
             <option value="socialmente">Socialmente</option>
           </select>
-          {form.drogailicitas ==='Sim' || form.drogailicitas === 'socialmente' ? 
+          {drogailicitas ==='Sim' || drogailicitas === 'socialmente' ? 
             <input 
               type="text" 
               name="fumo" 
               placeholder="Qual?" 
-              value={form.qualDrogaIlicita}
-              onChange={e => setForm({ qualDrogaIlicita: e.target.value })}
+              value={qualDrogaIlicita}
+              onChange={e => setQualDrogaIlicita(e.target.value )}
             /> : <></>}
         </tr>
 
         <tr>
-          Outros habitos: <input type="text" placeholder="Quais?" style={{width: 400}} value={form.quaisHabitos} onChange={e => setForm({ quaisHabitos: e.target.value })}/>
+          Outros habitos: <input type="text" placeholder="Quais?" style={{width: 400}} value={quaisHabitos} onChange={e => setQuaisHabitos(e.target.value )}/>
         </tr>
 
         <tr>
-          Observações: <input type="text" placeholder="Observações?" style={{width: 400}} value={form.Observacoes} onChange={e => setForm({ Observacoes: e.target.value })}/>
+          Observações: <input type="text" placeholder="Observações?" style={{width: 400}} value={QSObservacoes} onChange={e => setQSObservacoes(e.target.value )}/>
         </tr>
 
         <tr>
          <b>Declaro que as informações relatadas na anamnese são verdadeiras e me comprometo a informar ao responsável pelo meu atendimento qualquer alteração do estado de saúde que ocorra durante o meu tratamento.
-        Brasília,<input type="date" value={form.anamneseData} onChange={e => setForm({ anamneseData: e.target.value })}/>.<br/>	Paciente ou responsável legal: <input type="text" placeholder="Nome do responsavel" style={{width: 400}} value={form.responsavelNome} onChange={e => setForm({ responsavelNome: e.target.value })}/>.</b>
+        Brasília,<input type="date" value={anamneseData} onChange={e => setAnamneseData(e.target.value )}/>.<br/>	Paciente ou responsável legal: <input type="text" placeholder="Nome do responsavel" style={{width: 400}} value={responsavelNome} onChange={e => setResponsavelNome(e.target.value )}/>.</b>
         </tr>
 
         <tr>
-        Nome do discente: <input type="text" placeholder="Nome do discente" style={{width: 400}} value={form.discenteNome} onChange={e => setForm({ discenteNome: e.target.value })}/>. <br/> 
-        CPD: <input type="text" placeholder="00000" style={{width: 200}} value={form.CPD} onChange={e => setForm({ CPD: e.target.value })}/>. 
-        Data: <input type="date" value={form.dData} onChange={e => setForm({ dData: e.target.value })}/>.
+        Nome do discente: <input type="text" placeholder="Nome do discente" style={{width: 400}} value={discenteNome} onChange={e => setDiscenteNome(e.target.value )}/>. <br/> 
+        CPD: <input type="text" placeholder="00000" style={{width: 200}} value={CPD} onChange={e => setCPD(e.target.value )}/>. 
+        Data: <input type="date" value={dData} onChange={e => setDData(e.target.value )}/>.
         </tr>
 
         <tr>
           1. Autorizo o início do exame físico do paciente, inclusive procedimentos invasivos, como sondagem periodontal.
-          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={form.docenteNome1} onChange={e => setForm({ docenteNome1: e.target.value })}/>. <br/>
-          Data: <input type="date" value={form.docenteData1} onChange={e => setForm({ docenteData1: e.target.value })}/>.
+          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={docenteNome1} onChange={e => setDocenteNome1(e.target.value )}/>. <br/>
+          Data: <input type="date" value={docenteData1} onChange={e => setDocenteData1(e.target.value )}/>.
         </tr>
 
         <tr>
           2.	Não autorizo o início do exame físico do paciente, orientei o discente a preencher o Pedido de Avaliação Médica.
-          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={form.docenteNome2} onChange={e => setForm({ docenteNome2: e.target.value })}/>. <br/>
-          Data: <input type="date" value={form.docenteData2} onChange={e => setForm({ docenteData2: e.target.value })}/>.
+          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={docenteNome2} onChange={e => setDocenteNome2(e.target.value )}/>. <br/>
+          Data: <input type="date" value={docenteData2} onChange={e => setDocenteData2(e.target.value )}/>.
         </tr>
 
         <tr>
           3.	Após avaliação do Pedido de Avaliação Médica, autorizo o início do exame físico do paciente.
-          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={form.docenteNome3} onChange={e => setForm({ docenteNome3: e.target.value })}/>. <br/>
-          Data: <input type="date" value={form.docenteData3} onChange={e => setForm({ docenteData3: e.target.value })}/>.
+          Docente: <input type="text" placeholder="Docente" style={{width: 400}} value={docenteNome3} onChange={e => setDocenteNome3(e.target.value )}/>. <br/>
+          Data: <input type="date" value={docenteData3} onChange={e => setDocenteData3(e.target.value )}/>.
         </tr>
       </tbody>
     </table>
@@ -1652,8 +1990,8 @@ const FichaClinica = props => {
           <th>
             Realizou tratamento odontológico anteriormente?
             <select 
-              value={form.realizouTratOdontoAnterior}
-              onChange={e => setForm({ realizouTratOdontoAnterior: e.target.value})}
+              value={realizouTratOdontoAnterior}
+              onChange={e => setRealizouTratOdontoAnterior(e.target.value )}
               >
                 <option value="NAO">Não</option>
                 <option value="SIM">Sim</option>
@@ -1663,8 +2001,8 @@ const FichaClinica = props => {
           <th>
             Há quanto tempo foi o último tratamento odontológico?
             <input type="text" 
-              value={form.tempoUtimoTrata}
-              onChange={e => setForm({ tempoUtimoTrata: e.target.value})}
+              value={tempoUtimoTrata}
+              onChange={e => setTempoUtimoTrata(e.target.value )}
             />
           </th>
 
@@ -1673,17 +2011,17 @@ const FichaClinica = props => {
         <tr>
           Relata alguma experiência desagradável durante tratamento odontológico anterior?
           <select 
-            value={form.expDesagradavelDuranteTratamento}
-            onChange={e => setForm({ expDesagradavelDuranteTratamento: e.target.value})}
+            value={expDesagradavelDuranteTratamento}
+            onChange={e => setExpDesagradavelDuranteTratamento(e.target.value )}
           >
             <option value="NAO">Não</option>
             <option value="SIM">Sim</option>
           </select>
-          {form.expDesagradavelDuranteTratamento === 'SIM' ?
+          {expDesagradavelDuranteTratamento === 'SIM' ?
             <input 
               type="text" 
-              value={form.expDesagradavelDuranteTratamentQual} 
-              onChange={e=> setForm({ expDesagradavelDuranteTratamentQual: e.target.value})} 
+              value={expDesagradavelDuranteTratamentQual} 
+              onChange={e=> setExpDesagradavelDuranteTratamentQual(e.target.value )}
               placeholder="Qual?"  
             /> 
             : <></>}
@@ -1693,8 +2031,8 @@ const FichaClinica = props => {
           <th>
             Já recebeu anestesia odontologia?
             <select 
-              value={form.recebeuAnestesia}
-              onChange={e => setForm({ recebeuAnestesia: e.target.value})}
+              value={recebeuAnestesia}
+              onChange={e => setRecebeuAnestesia(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
@@ -1704,17 +2042,17 @@ const FichaClinica = props => {
           <th>
             Já teve alguma reação ao uso de anestésico?
             <select 
-              value={form.alergiaAnestesia}
-              onChange={e => setForm({ alergiaAnestesia: e.target.value})}
+              value={alergiaAnestesia}
+              onChange={e => setAlergiaAnestesia(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
             </select>
-            {form.alergiaAnestesia === 'SIM' ?
+            {alergiaAnestesia === 'SIM' ?
             <input 
               type="text" 
-              value={form.alergiaAnestesiaQual} 
-              onChange={e=> setForm({ alergiaAnestesiaQual: e.target.value})} 
+              value={alergiaAnestesiaQual} 
+              onChange={e=> setAlergiaAnestesiaQual(e.target.value )}
               placeholder="Qual?"  
             /> 
             : <></>}
@@ -1725,17 +2063,17 @@ const FichaClinica = props => {
           <th>
             Faz uso de prótese dentária?
             <select 
-              value={form.usoProteseDentaria}
-              onChange={e => setForm({ usoProteseDentaria: e.target.value})}
+              value={usoProteseDentaria}
+              onChange={e => setUsoProteseDentaria(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
             </select>
-            {form.usoProteseDentaria === 'SIM' ?
+            {usoProteseDentaria === 'SIM' ?
             <input 
               type="text" 
-              value={form.usoProteseDentariaQual} 
-              onChange={e=> setForm({ usoProteseDentariaQual: e.target.value})} 
+              value={usoProteseDentariaQual} 
+              onChange={e=> setUsoProteseDentariaQual(e.target.value )}
               placeholder="Qual?"  
             /> 
             : <></>} 
@@ -1744,16 +2082,16 @@ const FichaClinica = props => {
           <th>
             Percebe sangramento na gengiva?
             <select 
-              value={form.sangramentoGengiva}
-              onChange={e => setForm({ sangramentoGengiva: e.target.value})}
+              value={sangramentoGengiva}
+              onChange={e => setSangramentoGengiva(e.target.value )}
             >
               <option value="NAO">Não</option>
               <option value="SIM">Sim</option>
             </select>
-            {form.sangramentoGengiva === 'SIM' ?
+            {sangramentoGengiva === 'SIM' ?
               <select 
-                value={form.sangramentoGengivaQuando}
-                onChange={e => setForm({ sangramentoGengivaQuando: e.target.value})}
+                value={sangramentoGengivaQuando}
+                onChange={e => setSangramentoGengivaQuando(e.target.value )}
               >
                 <option value="Durante uso de fio dental">Durante uso de fio dental</option>
                 <option value="Durante escovacao">Durante escovação</option>
@@ -1769,8 +2107,8 @@ const FichaClinica = props => {
           <th>
             Escova os dentes sozinho?
             <select 
-              value={form.escovaDentesSozinho}
-              onChange={e=> setForm({ escovaDentesSozinho: e.target.value })}  
+              value={escovaDentesSozinho}
+              onChange={e=> setEscovaDentesSozinho(e.target.value )}  
             >
               <option value="">Selecione</option>
               <option value="SIM">Sim</option>
@@ -1782,8 +2120,8 @@ const FichaClinica = props => {
             <th>
               Faz uso de creme dental? 
               <select 
-                value={form.usoCremeDental}
-                onChange={e => setForm({ usoCremeDental: e.target.value })}
+                value={usoCremeDental}
+                onChange={e => setUsoCremeDental(e.target.value )}
               >
                 <option value="">Selecione</option>
                 <option value="SIM">Sim</option>
@@ -1794,8 +2132,8 @@ const FichaClinica = props => {
             <th>
               Faz uso de enxaguatório dental?		
               <select 
-                value={form.enxaguatorioDental}
-                onChange={e => setForm({ enxaguatorioDental: e.target.value })}
+                value={enxaguatorioDental}
+                onChange={e => setEnxaguatorioDental(e.target.value )}
               >
                 <option value="">Selecione</option>
                 <option value="SIM">Sim</option>
@@ -1810,8 +2148,8 @@ const FichaClinica = props => {
           <th>
             Frequência de escovação detal:
             <select 
-              value={form.frequenciaEscovacao} 
-              onChange={e => setForm({ frequenciaEscovacao: e.target.value})}
+              value={frequenciaEscovacao} 
+              onChange={e => setFrequenciaEscovacao(e.target.value )}
             >
               <option value="">Selecione</option>
               <option value="NENHUMA VEZ AO DIA">Nenhuma vez ao dia</option>
@@ -1824,8 +2162,8 @@ const FichaClinica = props => {
           <th>
             Frequencia de uso de fio dental:
             <select 
-              value={form.frequenciaFioDental} 
-              onChange={e => setForm({ frequenciaFioDental: e.target.value })}
+              value={frequenciaFioDental} 
+              onChange={e => setFrequenciaFioDental(e.target.value )}
             >
               <option value="">Selecione</option>
               <option value="RARAMENTE">Raramente</option>
@@ -1842,8 +2180,8 @@ const FichaClinica = props => {
               <th>
                 Respira normalmente pelo nariz?
                 <select 
-                  value={form.repiraNormalmentePeloNariz} 
-                  onChange={e => setForm({ repiraNormalmentePeloNariz: e.target.value })}
+                  value={repiraNormalmentePeloNariz} 
+                  onChange={e => setRepiraNormalmentePeloNariz(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1853,8 +2191,8 @@ const FichaClinica = props => {
               <th>
                 Tem apneia(ronco)?
                 <select 
-                  value={form.temApneia} 
-                  onChange={e => setForm({ temApneia: e.target.value })}
+                  value={temApneia} 
+                  onChange={e => setTemApneia(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1867,8 +2205,8 @@ const FichaClinica = props => {
               <th>
                 Acorda com falta de ar?
                 <select 
-                  value={form.acordaComFaltaAr} 
-                  onChange={e => setForm({ acordaComFaltaAr: e.target.value })}
+                  value={acordaComFaltaAr} 
+                  onChange={e => setAcordaComFaltaAr(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1878,8 +2216,8 @@ const FichaClinica = props => {
               <th>
                 Tem impactação alimentar?
                 <select 
-                  value={form.impactoAlimentar} 
-                  onChange={e => setForm({ impactoAlimentar: e.target.value })}
+                  value={impactoAlimentar} 
+                  onChange={e => setImpactoAlimentar(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1894,8 +2232,8 @@ const FichaClinica = props => {
               <th>
                 Range os dentes?
                 <select 
-                  value={form.rangeOsDentes} 
-                  onChange={e => setForm({ rangeOsDentes: e.target.value })}
+                  value={rangeOsDentes} 
+                  onChange={e => setRangeOsDentes(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1907,8 +2245,8 @@ const FichaClinica = props => {
               <th>
                 Sente dores na ATM?
                 <select 
-                  value={form.doresNaATM} 
-                  onChange={e => setForm({ doresNaATM: e.target.value })}
+                  value={doresNaATM} 
+                  onChange={e => setDoresNaATM(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1921,8 +2259,8 @@ const FichaClinica = props => {
               <th>
                 Tem estalo na mandigula?
                 <select 
-                  value={form.estaloNaMandigula} 
-                  onChange={e => setForm({ estaloNaMandigula: e.target.value })}
+                  value={estaloNaMandigula} 
+                  onChange={e => setEstaloNaMandigula(e.target.value )}
                 >
                   <option value="">Selecione</option>
                   <option value="SIM">Sim</option>
@@ -1944,8 +2282,8 @@ const FichaClinica = props => {
             <input  
               type="text" 
               placeholder="__/__ mmHg" 
-              value={form.pressaoArterial} 
-              onChange={e => setForm({ pressaoArterial: e.target.value })} 
+              value={pressaoArterial} 
+              onChange={e => setPressaoArterial(e.target.value )} 
             />  
           </th>
           <th>
@@ -1953,8 +2291,8 @@ const FichaClinica = props => {
             <input  
               type="text" 
               placeholder="_____/minuto" 
-              value={form.pulsoRadical} 
-              onChange={e => setForm({ pulsoRadical: e.target.value })} 
+              value={pulsoRadical} 
+              onChange={e => setPulsoRadical(e.target.value )} 
             /> 
           </th>
           <th>
@@ -1962,8 +2300,8 @@ const FichaClinica = props => {
             <input  
               type="text" 
               placeholder="____/minuto" 
-              value={form.frequenciaRespiratoria} 
-              onChange={e => setForm({ frequenciaRespiratoria: e.target.value })} 
+              value={frequenciaRespiratoria} 
+              onChange={e => setFrequenciaRespiratoria(e.target.value )} 
             /> 
           </th>
           <th>
@@ -1971,54 +2309,54 @@ const FichaClinica = props => {
             <input  
               type="text" 
               placeholder=" __ ºC" 
-              value={form.temperatura} 
-              onChange={e => setForm({ temperatura: e.target.value })} 
+              value={temperatura} 
+              onChange={e => setTemperatura(e.target.value )} 
             /> 
           </th>
         </tr>
 
         <tr >
           <th>
-            Altura: <input type="text" value={form.Altura} onChange={e => setForm({ Altura: e.target.value })} />
+            Altura: <input type="text" value={Altura} onChange={e => setAltura(e.target.value )} />
           </th>
           <th></th>
           <th>
-            Peso: <input type="text" value={form.peso} onChange={e => setForm({ peso: e.target.value })} />
+            Peso: <input type="text" value={peso} onChange={e => setPeso(e.target.value )} />
           </th>
         </tr>
 
         <tr>
-          <th>ATM <input type="text" value={form.ATM} onChange={e => setForm({ ATM: e.target.value })} /></th>
-          <th>Linfonodos<input type="text" value={form.Linfonodos} onChange={e => setForm({ Linfonodos: e.target.value })} /></th>
-          <th>Pele<input type="text" value={form.pele} onChange={e => setForm({ pele: e.target.value })} /></th>
+          <th>ATM <input type="text" value={ATM} onChange={e => setATM(e.target.value )} /></th>
+          <th>Linfonodos<input type="text" value={linfonodos} onChange={e => setLinfonodos(e.target.value )} /></th>
+          <th>Pele<input type="text" value={pele} onChange={e => setPele(e.target.value )} /></th>
         </tr>
 
         <tr>
-          <th>Simetria facial <input type="text" value={form.simetriaFacial} onChange={e => setForm({ simetriaFacial: e.target.value })} /></th>
-          <th>Lábios <input type="text" value={form.labios} onChange={e => setForm({ labios: e.target.value })} /></th>
-          <th>Glândulas <input type="text" value={form.glandulas} onChange={e => setForm({ glandulas: e.target.value })} /></th>
+          <th>Simetria facial <input type="text" value={simetriaFacial} onChange={e => setSimetriaFacial(e.target.value )} /></th>
+          <th>Lábios <input type="text" value={labios} onChange={e => setLabios(e.target.value )} /></th>
+          <th>Glândulas <input type="text" value={glandulas} onChange={e => setGlandulas(e.target.value )} /></th>
         </tr>
 
         <tr>
-          <th>Mucosa Labial <input type="text" value={form.mucosaLabial} onChange={e => setForm({ mucosaLabial: e.target.value })} /></th>
-          <th>Mucosa jugal <input type="text" value={form.mucosaJugal} onChange={e => setForm({ mucosaJugal: e.target.value })} /></th>
-          <th>Região retromolar <input type="text" value={form.regiaoRetromolar} onChange={e => setForm({ regiaoRetromolar: e.target.value })} /></th>
-          <th>Gengiva <input type="text" value={form.gengiva} onChange={e => setForm({ gengiva: e.target.value })} /></th>
+          <th>Mucosa Labial <input type="text" value={mucosaLabial} onChange={e => setMucosaLabial(e.target.value )} /></th>
+          <th>Mucosa jugal <input type="text" value={mucosaJugal} onChange={e => setMucosaJugal(e.target.value )} /></th>
+          <th>Região retromolar <input type="text" value={regiaoRetromolar} onChange={e => setRegiaoRetromolar(e.target.value )} /></th>
+          <th>Gengiva <input type="text" value={gengiva} onChange={e => setGengiva(e.target.value )} /></th>
         </tr>
 
         <tr>
-          <th>Palato <input type="text" value={form.palato} onChange={e => setForm({ palato: e.target.value })} /></th>
-          <th>Língua <input type="text" value={form.lingua} onChange={e => setForm({ lingua: e.target.value })} /></th>
-          <th>Assoalho <input type="text" value={form.assoalho} onChange={e => setForm({ assoalho: e.target.value })} /></th>
-          <th>Orofaringe <input type="text" value={form.orofaringe} onChange={e => setForm({ orofaringe: e.target.value })} /></th>
+          <th>Palato <input type="text" value={palato} onChange={e => setPalato(e.target.value )} /></th>
+          <th>Língua <input type="text" value={lingua} onChange={e => setLingua(e.target.value )} /></th>
+          <th>Assoalho <input type="text" value={assoalho} onChange={e => setAssoalho(e.target.value )} /></th>
+          <th>Orofaringe <input type="text" value={orofaringe} onChange={e => setOrofaringe(e.target.value )} /></th>
         </tr>
 
         <tr>
-          Descrição da lesão: <input type="text" value={form.descriLesao} onChange={e => setForm({ descriLesao: e.target.value })} />
+          Descrição da lesão: <input type="text" value={descriLesao} onChange={e => setDescriLesao(e.target.value )} />
         </tr>
 
         <tr>
-          Hipóteses diagnósticas: <input type="text" value={form.hipotDiagnosticas} onChange={e => setForm({ hipotDiagnosticas: e.target.value })} />
+          Hipóteses diagnósticas: <input type="text" value={hipotDiagnosticas} onChange={e => setHipotDiagnosticas(e.target.value )} />
         </tr>
         
       </tbody>
@@ -2030,19 +2368,19 @@ const FichaClinica = props => {
     <table border="1">
       <tr>
         <th>
-          Radiográficos: <input type="text" value={form.radiograficos} onChange={e => setForm({ radiograficos: e.target.value })} />
+          Radiográficos: <input type="text" value={radiograficos} onChange={e => setRadiograficos(e.target.value )} />
         </th>
       </tr>
 
       <tr>
         <th>
-          Anatomopatológicos: <input type="text" value={form.anatomopatologicos} onChange={e => setForm({ anatomopatologicos: e.target.value })} />
+          Anatomopatológicos: <input type="text" value={anatomopatologicos} onChange={e => setAnatomopatologicos(e.target.value )} />
         </th>
       </tr>
 
       <tr>
         <th>
-          Clínico-laboratoriais: <input type="text" value={form.clinicoLaboratoriais} onChange={e => setForm({ clinicoLaboratoriais: e.target.value })} />
+          Clínico-laboratoriais: <input type="text" value={clinicoLaboratoriais} onChange={e => setClinicoLaboratoriais(e.target.value )} />
         </th>
       </tr>
     </table>
@@ -2054,117 +2392,117 @@ const FichaClinica = props => {
 
         <tr>
           <th>
-            data: <input type="date" value={form.ACB1Data} onChange={e => setForm({ ACB1Data: e.target.value })}/>
+            data: <input type="date" value={ACB1Data} onChange={e => setACB1Data(e.target.value )}/>
           </th>
 
           <th>
-            16(V) <input type="text" value={form.ACB116V} onChange={e => setForm({ ACB116V: e.target.value })} />
-            46(L) <input type="text" value={form.ACB146L} onChange={e => setForm({ ACB146L: e.target.value })} />
+            16(V) <input type="text" value={ACB116V} onChange={e => setACB116V(e.target.value )} />
+            46(L) <input type="text" value={ACB146L} onChange={e => setACB146L(e.target.value )} />
           </th>
 
           <th>
-            11(V) <input type="text" value={form.ACB111V} onChange={e => setForm({ ACB111V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB131L} onChange={e => setForm({ ACB131V: e.target.value })} />
+            11(V) <input type="text" value={ACB111V} onChange={e => setACB111V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB131L} onChange={e => setACB131L(e.target.value )} />
           </th>
 
           <th>
-            26(V) <input type="text" value={form.ACB126V} onChange={e => setForm({ ACB126V: e.target.value })} />
-            &nbsp;36(L) <input type="text" value={form.ACB136L} onChange={e => setForm({ ACB136V: e.target.value })} />
+            26(V) <input type="text" value={ACB126V} onChange={e => setACB126V(e.target.value )} />
+            &nbsp;36(L) <input type="text" value={ACB136L} onChange={e => setACB136L(e.target.value )} />
           </th>
 
           <th>
-            IHOS <input type="text" value={form.ACB1IHOS} onChange={e => setForm({ ACB1IHOS: e.target.value })} />
+            IHOS <input type="text" value={ACB1IHOS} onChange={e => setACB1IHOS(e.target.value )} />
           </th>
         </tr>
           {/* //////1 */}
         <tr>
           <th>
-            data: <input type="date" value={form.ACB2Data} onChange={e => setForm({ ACB2Data: e.target.value })}/>
+            data: <input type="date" value={ACB2Data} onChange={e => setACB2Data(e.target.value )}/>
           </th>
 
           <th>
-          16(V) <input type="text" value={form.ACB216V} onChange={e => setForm({ ACB216V: e.target.value })} />
-            &nbsp;46(L) <input type="text" value={form.ACB243L} onChange={e => setForm({ ACB243L: e.target.value })} />
+          16(V) <input type="text" value={ACB216V} onChange={e => setACB216V(e.target.value )} />
+            &nbsp;46(L) <input type="text" value={ACB243L} onChange={e => setACB243L(e.target.value )} />
           </th>
 
           <th>
-          11(V) <input type="text" value={form.ACB211V} onChange={e => setForm({ ACB211V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB231L} onChange={e => setForm({ ACB231L: e.target.value })} />
+          11(V) <input type="text" value={ACB211V} onChange={e => setACB211V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB231L} onChange={e => setACB231L(e.target.value )} />
           </th>
 
           <th>
-          11(V) <input type="text" value={form.ACB211V} onChange={e => setForm({ ACB211V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB231L} onChange={e => setForm({ ACB231L: e.target.value })} />
+          11(V) <input type="text" value={ACB211V} onChange={e => setACB211V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB231L} onChange={e => setACB231L(e.target.value )} />
           </th>
           <th>
-            IHOS <input type="text" value={form.ACB2IHOS} onChange={e => setForm({ ACB1IHOS: e.target.value })} />
+            IHOS <input type="text" value={ACB2IHOS} onChange={e => setACB2IHOS(e.target.value )} />
           </th>
         </tr>
               {/* //////2 */}
         <tr>
           <th>
-            data: <input type="date" value={form.ACB3Data} onChange={e => setForm({ ACB3Data: e.target.value })}/>
+            data: <input type="date" value={ACB3Data} onChange={e => setACB3Data(e.target.value )}/>
           </th>
 
           <th>
-          16(V) <input type="text" value={form.ACB316V} onChange={e => setForm({ ACB316V: e.target.value })} />
-            &nbsp;46(L) <input type="text" value={form.ACB343L} onChange={e => setForm({ ACB343L: e.target.value })} />
+          16(V) <input type="text" value={ACB316V} onChange={e => setACB316V(e.target.value )} />
+            &nbsp;46(L) <input type="text" value={ACB343L} onChange={e => setACB343L(e.target.value )} />
           </th>
 
           <th>
-          11(V) <input type="text" value={form.ACB311V} onChange={e => setForm({ ACB311V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB331L} onChange={e => setForm({ ACB331L: e.target.value })} />
+          11(V) <input type="text" value={ACB311V} onChange={e => setACB311V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB331L} onChange={e => setACB331L(e.target.value )} />
           </th>
 
           <th>
-          11(V) <input type="text" value={form.ACB311V} onChange={e => setForm({ ACB311V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB331L} onChange={e => setForm({ ACB331L: e.target.value })} />
+          11(V) <input type="text" value={ACB311V} onChange={e => setACB311V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB331L} onChange={e => setACB331L(e.target.value )} />
           </th>
           <th>
-            IHOS <input type="text" value={form.ACB3IHOS} onChange={e => setForm({ ACB3IHOS: e.target.value })} />
+            IHOS <input type="text" value={ACB3IHOS} onChange={e => setACB3IHOS(e.target.value )} />
           </th>
         </tr>
             {/* //////3 */}
         <tr>
           <th>
-            data: <input type="date" value={form.ACB4Data} onChange={e => setForm({ ACB4Data: e.target.value })}/>
+            data: <input type="date" value={ACB4Data} onChange={e => setACB4Data(e.target.value )}/>
           </th>
 
           <th>
-          16(V) <input type="text" value={form.ACB416V} onChange={e => setForm({ ACB416V: e.target.value })} />
-            &nbsp;46(L) <input type="text" value={form.ACB443L} onChange={e => setForm({ ACB443L: e.target.value })} />
+          16(V) <input type="text" value={ACB416V} onChange={e => setACB416V(e.target.value )} />
+            &nbsp;46(L) <input type="text" value={ACB443L} onChange={e => setACB443L(e.target.value )} />
           </th>
 
           <th>
-          11(V) <input type="text" value={form.ACB411V} onChange={e => setForm({ ACB411V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB431L} onChange={e => setForm({ ACB431L: e.target.value })} />
+          11(V) <input type="text" value={ACB411V} onChange={e => setACB411V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB431L} onChange={e => setACB431L(e.target.value )} />
           </th>
 
           <th>
-          11(V) <input type="text" value={form.ACB411V} onChange={e => setForm({ ACB411V: e.target.value })} />
-            &nbsp;31(L) <input type="text" value={form.ACB431L} onChange={e => setForm({ ACB431L: e.target.value })} />
+          11(V) <input type="text" value={ACB411V} onChange={e => setACB411V(e.target.value )} />
+            &nbsp;31(L) <input type="text" value={ACB431L} onChange={e => setACB431L(e.target.value )} />
           </th>
           <th>
-            IHOS <input type="text" value={form.ACB4IHOS} onChange={e => setForm({ ACB4IHOS: e.target.value })} />
+            IHOS <input type="text" value={ACB4IHOS} onChange={e => setACB4IHOS(e.target.value )} />
           </th>
         </tr>
             {/* //////4 */}
         <tr>
-        Observações: <textarea value={form.ACBObservacoes} onChange cols="26" rows="5"></textarea>
+        Observações: <textarea value={ACBObservacoes} onChange={e => setACBObservacoes(e.target.value)} cols="26" rows="5"></textarea>
         </tr>
 
         <tr>
           <th>
             Discente:
-            Nome: <input type="text"value={form.ACBNome} onChange={e=> setForm({ ACBNome: e.target.value }) } />
-            CPD: <input type="text"value={form.ACBCPD} onChange={e=> setForm({ ACBCPD: e.target.value })} />
+            Nome: <input type="text"value={ACBNome} onChange={e=> setACBNome(e.target.value )} />
+            CPD: <input type="text"value={ACBCPD} onChange={e=> setACBCPD(e.target.value )} />
           </th>
 
           <th>
-            Visto Docente: <input type="text" value={form.vistDocente} onChange={e => setForm({ vistDocente: e.target.value })} /> 
+            Visto Docente: <input type="text" value={vistDocente} onChange={e => setVistDocente(e.target.value )} /> 
           </th>
           <th>
-            data <input type="date" value={form.ACBData} onChange={e => setForm({ ACBData: e.target.value })} />
+            data <input type="date" value={ACBData} onChange={e => setACBData(e.target.value )} />
           </th>
         </tr>
       </tbody>
@@ -2223,7 +2561,7 @@ const FichaClinica = props => {
     <h3>3.6. Odondograma</h3>
    
     <img 
-      src={form.odontograma}
+      src={odontograma}
       alt="Preencher no papel e anexar"
       style={{width: '60%', height: '300px' }}
     /><br/>
@@ -2243,25 +2581,25 @@ const FichaClinica = props => {
 
     <table border="1">
       <tr>
-      <input type="checkbox" name="PERIODONTIA"  value={form.periodontiaCheckBox} onChange={e => setForm({ periodontiaCheckBox: e.target.checked })} />
+      <input type="checkbox" name="PERIODONTIA"  value={periodontiaCheckBox} onChange={e => setPeriodontiaCheckBox(e.target.value )} />
       <label htmlFor="PERIODONTIA">Periodontia</label>
 
-      <input type="checkbox" name="ENDODONTIA" value={form.endodontiaCheckBox} onChange={e => setForm({ endodontiaCheckBox: e.target.checked })} />
+      <input type="checkbox" name="ENDODONTIA" value={endodontiaCheckBox} onChange={e => setEndodontiaCheckBox(e.target.value )} />
       <label htmlFor="ENDODONTIA">ENDODONTIA</label>
 
-      <input type="checkbox" name="DENTISTICA" value={form.dentisticaCheckBox} onChange={e => setForm({ dentisticaCheckBox: e.target.checked })} />
+      <input type="checkbox" name="DENTISTICA" value={dentisticaCheckBox} onChange={e => setDentisticaCheckBox(e.target.value )} />
       <label htmlFor="DENTISTICA">DENTÍSTICA</label>
 
-      <input type="checkbox" name="CIRURGIA" value={form.cirurgiaCheckBox} onChange={e => setForm({ cirurgiaCheckBox: e.target.checked })} />
+      <input type="checkbox" name="CIRURGIA" value={cirurgiaCheckBox} onChange={e => setCirurgiaCheckBox(e.target.value )} />
       <label htmlFor="CIRURGIA">CIRURGIA</label>
 
-      <input type="checkbox" name="PROTESE FIXA" value={form.proteseFixaCheckBox} onChange={e => setForm({ proteseFixaCheckBox: e.target.checked })} />
+      <input type="checkbox" name="PROTESE FIXA" value={proteseFixaCheckBox} onChange={e => setProteseFixaCheckBox(e.target.value )} />
       <label htmlFor="PROTESE FIXA">PRÓTESE FIXA</label>
 
-      <input type="checkbox" name="PROTESE PARCIAL REMOVIVEL" value={form.proteseParcialRemovivelCheckBox} onChange={e => setForm({ proteseParcialRemovivelCheckBox: e.target.checked })} />
+      <input type="checkbox" name="PROTESE PARCIAL REMOVIVEL" value={proteseParcialRemovivelCheckBox} onChange={e => setProteseParcialRemovivelCheckBox(e.target.value )} />
       <label htmlFor="PROTESE PARCIAL REMOVIVEL">PRÓTESE PARCIAL REMOVÍVEL</label>
 
-      <input type="checkbox" name="PROTESE TOTAL REMOVIVEL" value={form.proteseTotalRemovivelCheckBox} onChange={e => setForm({ proteseTotalRemovivelCheckBox: e.target.checked })} />
+      <input type="checkbox" name="PROTESE TOTAL REMOVIVEL" value={proteseTotalRemovivelCheckBox} onChange={e => setProteseTotalRemovivelCheckBox(e.target.value )} />
       <label htmlFor="PROTESE TOTAL REMOVIVEL">PRÓTESE TOTAL REMOVÍVEL</label>
 
       </tr>
@@ -2269,15 +2607,15 @@ const FichaClinica = props => {
       <tr>
           <th>
             Discente: &nbsp;&nbsp;&nbsp;
-            Nome: <input type="text"value={form.NTNome} onChange={e=> setForm({ NTNome: e.target.value }) } />
-            CPD: <input type="text"value={form.NTCPD} onChange={e=> setForm({ NTCPD: e.target.value })} />
+            Nome: <input type="text"value={NTNome} onChange={e=> setNTNome(e.target.value )} />
+            CPD: <input type="text"value={NTCPD} onChange={e=> setNTCPD(e.target.value )} />
           </th>
 
           <th>
-            Visto Docente: <input type="text" value={form.NTVistDocente} onChange={e => setForm({ NTVistDocente: e.target.value })} /> 
+            Visto Docente: <input type="text" value={NTVistDocente} onChange={e => setNTVistDocente(e.target.value )} /> 
           </th>
           <th>
-            data <input type="date" value={form.NTData} onChange={e => setForm({ NTData: e.target.value })} />
+            data <input type="date" value={NTData} onChange={e => setNTData(e.target.value )} />
           </th>
         </tr>
 
@@ -2285,17 +2623,17 @@ const FichaClinica = props => {
           Observações: <textarea 
             cols="25" 
             rows="1"
-            value={form.NTObservacoes}
-            onChange={e => setForm({ NTObservacoes: e.target.value })}
+            value={NTObservacoes}
+            onChange={e => setNTObservacoes(e.target.value )}
           ></textarea>
         </tr>
     </table>
     <h4>*Para a triagem</h4>
     <table border="1">
       <tr>
-        <th>Docente <input type="text" value={form.PTDocente} onChange={e => setForm({ PTDocente: e.target.value })} /></th>
-        <th>Pontuação <input type="text" value={form.PTPontuacao} onChange={e => setForm({ PTPontuacao: e.target.value })} /></th>
-        <th>Data <input type="date" value={form.PTDate} onChange={e => setForm({ PTDate: e.target.value })} /></th>
+        <th>Docente <input type="text" value={PTDocente} onChange={e => setPTDocente(e.target.value )} /></th>
+        <th>Pontuação <input type="text" value={PTPontuacao} onChange={e => setPTPontuacao(e.target.value )} /></th>
+        <th>Data <input type="date" value={PTDate} onChange={e => setPTDate(e.target.value )} /></th>
       </tr>
     </table>\
 
