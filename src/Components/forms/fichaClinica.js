@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, useHistory} from 'react-router-dom';
 import * as options from '../arrays';
 import api from '../../Services/api';
 import {getUser} from '../../Services/auth';
 
 const FichaClinica = props => {
+  const history = useHistory();
   document.title = 'Ficha Clinica';
   const [user, setUser] = useState();
   const nameform = 'Ficha Clinica';
+
   const [check, setCheck] = useState(true)
   const [professores, setProfessores] = useState([]); 
   const[veiculo, setVeiculo] = useState();
@@ -336,7 +338,15 @@ const FichaClinica = props => {
       nameform,
       aluno: user?._id,
       professor: professor
-    }).then(resp => console.log(resp.data)).catch(error => console.log(error.message))
+    })  
+      .then(resp => {
+        alert('Enviado com sucesso');
+        history.goBack();
+      })
+      .catch(error => {
+        alert('Algo deu errado, por favor tente novamente mais tarde!')
+        history.goBack(); 
+      })
   }
 
   const upload = async e =>{

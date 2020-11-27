@@ -8,6 +8,8 @@ const FichaClinicaProfessor = props => {
   const formId = props.history.location.state;
   const back = () => history.goBack()
 
+  const changeStatus = s => api.post('', { id: formId, status: s }).then(resp => console.log(resp.data)).catch(e => console.log(e));
+
   useEffect(()=>{
     api.get('/form/getformbyid',{ headers: { id: formId} })
       .then(resp => setForm(resp.data.form))
@@ -2145,8 +2147,8 @@ const FichaClinicaProfessor = props => {
       </tr>
     </table>\
 
-    <button style={{alignSelf: 'center'}}>Aprovar</button>
-    <button style={{alignSelf: 'center'}}>Reprovar</button>
+    <button style={{alignSelf: 'center'}} onClick={()=> changeStatus(true)}>Aprovar</button>
+    <button style={{alignSelf: 'center'}} onClick={()=> changeStatus(false)}>Reprovar</button>
     </div>
   );
   } else{

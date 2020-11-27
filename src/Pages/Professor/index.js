@@ -27,6 +27,7 @@ const HomeProfessor = () =>{
 
   } 
 
+  
 
   useEffect(() =>{  
     get()
@@ -37,7 +38,7 @@ const HomeProfessor = () =>{
     clearTimeout()
   }, 2000)
  
-
+  
   return(
     <div>
       <h1>Bem vindo {user?.Nome}</h1>
@@ -49,15 +50,18 @@ const HomeProfessor = () =>{
             <th>Formulario</th>
             <th>Aluno</th>
             <th>Abrir ficha</th>
+            <th>Data</th>
           </tr>
         </thead>
         <tbody>
         {forms.map(item => 
+        
           <tr key={item?._id}>
             <th>
               {item?.nameForm}
             </th> 
             <th>{item?.aluno.Nome}</th>
+            <th>{(new Date(item?.createdAt).toUTCString())}</th>
             <th><button onClick={()=> openForm(item?._id, item?.nameForm)}>Abrir</button></th>
           </tr>
         )}

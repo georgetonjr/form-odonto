@@ -217,7 +217,7 @@ const PteEndodontia = props => {
             <th><input type="checkbox" name="Exposição pulpar" id=""/><text>Exposição pulpar</text></th>
             <th><input type="checkbox" name="Fístula" id=""/><text>Fístula</text></th>
             <th><input type="checkbox" name="Calcificações pulpares" id=""/><text>Calcificações pulpares</text></th>
-            <th><input type="checkbox" name="Perda óssea" id=""/><text>PERDA ÓSSEA</text><br/>
+            <th><input type="checkbox" name="Perda óssea" id=""/><text>Perda óssea</text><br/>
             <select name="" id="">
                 <option value=""></option>
                 <option value="">Vertical</option>
@@ -229,13 +229,13 @@ const PteEndodontia = props => {
           <tr>
             <th><input type="checkbox" name="Acesso anterior" id=""/><text>Acesso anterior</text></th>
             <th><input type="checkbox" name="Linfadenopatia" id=""/><text>Linfadenopatia</text></th>
-            <th><input type="checkbox" name="Rizogenese incompleta" id=""/><text>Rizogenese incompleta</text></th>
+            <th><input type="checkbox" name="Rizogenese incompleta" id=""/><text>Rizogênese incompleta</text></th>
           </tr>
 
           <tr>
             <th><input type="checkbox" name="Atrição/Abrasão" id=""/><text>Atrição/Abrasão</text></th>
             <th><input type="checkbox" name="Bolsa periodontal:" id=""/><text>Bolsa periodontal:</text><br/><input type="text"/><text>mm</text></th>
-            <th><input type="checkbox" name="Reabsorção" id=""/><text>REABSORÇÃO</text><br/>
+            <th><input type="checkbox" name="Reabsorção" id=""/><text>Reabsorção</text><br/>
             <select name="" id="">
                 <option value=""></option>
                 <option value="">Interna</option>
@@ -247,27 +247,27 @@ const PteEndodontia = props => {
           <tr>
             <th><input type="checkbox" name="Fratura da coroa" id=""/><text>Fratura da coroa</text></th>
             <th><input type="checkbox" name="Exposição de Furca" id=""/><text>Exposição de Furca</text></th>
-            <th><text>&nbsp;</text></th>
+            <th><input type="checkbox" name="Fratura radicular" id=""/><text>Fratura radicular</text></th>
             <th><input type="checkbox" name="Lesão de furca" id=""/><text>Lesão de furca</text></th>
           </tr>
 
           <tr>
             <th><input type="checkbox" name="Luxação" id=""/><text>Luxação</text></th>
             <th><input type="checkbox" name="Outro:" id=""/><text>Outro:</text><input type="text"/></th>
-            <th><input type="checkbox" name="Fratura radicular" id=""/><text>Fratura radicular</text></th>
+            <th><input type="checkbox" name="Pino/Núcleo" id=""/><text>Pino/Núcleo</text></th>
             <th><input type="checkbox" name="Esclerose óssea" id=""/><text>Esclerose óssea</text></th>
           </tr>
 
           <tr>
-            <th><text>Mobilidade</text></th>
+            <th><input type="checkbox" name="Mobilidade" id=""/><text>Mobilidade</text></th>
             <th><text>&nbsp;</text></th>
-            <th><text>Pino/Núcleo</text></th>
-            <th><text>Hipercementose</text></th>
+            <th><input type="checkbox" name="Acesso anterior" id=""/><text>Acesso anterior</text></th>
+            <th><input type="checkbox" name="Hipercementose" id=""/><text>Hipercementose</text></th>
           </tr>
 
           <tr>
-            <th><text>Pilar de prótese</text></th>
-            <th><text>OCLUSÃO</text>
+            <th><input type="checkbox" name="Pilar de prótese" id=""/><text>Pilar de prótese</text></th>
+            <th><input type="checkbox" name="OCLUSÃO" id=""/><text>OCLUSÃO</text>
             <select name="" id="">
                 <option value=""></option>
                 <option value="">Bruxismo</option>
@@ -276,78 +276,75 @@ const PteEndodontia = props => {
                 <option value="">Outro:</option>
             </select><input type="text"/>
             </th>
-            <th><text>Acesso anterior</text></th>
-            <th><text>RADIOTRANSPARÊNCIA</text><br/>
-            <text>Circunscrita</text>
-            <input type="checkbox" name="Circunscrita" id=""/>
-            <text>Difusa</text>
-            <input type="checkbox" name="Difusa" id=""/>
+            <th><input type="checkbox" name="Trat. endodôntico prévio" id=""/><text>Trat. endodôntico prévio</text><br/>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Condensação satisfatória</option>
+                <option value="">Condensação insatisfatória</option>
+                <option value="">Obturação no limite CDC</option>
+                <option value="">Obturação aquém ápice</option>
+                <option value="">Obturação além ápice</option>
+            </select>
+            </th>
+            <th><input type="checkbox" name="Radiotransparência" id=""/><text>Radiotransparência</text><br/>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Circunscrita</option>
+                <option value="">Difusa</option>
+            </select>
             </th>
           </tr>
 
           <tr>
-            <th><text>RESTAURAÇÃO</text><br/>
-            <text>Provisória</text>
-            <input type="checkbox" name="Provisória" id=""/><br/>
-            <text>Amálgama</text>
-            <input type="checkbox" name="Amálgama" id=""/><br/>
-            <text>Resina Composta</text>
-            <input type="checkbox" name="Resina Composta" id=""/>
+            <th><input type="checkbox" name="Restauração" id=""/><text>Restauração</text><br/>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Provisória</option>
+                <option value="">Amálgama</option>
+                <option value="">Resina Composta</option>
+            </select>
             </th>
             <th><text>&nbsp;</text></th>
-            <th><text>TRAT. ENDODÔNTICO PRÉVIO</text><br/>
-            <text>Condensação satisfatória</text>
-            <input type="checkbox" name="Condensação satisfatória" id=""/><br/>
-            <text>Condensação insatisfatória</text>
-            <input type="checkbox" name="Condensação insatisfatória" id=""/><br/>
-            <text>Obturação no limite CDC</text>
-            <input type="checkbox" name="Obturação no limite CDC" id=""/><br/>
-            <text>Obturação aquém ápice</text>
-            <input type="checkbox" name="Obturação aquém ápice" id=""/><br/>
-            <text>Obturação além ápice</text>
-            <input type="checkbox" name="Obturação além ápice" id=""/>
-            </th>
+            <th><input type="checkbox" name="Desvio de conduto" id=""/><text>Desvio de conduto</text></th>
             <th><text>Outro:</text><input type="text"/></th>
           </tr>
 
           <tr>
-            <th><text>COROA</text><br/>
-            <text>Provisórias</text>
-            <input type="checkbox" name="Provisória" id=""/><br/>
-            <text>Metálica</text>
-            <input type="checkbox" name="Metálica" id=""/><br/>
-            <text>INLAY/ONLAY</text>
-            <input type="checkbox" name="INLAY/ONLAY" id=""/><br/>
-            <text>Cerâmica</text>
-            <input type="checkbox" name="Cerâmica" id=""/><br/>
-            <text>Metalocerâmica</text>
-            <input type="checkbox" name="Metalocerâmica" id=""/>
+            <th><input type="checkbox" name="Coroa" id=""/><text>Coroa</text><br/>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Provisórias</option>
+                <option value="">Metálica</option>
+                <option value="">INLAY/ONLAY</option>
+                <option value="">Cerâmica</option>
+                <option value="">Metalocerâmica</option>
+            </select>
             </th>
             <th><text>&nbsp;</text></th>
-            <th><text>NORMAL</text></th>
-            <th><text>ESPAÇO DO LP NORMAL</text></th>
+            <th><input type="checkbox" name="Instrumento Faturado" id=""/><text>Instrumento Faturado</text></th>
+
           </tr>
 
           <tr>
-            <th><text>Outro:</text><input type="text"/></th>
-            <th><text>NORMAIS</text></th>
-            <th><text>NORMAL</text></th>
-            <th><text>ESPAÇO DO LP NORMAL</text></th>
+            <th><input type="checkbox" name="Outro:" id=""/><text>Outro:</text><input type="text"/></th>
+            <th><text>&nbsp;</text></th>
+            <th><input type="checkbox" name="Perfuração radicular" id=""/><text>Perfuração radicular</text></th>
+
           </tr>
 
           <tr>
-            <th><text>NORMAL</text></th>
-            <th><text>NORMAIS</text></th>
-            <th><text>NORMAL</text></th>
-            <th><text>ESPAÇO DO LP NORMAL</text></th>
+            <th colSpan="4"><text>OBSERVAÇÕES:</text><input type="text"/></th>
           </tr>
 
+      </table>
+
+      <table border="1">
+        <thead>
           <tr>
-            <th><text>NORMAL</text></th>
-            <th><text>NORMAIS</text></th>
-            <th><text>NORMAL</text></th>
-            <th><text>ESPAÇO DO LP NORMAL</text></th>
+            <th colSpan="2"><text>SINAIS CLÍNICOS</text></th>
+            <th colSpan="2"><text>ACHADOS RADIIOGRÁGICOS</text></th>
           </tr>
+        </thead>
       </table>
     
     </div>
