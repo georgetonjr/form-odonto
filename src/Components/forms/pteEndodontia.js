@@ -217,44 +217,45 @@ const PteEndodontia = props => {
             <th><input type="checkbox" name="Exposição pulpar" id=""/><text>Exposição pulpar</text></th>
             <th><input type="checkbox" name="Fístula" id=""/><text>Fístula</text></th>
             <th><input type="checkbox" name="Calcificações pulpares" id=""/><text>Calcificações pulpares</text></th>
-            <th><input type="checkbox" name="PERDA ÓSSEA" id=""/><text>PERDA ÓSSEA</text><br/>
+            <th><input type="checkbox" name="Perda óssea" id=""/><text>PERDA ÓSSEA</text><br/>
             <select name="" id="">
                 <option value=""></option>
-                <option value="">Frio</option>
-                <option value="">Mastigação</option>
+                <option value="">Vertical</option>
+                <option value="">Horizontal</option>
             </select>
             </th>
           </tr>
 
           <tr>
-            <th><text>Acesso anterior</text></th>
-            <th><text>Linfadenopatia</text></th>
-            <th><text>Rizogenese incompleta</text></th>
+            <th><input type="checkbox" name="Acesso anterior" id=""/><text>Acesso anterior</text></th>
+            <th><input type="checkbox" name="Linfadenopatia" id=""/><text>Linfadenopatia</text></th>
+            <th><input type="checkbox" name="Rizogenese incompleta" id=""/><text>Rizogenese incompleta</text></th>
           </tr>
 
           <tr>
-            <th><text>Atrição/Abrasão</text></th>
-            <th><text>Bolsa periodontal:</text><br/><input type="text"/><text>mm</text></th>
-            <th><text>REABSORÇÃO</text><br/>
-            <text>Interna</text>
-            <input type="checkbox" name="Interna" id=""/>
-            <text>Externa</text>
-            <input type="checkbox" name="Externa" id=""/>
+            <th><input type="checkbox" name="Atrição/Abrasão" id=""/><text>Atrição/Abrasão</text></th>
+            <th><input type="checkbox" name="Bolsa periodontal:" id=""/><text>Bolsa periodontal:</text><br/><input type="text"/><text>mm</text></th>
+            <th><input type="checkbox" name="Reabsorção" id=""/><text>REABSORÇÃO</text><br/>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Interna</option>
+                <option value="">Externa</option>
+            </select>
             </th>
           </tr>
 
           <tr>
-            <th><text>Fratura da coroa</text></th>
-            <th><text>Exposição de Furca</text></th>
+            <th><input type="checkbox" name="Fratura da coroa" id=""/><text>Fratura da coroa</text></th>
+            <th><input type="checkbox" name="Exposição de Furca" id=""/><text>Exposição de Furca</text></th>
             <th><text>&nbsp;</text></th>
-            <th><text>Lesão de furca</text></th>
+            <th><input type="checkbox" name="Lesão de furca" id=""/><text>Lesão de furca</text></th>
           </tr>
 
           <tr>
-            <th><text>Luxação</text></th>
-            <th><text>Outro:</text><input type="text"/></th>
-            <th><text>Fratura radicular</text></th>
-            <th><text>Esclerose óssea</text></th>
+            <th><input type="checkbox" name="Luxação" id=""/><text>Luxação</text></th>
+            <th><input type="checkbox" name="Outro:" id=""/><text>Outro:</text><input type="text"/></th>
+            <th><input type="checkbox" name="Fratura radicular" id=""/><text>Fratura radicular</text></th>
+            <th><input type="checkbox" name="Esclerose óssea" id=""/><text>Esclerose óssea</text></th>
           </tr>
 
           <tr>
