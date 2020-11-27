@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, useHistory} from 'react-router-dom';
 import api from '../../Services/api';
 
 const FichaClinicaProfessor = props => {
+  const history = useHistory();
   const [form, setForm] = useState(null);
   const formId = props.history.location.state;
-  console.log(formId)
+  const back = () => history.goBack()
 
   useEffect(()=>{
     api.get('/form/getformbyid',{ headers: { id: formId} })
@@ -19,7 +20,7 @@ const FichaClinicaProfessor = props => {
   return(
         
     <div>
-
+      <button onClick={back}>Voltar</button>
       <h1>Ficha Clínica</h1>
 
       <h2>1. IDENTIFICAÇÃO DO PACIENTE</h2>
@@ -82,7 +83,7 @@ const FichaClinicaProfessor = props => {
       value={form.dataexpedicaorg}
     /><br/>
 
-    <select disabled disabled 
+    <select disabled  
       name="Orgão expeditor"  
       value={form.orgaoexpeditor}
       readOnly

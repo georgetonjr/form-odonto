@@ -200,28 +200,29 @@ const PteEndodontia = props => {
           </tr>
 
           <tr>
-            <th><text>Cárie</text></th>
-            <th><text>Edema extra-oral</text></th>
-            <th><text>Cárie</text></th>
-            <th><text>Espaço do LP aumentado</text></th>
+            <th><input type="checkbox" name="Cárie" id=""/><text>Cárie</text></th>
+            <th><input type="checkbox" name="Edema extra-oral" id=""/><text>Edema extra-oral</text></th>
+            <th><input type="checkbox" name="Cárie" id=""/><text>Cárie</text></th>
+            <th><input type="checkbox" name="Epaço do LP aumento" id=""/><text>Espaço do LP aumentado</text></th>
           </tr>
 
           <tr>
-            <th><text>Alteração coloração</text></th>
-            <th><text>Edema intra-oral</text></th>
-            <th><text>Resturação</text></th>
-            <th><text>Osso Alveolar normal</text></th>
+            <th><input type="checkbox" name="Alteração coloração" id=""/><text>Alteração coloração</text></th>
+            <th><input type="checkbox" name="Edema intra-oral" id=""/><text>Edema intra-oral</text></th>
+            <th><input type="checkbox" name="Resturação" id=""/><text>Resturação</text></th>
+            <th><input type="checkbox" name="Osso Alveolar normal" id=""/><text>Osso Alveolar normal</text></th>
           </tr>
 
           <tr>
-            <th><text>Exposição pulpar</text></th>
-            <th><text>Fístula</text></th>
-            <th><text>Calcificações pulpares</text></th>
-            <th><text>PERDA ÓSSEA</text><br/>
-            <text>Vertical</text>
-            <input type="checkbox" name="Vertical" id=""/>
-            <text>Horizontal</text>
-            <input type="checkbox" name="Horizontal" id=""/>
+            <th><input type="checkbox" name="Exposição pulpar" id=""/><text>Exposição pulpar</text></th>
+            <th><input type="checkbox" name="Fístula" id=""/><text>Fístula</text></th>
+            <th><input type="checkbox" name="Calcificações pulpares" id=""/><text>Calcificações pulpares</text></th>
+            <th><input type="checkbox" name="PERDA ÓSSEA" id=""/><text>PERDA ÓSSEA</text><br/>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Frio</option>
+                <option value="">Mastigação</option>
+            </select>
             </th>
           </tr>
 
