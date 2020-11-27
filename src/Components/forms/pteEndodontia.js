@@ -341,10 +341,20 @@ const PteEndodontia = props => {
       <table border="1">
         <thead>
           <tr>
-            <th colSpan="2"><text>SINAIS CLÍNICOS</text></th>
-            <th colSpan="2"><text>ACHADOS RADIIOGRÁGICOS</text></th>
+            <th colSpan="5"><text>SEMIOTÉCNICA ENDODÔNTICA</text></th>
           </tr>
         </thead>
+          <tr>
+            <th colSpan="3"><text>SENSIBILIDADE PULPAR</text></th>
+            <th colSpan="3"><text>PERCUSSÃO</text></th>
+          </tr>
+
+          <tr>
+            <th><text>Frio</text></th>
+            <th><text>Calor</text></th>
+            <th><text>Vertical</text></th>
+            <th><text>Horizontal</text></th>
+          </tr> 
       </table>
     
     </div>
