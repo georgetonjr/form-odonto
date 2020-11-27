@@ -8,9 +8,18 @@ export const getToken = () => {
   sessionStorage.getItem(TOKEN_KEY);
 };
 
-export const getUser =  async () => {
+export const getUser =  async (prof = false) => {
   let cpd = sessionStorage.getItem('@UserData')
-  const user = await api.get('/getaluno', { headers: { cpd }})
+  var user = '';
+
+  if(prof){
+    user = '';
+    user = await api.get('/getprofessor', { headers: { cpd }})
+  }else{
+    user = '';
+    user = await api.get('/getaluno', { headers: { cpd }})
+  }
+
   return user.data;
 };
 

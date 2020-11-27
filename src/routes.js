@@ -13,6 +13,8 @@ import Form1 from './Components/forms/fichaClinica';
 import Form2 from './Components/forms/pteDentistica';
 import Form3 from './Components/forms/pteEndodontia';
 
+import form1Professor from './Components/forms/professorFichacClinica';
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -39,6 +41,8 @@ const Routes = () => (
       <PrivateRoute path="/form1" component={Form1} />
       <PrivateRoute path="/form2" component={Form2} />
       <PrivateRoute path="/form3" component={Form3} />
+
+      <PrivateRoute path="/professor/form1" component={form1Professor} />
 
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>

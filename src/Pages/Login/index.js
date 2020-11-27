@@ -8,7 +8,6 @@ const Login = () =>{
   const [CPD, setCPD] = useState('')
   const [Senha, setSenha] = useState('')
   const [selectedValue, setSelectedValue] = useState('Aluno')
-  const cons = () => console.log(CPD, Senha);
   const history = useHistory();
 
   const logar = async ()=>{
@@ -52,7 +51,6 @@ const Login = () =>{
               onChange={e=> setCPD(e.target.value)}
               className={classes.input}
               required
-              onKeyPress={cons}
             /><br/>
             <label className={classes.label}>Senha</label><br/>
             <input 
