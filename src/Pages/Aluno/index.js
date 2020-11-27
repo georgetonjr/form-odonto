@@ -9,7 +9,7 @@ const HomeALuno = () =>{
   const [check, setCheck] = useState(false);
 
   const get = async () => {
-    let aluno = await getUser(true);
+    let aluno = await getUser(false);
     setUser(aluno)
   }
 
