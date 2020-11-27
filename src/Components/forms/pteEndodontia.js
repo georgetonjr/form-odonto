@@ -447,36 +447,54 @@ const PteEndodontia = props => {
           <tr><th colSpan="8"><text></text></th></tr>
 
           <tr>
-            <th colSpan="4"><text>DIAGNÓSTICO</text></th>
-            <th colSpan="4"><text>PLANO DE TRATAMENTO</text></th>
+            <th colSpan="2"><text>DIAGNÓSTICO</text></th>
+            <th colSpan="6"><text>PLANO DE TRATAMENTO</text></th>
           </tr>
           
           <tr>
           <th><text>Pulpar</text>
             <select name="" id="">
                 <option value=""></option>
-                <option value="">NORMAL</option>
-                <option value="">PULPITE REVERSÍVEL</option>
-                <option value="">PULPITE IRREVERSÍVEL</option>
-                <option value="">NECROSE PULPAR</option>
-                <option value="">DENTES DESPOLPADO</option>
+                <option value="">Normal</option>
+                <option value="">Pulpite reversível</option>
+                <option value="">Pulpite irreversível</option>
+                <option value="">Necrose pulpar</option>
+                <option value="">Dentes despolpado</option>
             </select>
             </th>
 
             <th><text>Periapical</text>
             <select name="" id="">
                 <option value=""></option>
-                <option value="">NORMAL</option>
-                <option value="">PERIODONTITE APICAL AGUDA</option>
-                <option value="">PERIODONTITE APICAL CRÔNICA</option>
-                <option value="">ABSCESSO PERIAPICAL AGUDO</option>
-                <option value="">ABSCESSO PERIAPICAL CRÔNICO</option>
-                <option value="">ABBSCESSO FÊNIX</option>
+                <option value="">Normal</option>
+                <option value="">Periodontite apical aguda</option>
+                <option value="">Periodontite apical crônica</option>
+                <option value="">Abscesso PERIAPICAL agudo</option>
+                <option value="">Abscesso periapical crônico</option>
+                <option value="">Abscesso fênix</option>
             </select>
             </th>
-            <th rowSpan="4"><input type="text"/><br/>
+            <th colSpan="6"><input type="text"/><br/>
             <input type="date"/>
             </th>
+          </tr>
+
+          <tr>
+            <th colSpan="2"><input type="checkbox" name="Trat. endodôntico insatifatório" id=""/><text>Trat. endodôntico insatifatório</text><br/></th>
+            <th colSpan="3"><text>DISCENTE:</text><input type="text"/></th>
+            <th colSpan="3"><text>DOCENTE</text><input type="text"/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="2"><input type="checkbox" name="Lesão endoperiodontal" id=""/><text>Lesão endoperiodontal</text><br/></th>
+          </tr>
+
+          <tr>
+          <th colSpan="2"><input type="checkbox" name="Reabsorção radicular externa" id=""/><text>Reabsorção radicular externa</text><br/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="2"><input type="checkbox" name="Reabsorção radicular interna" id=""/><text>Reabsorção radicular interna</text><br/></th>
           </tr>
 
       </table>

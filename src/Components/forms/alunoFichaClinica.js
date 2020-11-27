@@ -6,21 +6,19 @@ import * as options from '../arrays';
 const FichaClinicaProfessor = props => {
   const history = useHistory();
   const [status, setStatus] = useState(false);
+  const [aprovado, setAprovado] = useState(false);
   const [form, setForm] = useState(null);
   const [obs, setObs] = useState('');
   const formId = props.history.location.state;
   const back = () => history.goBack()
-
-  const changeStatus = s => api.post('/form/status', { id: formId, status: s, obs: obs }).then(() => {
-    setStatus(true);
-    alert('Formulario alterado com sucesso!');
-  }).catch(e => console.log(e));
 
   useEffect(()=>{
     api.get('/form/getformbyid',{ headers: { id: formId} })
       .then(resp => {
         setForm(resp.data.form);
         setStatus(resp.data.status);
+        setAprovado(resp.data.aprovado)
+        setObs(resp.data.obs)
       })
       .catch(error => console.log(error.message))
   },[formId])
@@ -31,7 +29,12 @@ const FichaClinicaProfessor = props => {
   return(
         
     <div>
-      <button onClick={back}>Voltar</button>
+      <button onClick={back}>Voltar</button><br/>
+
+      {status ?
+       aprovado? <h3 style={{color: 'green'}}>Aprovado</h3> : <h3 style={{color: 'red'}}>Reprovado</h3>
+       : <h3>Aguardando resposta...</h3>}
+
       <h1>Ficha Clínica</h1>
 
       <h2>1. IDENTIFICAÇÃO DO PACIENTE</h2>
@@ -2157,9 +2160,6 @@ const FichaClinicaProfessor = props => {
     </table>
     <label style={{alignSelf: 'center'}}>Observações</label> <br/>
     <textarea value={obs} onChange={e => setObs(e.target.value)} disabled={status ? true : false} cols="70" rows="10"></textarea><br/>
-
-    <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(true)}>Aprovar</button>
-    <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(false)}>Reprovar</button>
     </div>
   );
   } else{

@@ -21,6 +21,7 @@ const FichaClinicaProfessor = props => {
       .then(resp => {
         setForm(resp.data.form);
         setStatus(resp.data.status);
+        setObs(resp.data.obs)
       })
       .catch(error => console.log(error.message))
   },[formId])
