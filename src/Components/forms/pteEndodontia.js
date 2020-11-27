@@ -341,7 +341,7 @@ const PteEndodontia = props => {
       <table border="1">
         <thead>
           <tr>
-            <th colSpan="5"><text>SEMIOTÉCNICA ENDODÔNTICA</text></th>
+            <th colSpan="8"><text>SEMIOTÉCNICA ENDODÔNTICA</text></th>
           </tr>
         </thead>
           <tr>
@@ -350,8 +350,8 @@ const PteEndodontia = props => {
           </tr>
 
           <tr>
-            <th colSpan="2"><text>Frio</text></th>
-            <th colSpan="2"><text>Calor</text></th>
+            <th colSpan="2"><text>FRIO</text></th>
+            <th colSpan="2"><text>CALOR</text></th>
             <th colSpan="2"><text>Vertical</text></th>
             <th colSpan="2"><text>Horizontal</text></th>
           </tr> 
@@ -374,7 +374,7 @@ const PteEndodontia = props => {
                 <option value="">Tardio</option>
             </select>
             </th>
-            <th><input type="checkbox" name="Positivo" id=""/><text>Positivo</text></th>
+            <th rowSpan="3"><input type="checkbox" name="Positivo" id=""/><text>Positivo</text></th>
             <th><text>Inicio</text>
             <select name="" id="">
                 <option value=""></option>
@@ -406,8 +406,32 @@ const PteEndodontia = props => {
             </th>
             <th colSpan="2"><text>Apical</text></th>
             <th colSpan="2"><text>Lateral</text></th>
+          </tr>
+
+          <tr>
+            <th><text>Duração</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Curta</option>
+                <option value="">Demorada</option>
+            </select>
+            </th>
+
+            <th><text>Duração</text>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Curta</option>
+                <option value="">Demorada</option>
+            </select>
+            </th>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
+            <th><input type="checkbox" name="-" id=""/><text> - </text></th>
+            <th><input type="checkbox" name="+" id=""/><text> + </text></th>
 
           </tr>
+
+
       </table>
     
     </div>

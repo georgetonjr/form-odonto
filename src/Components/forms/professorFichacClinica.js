@@ -2154,7 +2154,7 @@ const FichaClinicaProfessor = props => {
         <th>Data <input readOnly     type="date"   value={form.PTDate} /></th>
       </tr>
     </table>
-    <label>Observações</label>
+    <label style={{alignSelf: 'center'}}>Observações</label> <br/>
     <textarea value={obs} onChange={e => setObs(e.target.value)} cols="70" rows="10"></textarea>
 
     <button style={{alignSelf: 'center'}} disabled={status ? true : false} onClick={()=> changeStatus(true)}>Aprovar</button>
