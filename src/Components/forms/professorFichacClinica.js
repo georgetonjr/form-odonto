@@ -8,7 +8,7 @@ const FichaClinicaProfessor = props => {
   const formId = props.history.location.state;
   const back = () => history.goBack()
 
-  const changeStatus = s => api.post('', { id: formId, status: s }).then(resp => console.log(resp.data)).catch(e => console.log(e));
+  const changeStatus = s => api.post('/form/status', { id: formId, status: s }).then(resp => console.log(resp.data)).catch(e => console.log(e));
 
   useEffect(()=>{
     api.get('/form/getformbyid',{ headers: { id: formId} })
