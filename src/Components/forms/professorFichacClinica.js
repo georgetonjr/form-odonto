@@ -13,12 +13,9 @@ const FichaClinicaProfessor = props => {
       .catch(error => console.log(error.message))
   },[formId])
 
-
-
   document.title = 'Ficha Clinica';
 
   if(form !== null){
-    console.log(form)
   return(
         
     <div>

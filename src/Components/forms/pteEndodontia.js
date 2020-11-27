@@ -193,10 +193,10 @@ const PteEndodontia = props => {
           </tr>
         </thead>
           <tr>
-            <th><text>Normal</text></th>
-            <th><text>Normais</text></th>
-            <th><text>Normal</text></th>
-            <th><text>Espaço do LP normal</text></th>
+            <th><input type="checkbox" name="Normal" id=""/><text>Normal</text></th>
+            <th><input type="checkbox" name="Normais" id=""/><text>Normais</text></th>
+            <th><input type="checkbox" name="Normal" id=""/><text>Normal</text></th>
+            <th><input type="checkbox" name="Espaço do LP normal" id=""/><text>Espaço do LP normal</text></th>
           </tr>
 
           <tr>
