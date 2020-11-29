@@ -22,14 +22,14 @@ import form0Aluno from './Components/forms/alunoPlanejamentoDiario';
 import form1Aluno from './Components/forms/alunoFichaClinica';
 
 const perfil = sessionStorage.getItem('@tipo')
-console.log(perfil)
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
+
   <Route
     {...rest}
     render={props =>
       isAuthenticated() ? (
-        <Component {...props} />
+        <Component {...props} history />
       ) : (
         <Redirect to={{ pathname: "/", state: { from: props.location } }} />
       )
@@ -38,28 +38,41 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 const Routes = () => (
+  
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Login} />
       <Route path="/cadaluno" component={CadastroAluno} />
       <Route path="/cadprofessor" component={CadastroProfessor} />
-      <PrivateRoute path="/app" component={() => <h1>App</h1>} />
-      <PrivateRoute path="/homea" component={HomeAluno}/>
-      <PrivateRoute path="/homep" component={HomeProfessor}/>
+      <Route path="/app" component={() => <h1>Hello you out there that aren't subscribed!!</h1>} />
+      
+      {perfil ==='aluno' ?
+        <>
+          <PrivateRoute path="/aluno/home" component={HomeAluno}/>
+          <PrivateRoute path="/form0" component={form0} />
+          <PrivateRoute path="/form1" component={Form1} />
+          <PrivateRoute path="/form2" component={Form2} />
+          <PrivateRoute path="/form3" component={Form3} />
+          <PrivateRoute path="/form4" component={Form4} />
+          <PrivateRoute path="/aluno/form0" component={form0Aluno} />
+          <PrivateRoute path="/aluno/form1" component={form1Aluno} />
+        </>
+       : <>
+        {sessionStorage.clear()}
+        <Redirect to={{ pathname: "/" }} /></>
+       }
 
-      <PrivateRoute path="/form0" component={form0} />
-      <PrivateRoute path="/form1" component={Form1} />
-      <PrivateRoute path="/form2" component={Form2} />
-      <PrivateRoute path="/form3" component={Form3} />
-      <PrivateRoute path="/form4" component={Form4} />
-
-      <PrivateRoute path="/professor/form0" component={form0Professor} />
-      <PrivateRoute path="/professor/form1" component={form1Professor} />
-
-      <PrivateRoute path="/aluno/form0" component={form0Aluno} />
-      <PrivateRoute path="/aluno/form1" component={form1Aluno} />
-
-
+        {perfil ==='professor' ?
+        <>
+          <PrivateRoute path="/homep" component={HomeProfessor}/>
+          <PrivateRoute path="/professor/form0" component={form0Professor} />
+          <PrivateRoute path="/professor/form1" component={form1Professor} />
+        </>
+       : <>
+        {sessionStorage.clear()}
+        <Redirect to={{ pathname: "/" }} /></>
+       }
+      
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>

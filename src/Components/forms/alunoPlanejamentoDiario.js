@@ -53,15 +53,17 @@ const PlanejamentoDiario = props => {
       <label>Planejamento:</label><br/>
       <textarea value={form?.planejamento} readOnly cols="30" rows="10"></textarea>
       <table border="1">
-        <tr>
-          <th>Discente: <input readOnly type="text" value={form?.discente} /></th>
-          <th>Auxiliar: <input readOnly type="text" value={form?.auxiliar} /></th>
-          <th>Docente: <input readOnly type="text" value={form?.docente} /></th>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Discente: <input readOnly type="text" value={form?.discente} /></th>
+            <th>Auxiliar: <input readOnly type="text" value={form?.auxiliar} /></th>
+            <th>Docente: <input readOnly type="text" value={form?.docente} /></th>
+          </tr>
+        </tbody>
       </table>
 
       <label style={{alignSelf: 'center'}}>Observações</label> <br/>
-      <textarea value={obs}  disabled={status ? true : false} cols="70" rows="10"></textarea><br/>
+      <textarea value={obs} disabled cols="70" rows="10"></textarea><br/>
 
     </div>
   );

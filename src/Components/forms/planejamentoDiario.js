@@ -6,10 +6,11 @@ import {getUser} from '../../Services/auth';
 const PlanejamentoDiario = props => {
   const history = useHistory();
   const nameform = 'Planejamento diario';
+
   const [user, setUser] = useState();
+
   const [ professores, setProfessores] = useState([]);
   const [professor, setProfessor] = useState();
-
   const [paciente, setPaciente] = useState();
   const [prontuario, setProntuario] = useState();
   const [data, setData] = useState();
@@ -20,34 +21,33 @@ const PlanejamentoDiario = props => {
   const [discente, setDiscente] = useState();
   const [auxiliar, setAuxiliar] = useState();
   const [docente, setDocente] = useState();
-  const [form, setForm] = useState();
+  const [formulario, setFormulario] = useState();
 
-  const loadForm = ()=> {
-    setForm({
-      paciente, prontuario, data, especialidade,
+  const loadFormulario = ()=> {
+    setFormulario({ paciente, prontuario, data, especialidade,
       planejamento, regiaDentes, procedimentos,
-      discente, auxiliar, docente,
-    })
+      discente, auxiliar, docente});
+
+    console.log(formulario)
   }
 
   const enviar = async() => {
-    loadForm()
-
+    loadFormulario()
+    
     api.post('/form/create',{
+      "form": formulario,
       nameform,
-      form,
       aluno: user?._id,
       professor: professor
     })  
       .then(resp => {
-        console.log(resp.data)
         alert('Enviado com sucesso');
-        history.goBack();
+        history.push('homea');
       })
       .catch(error => {
         console.log(error)
         alert('Algo deu errado, por favor tente novamente mais tarde!')
-        history.goBack(); 
+        history.push('homea');
       })
   }
 
@@ -57,6 +57,10 @@ const PlanejamentoDiario = props => {
       .catch(error => console.error(error.message));  
     getUser().then(r => setUser(r)); 
   }, [])
+
+  const press = () => {
+    console.log(formulario)
+  }
 
   return (
     <div>
@@ -68,7 +72,7 @@ const PlanejamentoDiario = props => {
       <h1>Planejamento diario</h1>
 
       <label>Paciente</label><br/>
-      <input type="text" value={paciente} onChange={e => setPaciente(e.target.value)}/><br/>
+      <input type="text" value={paciente} onChange={e => setPaciente(e.target.value)} onKeyPress={press}/><br/>
       <label>Prontuario</label><br/>
       <input type="text" value={prontuario} onChange={e => setProntuario(e.target.value)}/><br/>
       

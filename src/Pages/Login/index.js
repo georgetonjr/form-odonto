@@ -19,7 +19,7 @@ const Login = () =>{
         perfil = 'aluno'
         console.log(res.data)
         setToken(res.data.token, res.data.CPD, perfil);
-        history.push('/homea');
+        history.push('/aluno/home');
         })
         .catch(() => alert('Usuario não encontrado'));
     }
