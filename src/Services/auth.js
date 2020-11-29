@@ -3,13 +3,13 @@ import api from './api';
 export const TOKEN_KEY = "@form-Token";
 export const Data_KEY = "@UserData";
 export const Tipo_KEY = "@tipo";
-export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
+export const isAuthenticated = () => sessionStorage.getItem(TOKEN_KEY) !== null;
 export const getToken = () => {
-  localStorage.getItem(TOKEN_KEY);
+  sessionStorage.getItem(TOKEN_KEY);
 };
 
 export const getUser =  async (prof = false) => {
-  let cpd = localStorage.getItem('@UserData')
+  let cpd = sessionStorage.getItem('@UserData')
   var user = '';
 
   if(prof){
@@ -24,10 +24,10 @@ export const getUser =  async (prof = false) => {
 };
 
 export const setToken = (token,data, tipo) => {
-  localStorage.setItem(TOKEN_KEY, token);
-  localStorage.setItem(Data_KEY, data);
-  localStorage.setItem(Tipo_KEY, tipo);
+  sessionStorage.setItem(TOKEN_KEY, token);
+  sessionStorage.setItem(Data_KEY, data);
+  sessionStorage.setItem(Tipo_KEY, tipo);
 };
 export const logout = () => {
-  localStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(TOKEN_KEY);
 };

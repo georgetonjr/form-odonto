@@ -12,6 +12,7 @@ const HomeALuno = () =>{
     let aluno = await getUser(false);
     setUser(aluno)
   }
+
   const sair = () => {
     localStorage.clear();
     history.push('/')
@@ -59,18 +60,20 @@ const HomeALuno = () =>{
   return(
     <div>
       <h1>Bem vindo {user?.Nome}</h1>
-      <button onClick={()=>Form('form0')}>Planejamento Diario</button><br/>
+      <button onClick={()=>Form('form0')}>Ficha Planejamento Diario</button><br/>
       <button onClick={()=>Form('form1')}>Ficha Clinica</button><br/>
+      <button onClick={()=>Form('form5')}>Ficha Atendimento de Urgência</button><br/>
       <button onClick={()=>Form('form2')}>Ficha PTE Dentística</button><br/>
       <button onClick={()=>Form('form3')}>Ficha PTE Endodontia</button><br/>
       <button onClick={()=>Form('form4')}>Ficha PTE Periodontia</button><br/>
+      <button onClick={()=>Form('form6')}>Ficha PTE planejamento cirurgia</button><br/>
 
       {check ? 
         <table border='1'>
         <thead>
           <tr>
             <th>Formulario</th>
-            <th>Aluno</th>
+            <th>Professor</th>
             <th>Abrir ficha</th>
             <th>Data</th>
           </tr>
@@ -82,7 +85,7 @@ const HomeALuno = () =>{
             <th>
               {item?.nameForm}
             </th> 
-            <th>{item?.aluno.Nome}</th>
+            <th>{item?.professor?.Nome}</th>
             <th>{(new Date(item?.createdAt).toUTCString())}</th>
             <th><button onClick={()=> openForm(item?._id, item?.nameForm)}>Abrir</button></th>
           </tr>
@@ -90,6 +93,8 @@ const HomeALuno = () =>{
         </tbody>
       </table>
       :<> </>}
+
+      <button onClick={sair}>Sair</button>
     </div>
   );
 }

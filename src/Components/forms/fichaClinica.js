@@ -377,6 +377,8 @@ const FichaClinica = props => {
     getUser().then(r => setUser(r)); 
   }, [])
 
+  useEffect(()=> loadForm(),[odontograma])
+
   return (
     <div>
       

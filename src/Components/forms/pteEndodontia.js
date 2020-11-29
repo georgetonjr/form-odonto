@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {withRouter, useHistory} from 'react-router-dom';
-import api from '../../Services/api';
+import {withRouter} from 'react-router-dom';
 
 const PteEndodontia = props => {
   
@@ -489,15 +487,122 @@ const PteEndodontia = props => {
 
           <tr>
             <th colSpan="2"><input type="checkbox" name="Lesão endoperiodontal" id=""/><text>Lesão endoperiodontal</text><br/></th>
+            <th colSpan="6"><text>ALTERAÇÕES DO PLANO DE TRATAMENTO</text></th>
           </tr>
 
           <tr>
-          <th colSpan="2"><input type="checkbox" name="Reabsorção radicular externa" id=""/><text>Reabsorção radicular externa</text><br/></th>
+            <th colSpan="2"><input type="checkbox" name="Reabsorção radicular externa" id=""/><text>Reabsorção radicular externa</text><br/></th>
+            <th colSpan="6" rowSpan="2"><input type="text"/><br/>
+            <input type="date"/>
+            </th>
           </tr>
 
           <tr>
             <th colSpan="2"><input type="checkbox" name="Reabsorção radicular interna" id=""/><text>Reabsorção radicular interna</text><br/></th>
           </tr>
+          
+          <tr>
+            <th colSpan="2"><input type="checkbox" name="Outros:" id=""/><text>Outros:</text><input type="text"/><br/></th>
+            <th colSpan="3"><text>DISCENTE:</text><input type="text"/></th>
+            <th colSpan="3"><text>DOCENTE:</text><input type="text"/></th>
+          </tr>
+
+      </table><br/>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th colSpan="12">PLANEJAMENTO ENDODÔNTICO</th>
+          </tr>
+        </thead>
+          <tr>
+            <th>Canal</th>
+            <th>Ref.Coronaria</th>
+            <th>CAD</th>
+            <th>CTEx</th>
+            <th>CAD2</th>
+            <th>CT</th>
+            <th>CPC</th>
+            <th>IAI</th>
+            <th>LM</th>
+            <th>LP</th>
+            <th>CP</th>
+            <th>CA/E</th>
+          </tr>
+
+          <tr>
+            <th><input type="checkbox" name="Canal" id=""/></th>
+            <th><input type="checkbox" name="Ref.Coronaria" id=""/></th>
+            <th><input type="checkbox" name="CAD" id=""/></th>
+            <th><input type="checkbox" name="CTEx" id=""/></th>
+            <th><input type="checkbox" name="CAD2" id=""/></th>
+            <th><input type="checkbox" name="CT:" id=""/></th>
+            <th><input type="checkbox" name="CPC" id=""/></th>
+            <th><input type="checkbox" name="IAI:" id=""/></th>
+            <th><input type="checkbox" name="LM" id=""/></th>
+            <th><input type="checkbox" name="LP" id=""/></th>
+            <th><input type="checkbox" name="CP" id=""/></th>
+            <th><input type="checkbox" name="CA/E" id=""/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>Numero de sessões:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="3"><text>Grampo para isolamento:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>Forma do acesso:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="3"><text>Broca para o acesso:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>Solução irrigadora:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="3"><text>Técnica de instrumentação:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>Remoção da Smear Layer:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="3"><text>Medicação intracanal:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>Cimento obturador:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="3"><text>Técnica de obturação:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>Restauração provisória:</text></th>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="6"rowSpan="3"><text>CAD: Comprimento aparente do dente na radiografia de diagnóstico;<br/> CTEx: Comprimento de trabalho exploratório;<br/>
+            CAD2: Comprimento aparente do dente na radiografia odontométrica; CT: Comprimento de trabalho;<br/>
+            CPC: Comprimento de patência do canal;<br/> IAI: Instrumento apical inicial;<br/>
+            LM: Lima memória;<br/> LP: Lima de patência;<br/> CP: Cone principal;<br/> CA: Cones acessórios;<br/> E: Espaçador digital;
+            </text></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><text>DISCENTE:</text></th>
+            <th colSpan="3"><text>DOCENTE:</text></th>
+          </tr>
+
+          <tr>
+            <th colSpan="3"><input type="text"/></th>
+            <th colSpan="3"><input type="text"/></th>
+          </tr>
+          <tr>
+            <th colSpan="12"><input type="date"/></th>
+          </tr>
+
 
       </table>
     

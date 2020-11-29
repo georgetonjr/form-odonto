@@ -43,6 +43,8 @@ const HomeProfessor = () =>{
     history.push('/')
   }
 
+  
+
   useEffect(() =>{  
     get()
   },[])
@@ -82,6 +84,8 @@ const HomeProfessor = () =>{
         </tbody>
       </table>
       :<> </>}
+
+      <button onClick={sair}>Sair</button>
       
    </div>
   );

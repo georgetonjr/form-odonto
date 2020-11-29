@@ -9,7 +9,7 @@ const PlanejamentoDiario = props => {
 
   const [user, setUser] = useState();
 
-  const [ professores, setProfessores] = useState([]);
+  const [professores, setProfessores] = useState([]);
   const [professor, setProfessor] = useState();
   const [paciente, setPaciente] = useState();
   const [prontuario, setProntuario] = useState();
@@ -24,12 +24,15 @@ const PlanejamentoDiario = props => {
   const [formulario, setFormulario] = useState();
 
   const loadFormulario = ()=> {
-    setFormulario({ paciente, prontuario, data, especialidade,
-      planejamento, regiaDentes, procedimentos,
-      discente, auxiliar, docente});
+    setFormulario({
+      paciente, prontuario, data, especialidade, planejamento, regiaDentes, 
+      procedimentos, discente, auxiliar, docente,
+    });
 
     console.log(formulario)
   }
+
+  useEffect(()=> loadFormulario(), [docente])
 
   const enviar = async() => {
     loadFormulario()
@@ -58,6 +61,9 @@ const PlanejamentoDiario = props => {
     getUser().then(r => setUser(r)); 
   }, [])
 
+  /*const press = () => console.log(paciente, prontuario, data, especialidade,
+    planejamento, regiaDentes, procedimentos,
+    discente, auxiliar, docente)*/
   
 
   return (
@@ -70,7 +76,7 @@ const PlanejamentoDiario = props => {
       <h1>Planejamento diario</h1>
 
       <label>Paciente</label><br/>
-      <input type="text" value={paciente} onChange={e => setPaciente(e.target.value)}/><br/>
+      <input type="text" value={paciente} onChange={e => setPaciente(e.target.value)} /><br/>
       <label>Prontuario</label><br/>
       <input type="text" value={prontuario} onChange={e => setProntuario(e.target.value)}/><br/>
       
