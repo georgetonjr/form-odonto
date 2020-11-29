@@ -38,11 +38,14 @@ const HomeProfessor = () =>{
     history.push(`/professor/${loc}`, i)
   }
 
+<<<<<<< HEAD
   const sair = () => {
     localStorage.clear();
     history.push('/')
   }
 
+=======
+>>>>>>> parent of 4e4b870... add signOut button
   
 
   useEffect(() =>{  
@@ -84,8 +87,6 @@ const HomeProfessor = () =>{
         </tbody>
       </table>
       :<> </>}
-
-      <button onClick={sair}>Sair</button>
       
    </div>
   );

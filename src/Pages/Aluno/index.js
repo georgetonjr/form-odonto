@@ -13,11 +13,14 @@ const HomeALuno = () =>{
     setUser(aluno)
   }
 
+<<<<<<< HEAD
   const sair = () => {
     localStorage.clear();
     history.push('/')
   }
 
+=======
+>>>>>>> parent of 4e4b870... add signOut button
   const openForm = ( i,f) => {
     let loc;
     switch (f) {
@@ -91,8 +94,6 @@ const HomeALuno = () =>{
         </tbody>
       </table>
       :<> </>}
-
-      <button onClick={sair}>Sair</button>
     </div>
   );
 }

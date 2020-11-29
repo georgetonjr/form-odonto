@@ -10,6 +10,7 @@ const Login = () =>{
   const [selectedValue, setSelectedValue] = useState('Aluno')
   const history = useHistory();
   var perfil;
+  
   const logar = async ()=>{
     if(selectedValue === 'Aluno'){
       api.post('/siginaluno',{

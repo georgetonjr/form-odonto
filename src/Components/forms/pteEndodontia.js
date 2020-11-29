@@ -487,19 +487,16 @@ const PteEndodontia = props => {
 
           <tr>
             <th colSpan="2"><input type="checkbox" name="Lesão endoperiodontal" id=""/><text>Lesão endoperiodontal</text><br/></th>
-            <th colSpan="6"><text>ALTERAÇÕES DO PLANO DE TRATAMENTO</text></th>
           </tr>
 
           <tr>
-            <th colSpan="2"><input type="checkbox" name="Reabsorção radicular externa" id=""/><text>Reabsorção radicular externa</text><br/></th>
-            <th colSpan="6" rowSpan="2"><input type="text"/><br/>
-            <input type="date"/>
-            </th>
+          <th colSpan="2"><input type="checkbox" name="Reabsorção radicular externa" id=""/><text>Reabsorção radicular externa</text><br/></th>
           </tr>
 
           <tr>
             <th colSpan="2"><input type="checkbox" name="Reabsorção radicular interna" id=""/><text>Reabsorção radicular interna</text><br/></th>
           </tr>
+<<<<<<< HEAD
           
           <tr>
             <th colSpan="2"><input type="checkbox" name="Outros:" id=""/><text>Outros:</text><input type="text"/><br/></th>
@@ -603,6 +600,8 @@ const PteEndodontia = props => {
             <th colSpan="12"><input type="date"/></th>
           </tr>
 
+=======
+>>>>>>> parent of 4e4b870... add signOut button
 
       </table>
     
