@@ -58,9 +58,7 @@ const PlanejamentoDiario = props => {
     getUser().then(r => setUser(r)); 
   }, [])
 
-  const press = () => {
-    console.log(formulario)
-  }
+  
 
   return (
     <div>
@@ -72,7 +70,7 @@ const PlanejamentoDiario = props => {
       <h1>Planejamento diario</h1>
 
       <label>Paciente</label><br/>
-      <input type="text" value={paciente} onChange={e => setPaciente(e.target.value)} onKeyPress={press}/><br/>
+      <input type="text" value={paciente} onChange={e => setPaciente(e.target.value)}/><br/>
       <label>Prontuario</label><br/>
       <input type="text" value={prontuario} onChange={e => setProntuario(e.target.value)}/><br/>
       

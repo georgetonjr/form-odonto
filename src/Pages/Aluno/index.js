@@ -14,7 +14,7 @@ const HomeALuno = () =>{
   }
 
   const sair = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     history.push('/')
   }
 

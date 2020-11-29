@@ -30,7 +30,7 @@ const Login = () =>{
         Senha,
       }).then(res => {
         setToken(res.data.token, res.data.CPD, perfil)
-        history.push('/homep');
+        history.push('/professor/home');
       }).catch(() => alert('Usuario não encontrado'));
     }
   }

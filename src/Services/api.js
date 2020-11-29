@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "./auth";
 
 const api = axios.create({
-  baseURL: "http://localhost:3003"//"https://form-odonto-server.herokuapp.com"
+  baseURL: "https://form-odonto-server.herokuapp.com"
 });
 //http://localhost:3003"
 

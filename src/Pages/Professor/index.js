@@ -39,7 +39,7 @@ const HomeProfessor = () =>{
   }
 
   const sair = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     history.push('/')
   }
 
