@@ -16,10 +16,10 @@ const Login = () =>{
         CPD,
         Senha,
       }).then(res => {
-        perfil = 'aluno'
-        console.log(res.data)
-        setToken(res.data.token, res.data.CPD, perfil);
-        history.push('/aluno/home');
+          perfil = 'aluno'
+          console.log(res.data)
+          setToken(res.data.token, res.data.CPD, perfil);
+          history.push('/aluno/home');
         })
         .catch(() => alert('Usuario não encontrado'));
     }
