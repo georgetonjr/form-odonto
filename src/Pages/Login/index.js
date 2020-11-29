@@ -16,10 +16,10 @@ const Login = () =>{
         CPD,
         Senha,
       }).then(res => {
-          perfil = 'aluno'
-          console.log(res.data)
-          setToken(res.data.token, res.data.CPD, perfil);
-          history.push('/aluno/home');
+        perfil = 'aluno'
+        console.log(res.data)
+        setToken(res.data.token, res.data.CPD, perfil);
+        history.push('/homea');
         })
         .catch(() => alert('Usuario não encontrado'));
     }
@@ -30,7 +30,7 @@ const Login = () =>{
         Senha,
       }).then(res => {
         setToken(res.data.token, res.data.CPD, perfil)
-        history.push('/professor/home');
+        history.push('/homep');
       }).catch(() => alert('Usuario não encontrado'));
     }
   }
@@ -71,4 +71,3 @@ const Login = () =>{
 }
 
 export default withRouter(Login);
-

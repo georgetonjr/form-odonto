@@ -48,7 +48,7 @@ const Routes = () => (
       
       {perfil ==='aluno' ?
         <>
-          <PrivateRoute path="/aluno/home" component={HomeAluno}/>
+          <PrivateRoute path="/homea" component={HomeAluno}/>
           <PrivateRoute path="/form0" component={form0} />
           <PrivateRoute path="/form1" component={Form1} />
           <PrivateRoute path="/form2" component={Form2} />
@@ -64,7 +64,7 @@ const Routes = () => (
 
         {perfil ==='professor' ?
         <>
-          <PrivateRoute path="/professor/home" component={HomeProfessor}/>
+          <PrivateRoute path="/homep" component={HomeProfessor}/>
           <PrivateRoute path="/professor/form0" component={form0Professor} />
           <PrivateRoute path="/professor/form1" component={form1Professor} />
         </>

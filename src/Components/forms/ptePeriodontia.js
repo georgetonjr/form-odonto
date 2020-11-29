@@ -18,6 +18,35 @@ const PtePeriodontia = props => {
           </tr>
         </thead>
       </table>
+
+      <table>
+        <thead>
+          <tr>
+            <th>PLACA VISIVEL</th>
+          </tr>
+
+          <tr>
+            <th colSpan="16">PLACA VISIVEL</th>
+            <th>18 <input type="checkbox" name="18" id=""/></th>
+            <th>17</th>
+            <th>16</th>
+            <th>15</th>
+            <th>14</th>
+            <th>13</th>
+            <th>12</th>
+            <th>11</th>
+            <th>21</th>
+            <th>22</th>
+            <th>23</th>
+            <th>24</th>
+            <th>25</th>
+            <th>26</th>
+            <th>27</th>
+            <th>28</th>
+
+          </tr>
+        </thead>
+      </table>
     </div>
 );
 }
