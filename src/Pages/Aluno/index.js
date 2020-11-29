@@ -12,15 +12,11 @@ const HomeALuno = () =>{
     let aluno = await getUser(false);
     setUser(aluno)
   }
-
-<<<<<<< HEAD
   const sair = () => {
     localStorage.clear();
     history.push('/')
   }
 
-=======
->>>>>>> parent of 4e4b870... add signOut button
   const openForm = ( i,f) => {
     let loc;
     switch (f) {

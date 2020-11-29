@@ -1,4 +1,6 @@
-import {withRouter} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {withRouter, useHistory} from 'react-router-dom';
+import api from '../../Services/api';
 
 const PtePeriodontia = props => {
   
