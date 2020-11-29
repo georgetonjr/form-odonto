@@ -15,13 +15,15 @@ import Form2 from './Components/forms/pteDentistica';
 import Form3 from './Components/forms/pteEndodontia';
 import Form4 from './Components/forms/ptePeriodontia';
 import Form5 from './Components/forms/atendimentodeUrgencia';
-import Form6 from './Components/forms/pteCirurgia';
+import Form6 from './Components/forms/pteCirurgiaPlanejamento';
 
 import form0Professor from './Components/forms/professorPlanejamentoDiario';
 import form1Professor from './Components/forms/professorFichacClinica';
+import form2Professor from './Components/forms/professorPteCirugiaPlanejamento';
 
 import form0Aluno from './Components/forms/alunoPlanejamentoDiario';
 import form1Aluno from './Components/forms/alunoFichaClinica';
+import form2Aluno from './Components/forms/alunoPteCirugiaPlanejamento';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -52,12 +54,15 @@ const Routes = () => (
       <PrivateRoute path="/form4" component={Form4} />
       <PrivateRoute path="/form5" component={Form5} />
       <PrivateRoute path="/form6" component={Form6} />
+
       <PrivateRoute path="/aluno/form0" component={form0Aluno} />
       <PrivateRoute path="/aluno/form1" component={form1Aluno} />
+      <PrivateRoute path="/aluno/form2" component={form2Aluno} />
 
       <PrivateRoute path="/homep" component={HomeProfessor}/>
       <PrivateRoute path="/professor/form0" component={form0Professor} />
       <PrivateRoute path="/professor/form1" component={form1Professor} />
+      <PrivateRoute path="/professor/form2" component={form2Professor} />
 
 
       <Route path="*" component={() => <h1>Page not found</h1>} />

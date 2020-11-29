@@ -32,29 +32,29 @@ const PlanejamentoDiario = props => {
       <h1>Planejamento diario</h1>
 
       <label>Paciente</label><br/>
-      <input type="text" readOnly value={form.paciente}/><br/>
+      <input type="text" readOnly value={form?.paciente}/><br/>
       <label>Prontuario</label><br/>
-      <input type="text" readOnly value={form.prontuario} /><br/>
+      <input type="text" readOnly value={form?.prontuario} /><br/>
       
       <label>Data</label><br/>
-      <input type="date" readOnly value={form.data} /><br/>
+      <input type="date" readOnly value={form?.data} /><br/>
 
       <label>Região/Dente(s):</label><br/>
-      <input type="text" readOnly value={form.regiaDentes} /><br/>
+      <input type="text" readOnly value={form?.regiaDentes} /><br/>
 
       <label>Especialidade:</label><br/>
-      <input type="text" readOnly value={form.especialidade} /><br/>
+      <input type="text" readOnly value={form?.especialidade} /><br/>
 
       <label>Procedimentos:</label><br/>
-      <input type="text" readOnly value={form.procedimentos} /><br/>
+      <input type="text" readOnly value={form?.procedimentos} /><br/>
 
       <label>Planejamento:</label><br/>
-      <textarea value={form.planejamento} readOnly cols="30" rows="10"></textarea>
+      <textarea value={form?.planejamento} readOnly cols="30" rows="10"></textarea>
       <table border="1">
         <tr>
-          <th>Discente: <input readOnly type="text" value={form.discente} /></th>
-          <th>Auxiliar: <input readOnly type="text" value={form.auxiliar} /></th>
-          <th>Docente: <input readOnly type="text" value={form.docente} /></th>
+          <th>Discente: <input readOnly type="text" value={form?.discente} /></th>
+          <th>Auxiliar: <input readOnly type="text" value={form?.auxiliar} /></th>
+          <th>Docente: <input readOnly type="text" value={form?.docente} /></th>
         </tr>
       </table>
 

@@ -5,7 +5,7 @@ import {getUser} from '../../Services/auth';
 
 const PteCirurgiaPlanejamento = props => {
   const history = useHistory();
-  const nameform = 'Planejamento diario';
+  const nameform = 'Planejamento Cirurgico';
 
   const [user, setUser] = useState();
 
@@ -42,14 +42,19 @@ const PteCirurgiaPlanejamento = props => {
 
     console.log(formulario)
   }
-
+  // eslint-disable-next-line
   useEffect(()=> loadFormulario(), [data])
 
   const enviar = async() => {
     loadFormulario()
     
     api.post('/form/create',{
-      "form": formulario,
+      "form": {
+        professor, paciente, prontuario, data, cirurgiaN, operador, elementoRegiaDentes,
+      procedimentos, discente, auxiliar, docente, adequacaoAreaCirurgica, indicacaoProg,
+      condutaPreOper, anestesico, tecnicaAnestesica, descricaoTecnica, prescricaoMedicamento,
+      posOperatorio, antiSepsia,
+      },
       nameform,
       aluno: user?._id,
       professor: professor
@@ -117,7 +122,7 @@ const PteCirurgiaPlanejamento = props => {
         type="text"
         placeholder="Auxiliar"
         value={auxiliar}
-        onChange={setAuxiliar}
+        onChange={e => setAuxiliar(e.target.value)}
       /> <br/>
 
       <label>Indicação/Prognostico</label><br/>
@@ -227,7 +232,7 @@ const PteCirurgiaPlanejamento = props => {
         </tbody>
       </table>
 
-      <button style={{alignSelf: 'center'}} onClick={enviar}>Enviar</button>
+      <br/><button style={{alignSelf: 'center', width: '150px'}} onClick={enviar}>Enviar</button>
 
     </div>
   );

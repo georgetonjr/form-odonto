@@ -5,8 +5,8 @@ const atendimentodeUrgencia = props => {
   return (
     <div>
         <h1><center>ATENDIMENTO DE URGÊNCIA</center></h1>
+        <h5 style={{color: 'red'}}><center><font size="3">***Preencher somente na presença do paciente!!!</font></center></h5>
         <h3>1. IDENTIFICAÇÃO DO PACIENTE</h3>
-      
         <table border="1">
             <tr>
                 <th colSpan="2">Nome: <input type="text"/></th>
@@ -300,6 +300,135 @@ const atendimentodeUrgencia = props => {
                 <input type="checkbox" name="Dias por semana" id=""/>Dias por semana
                 <input type="checkbox" name="Socialmente" id=""/>Socialmente
                 </th>
+            </tr>
+            <tr>
+                <th colSpan="4">Faz uso de fumo?
+                <input type="checkbox" name="Não" id=""/>Não<br/>
+                <input type="checkbox" name="Sim" id=""/>Sim
+                <input type="checkbox" name="Cigarros por dia" id=""/>Cigarros por dia
+                <input type="checkbox" name="Socialmente" id=""/>Socialmente
+                Qual?<input type="text"/>
+                </th>
+            </tr>
+            <tr>
+                <th colSpan="4">Faz uso de drogas ilícitas?
+                <input type="checkbox" name="Não" id=""/>Não<br/>
+                <input type="checkbox" name="Sim" id=""/>Sim
+                <input type="checkbox" name="Diariamente" id=""/>Diariamente
+                <input type="checkbox" name="Dias por semana" id=""/>Dias por semana
+                Qual?<input type="text"/>
+            </th>
+            </tr>
+            <tr>
+                <th colSpan="4">Outros hábitos:<input type="text"/></th>
+            </tr>
+            <tr>
+                <th colSpan="4">Obervações:<input type="text"/></th>
+            </tr>
+            <tr>
+                <th colSpan="4">Declaro que as informações relatadas na anamnese são verdadeiras
+                e me comprometo a informar ao responsável<br/> pelo meu atendimento qualquer alteração
+                do estado de saúde que ocorra durante o meu tratamento.<br/>
+                <input type="date"/>Paciente ou responsável legal<input type="text"/></th>
+            </tr>
+            <tr>
+                <th>DISCENTE:<input type="text"/></th>
+                <th>DOCENTE:<input type="text"/></th>
+                <th colSpan="2">DATA:<input type="date"/></th>
+            </tr>
+        </table><br/>
+        <h4>2.2	EXAME FÍSICO (ectoscopia, oroscopia e sinais vitais)</h4>
+
+        <table border="1">
+            <tr>
+                <th>Pressão arterial:<input type="text"/>mmHg</th>
+                <th>Pulso radial:<input type="text"/>/minuto</th>
+                <th>Frequência respiratória:<input type="text"/>/minuto</th>
+                <th>Temperatura:<input type="text"/>ºC</th>
+            </tr>
+            <tr>
+                <th colSpan="2">Altura:<input type="text"/></th>
+                <th colSpan="2">Peso:<input type="text"/></th>
+            </tr>
+            <tr>
+                <th>ATM<input type="text"/></th>
+                <th>Linfonodos<input type="text"/></th>
+                <th colSpan="2">Pele<input type="text"/></th>
+            </tr>
+            <tr>
+                <th>Simetria facial<input type="text"/></th>
+                <th>Lábios<input type="text"/></th>
+                <th colSpan="2">Glândulas<input type="text"/></th>
+            </tr>
+            <tr>
+                <th>Mucosa labial<input type="text"/></th>
+                <th>Mucosa jugal<input type="text"/></th>
+                <th>Região retromolar<input type="text"/></th>
+                <th>Gengiva<input type="text"/></th>
+            </tr>
+            <tr>
+                <th>Palato<input type="text"/></th>
+                <th>Língua<input type="text"/></th>
+                <th>Assoalho<input type="text"/></th>
+                <th>Orofaringe<input type="text"/></th>
+            </tr>
+            <tr>
+                <th colSpan="4">Obervações:<input type="text"/></th>
+            </tr>
+        </table><br/>
+        <h4>2.2	EXAMES REALIZADOS PARA O DIAGNÓSTICO / ACHADOS</h4>
+
+        <table border="1">
+            <tr>
+                <th>Clínicos:<input type="text"/></th>
+            </tr>
+            <tr>
+                <th>Radiográficos:<input type="text"/></th>
+            </tr>
+        </table><br/>
+        <h3>3. DIAGNÓSTICO</h3>
+        <table border="1">
+            <tr>
+                <th><input type="text"/></th>
+            </tr>
+        </table><br/>
+        <h3>4. PLANO DE TRATAMENTO</h3>
+        <table border="1">
+            <tr>
+                <th><input type="text"/></th>
+            </tr>
+        </table><br/>
+
+        <table border="1">
+            <tr>
+                <th>DISCENTE:<input type="text"/></th>
+                <th>DOCENTE:<input type="text"/></th>
+                <th>DATA:<input type="date"/></th>
+            </tr>
+        </table><br/>
+        <h3>5. PROCEDIMENTO REALIZADO</h3>
+        <table border="1">
+            <tr>
+                <th><input type="text"/></th>
+            </tr>
+        </table><br/>
+        <h3>6. RECOMENDAÇÕES PÓS-OPERATÓRIAS</h3>
+        <table border="1">
+            <tr>
+                <th><input type="text"/></th>
+            </tr>
+        </table><br/>
+        <table border="1">
+            <tr>
+                <th>Paciente ou resposável legal<input type="text"/></th>
+                <th>DATA:<input type="date"/></th>
+            </tr>
+        </table><br/>
+        <table border="1">
+            <tr>
+                <th>DISCENTE:<input type="text"/></th>
+                <th>DOCENTE:<input type="text"/></th>
+                <th>DATA:<input type="date"/></th>
             </tr>
         </table>
     </div>

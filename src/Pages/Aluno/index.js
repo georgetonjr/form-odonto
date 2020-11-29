@@ -27,6 +27,9 @@ const HomeALuno = () =>{
       case 'Planejamento diario':
         loc= 'form0';
         break;
+      case 'Planejamento Cirurgico':
+        loc='form2'
+        break;
       default:
         history.push('/homep');
         break;
